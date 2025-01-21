@@ -1028,7 +1028,7 @@ _promptly to the owner, operator, or agent in charge.” (emphasis added)._
 
 The FDA is issuing this guidance for immediate implementation in accordance with 21 CFR
 10.115(g)(4)(i). Submit one set of either electronic or written comments on this guidance at any
-[time. Submit electronic comments to https://www.regulations.gov/. Submit written comments](https://www.regulations.gov/)
+time. Submit electronic comments to [https://www.regulations.gov/. Submit written comments](https://www.regulations.gov/)
 to the Dockets Management Staff, Food and Drug Administration, 5630 Fishers Lane, Room
 1061, Rockville, MD 20852. All comments should be identified with the docket number FDA2003-D-0146.
 
@@ -1584,7 +1584,7 @@ to the recalling firm.
 
 1. [For guidance on issuing public warnings, please reference FDA's guidance on Public](https://www.fda.gov/media/110457/download)
 
-[Warning and Notification of Recalls Under 21 CFR Part 7, Subpart C (issued in](https://www.fda.gov/media/110457/download)
+[Warning and Notification of Recalls Under 21 CFR Part 7, Subpart C](https://www.fda.gov/media/110457/download) (issued in
 February, 2019
 [https://www.fda.gov/downloads/Safety/Recalls/IndustryGuidance/UCM592851.pdf)](https://www.fda.gov/downloads/Safety/Recalls/IndustryGuidance/UCM592851.pdf)
 
@@ -3067,7 +3067,7 @@ the matter is resolved.
 **G.** **Posting Briefing Materials on FDA’s Web Site**
 
 We will post the briefing materials for an open advisory committee meeting subject to
-[this guidance on our Web site at http://www.fda.gov/ohrms/dockets/ac/acwhatsnew.htm.](http://www.fda.gov/ohrms/dockets/ac/acwhatsnew.htm)
+this guidance on our Web site at [http://www.fda.gov/ohrms/dockets/ac/acwhatsnew.htm.](http://www.fda.gov/ohrms/dockets/ac/acwhatsnew.htm)
 The materials also will be available in hard copy at our Division of Dockets
 Management’s Public Reading Room.[10] We will post only the publicly available
 sponsor-prepared briefing materials and the publicly available FDA-prepared briefing
@@ -3253,7 +3253,7 @@ ensure that the agency considers your comment on this draft guidance before it b
 on the final version of the guidance, submit either electronic or written comments on the draft
 guidance within 60 days of publication in the Federal Register of the notice announcing the
 availability of the draft guidance. Submit electronic comments to
-[http://www.regulations.gov. Submit written comments to the Division of Dockets](http://www.regulations.gov/)
+[http://www.regulations.gov.](http://www.regulations.gov/) Submit written comments to the Division of Dockets
 Management (HFA-305), Food and Drug Administration, 5630 Fishers Lane, rm. 1061,
 Rockville, MD 20852. All comments should be identified with the docket number listed in
 the notice of availability that publishes in the Federal Register.
@@ -6317,7 +6317,7 @@ that FDA considers your comment on the Appendix B before we begin work on the fi
 of Appendix B, submit either electronic or written comments on this document within 30 days of
 publication in the Federal Register of the notice announcing the availability of the guidance.
 
-[Submit electronic comments to http://www/regulations.gov. Submit written comments on the](http://www/regulations.gov)
+Submit electronic comments to [http://www/regulations.gov. Submit written comments on the](http://www/regulations.gov)
 guidance to the Dockets Management Staff (HFA-305), Food and Drug Administration, 5630
 Fishers Lane, rm. 1061, Rockville, MD 20852. All comments should be identified with the
 docket number FDA-2023-D-1716 as listed in the notice of availability that publishes in the
@@ -6425,7 +6425,7 @@ submission tool. As an additional alternative, users may transmit submissions th
 Electronic Submissions Gateway (ESG) as described in section III.E. below. FDA strongly
 encourages electronic submissions to facilitate efficiency and timeliness of data submission and
 management for the agency. Cosmetics Direct, technical assistance documents and paper
-[submission forms can be accessed at: https://www.fda.gov/cosmetics/registration-listing-](https://www.fda.gov/cosmetics/registration-listing-cosmetic-product-facilities-and-products)
+submission forms can be accessed at: [https://www.fda.gov/cosmetics/registration-listing-](https://www.fda.gov/cosmetics/registration-listing-cosmetic-product-facilities-and-products)
 [cosmetic-product-facilities-and-products.](https://www.fda.gov/cosmetics/registration-listing-cosmetic-product-facilities-and-products)
 
 Certain small businesses, as defined in section 612 of the FD&C Act, are not required to register
@@ -6782,8 +6782,8 @@ can take one to three weeks. FDA therefore urges those who are planning to use t
 and adopted by FDA as a mechanism for exchanging product and facility information.
 9 For more information on FDA’s Electronic Submissions Gateway, please refer to the webpage at
 [https://www.fda.gov/industry/electronic-submissions-gateway](https://www.fda.gov/industry/electronic-submissions-gateway)
-[10 For more information on Xforms, please refer to the webpage at https://www.fda.gov/industry/structured-product-](https://www.fda.gov/industry/structured-product-labeling-resources/spl-xforms)
-[labeling-resources/spl-xforms In addition, the technical details on using SPL for registration and listing are available](https://www.fda.gov/industry/structured-product-labeling-resources/spl-xforms)
+10 For more information on Xforms, please refer to the webpage at [https://www.fda.gov/industry/structured-product-](https://www.fda.gov/industry/structured-product-labeling-resources/spl-xforms)
+[labeling-resources/spl-xforms](https://www.fda.gov/industry/structured-product-labeling-resources/spl-xforms) In addition, the technical details on using SPL for registration and listing are available
 [in the FDA’s SPL Implementation Guide available at https://www.fda.gov/media/84201/download.](https://www.fda.gov/media/84201/download)
 
 
@@ -8617,7 +8617,7 @@ ensure that FDA considers your comment on this draft guidance before we begin wo
 final version of the guidance, submit either electronic or written comments on the draft
 guidance within 90 days of publication in the Federal Register of the notice announcing the
 availability of the draft guidance. Submit electronic comments to
-[http://www.regulations.gov. Submit written comments to the Dockets Management Staff](http://www.regulations.gov/)
+[http://www.regulations.gov.](http://www.regulations.gov/) Submit written comments to the Dockets Management Staff
 (HFA-305), Food and Drug Administration, 5630 Fishers Lane, rm. 1061, Rockville, MD
 20852. All comments should be identified with the docket number FDA-2023-D-1083 listed
 in the notice of availability that publishes in the Federal Register.
@@ -8916,7 +8916,7 @@ document publishes in the Federal Register, but websites are subject to change o
 1. Giulbudagian, M., I. Schreiver, A.V. Singh, et al., “Safety of Tattoos and Permanent Makeup: A Regulatory View.” Archives of Toxicology, 94: 357-369 (2020).
 
 2. Ipsos poll. “More Americans Have Tattoos Today than Seven Years Ago,” August 29,
-[2019. Available at: https://www.ipsos.com/en-us/news-polls/more-americans-have-tattoos-](https://www.ipsos.com/en-us/news-polls/more-americans-have-tattoos-today)
+2019. Available at: [https://www.ipsos.com/en-us/news-polls/more-americans-have-tattoos-](https://www.ipsos.com/en-us/news-polls/more-americans-have-tattoos-today)
 today (accessed January 19, 2023).
 
 3. Grant, C.A., P.C. Twigg, R. Baker, et al., “Tattoo ink Nanoparticles in Skin Tissue and
@@ -8934,7 +8934,7 @@ Electronic Medical Library. 2016.
 
 *7. Centers for Disease Control and Prevention. “Cellulitis: All You Need to Know.” Centers
 _for Disease Control and Prevention, May 29, 2020. Available at:_
-[https://www.cdc.gov/groupastrep/diseases-public/cellulitis.html (accessed January 19,](https://www.cdc.gov/groupastrep/diseases-public/cellulitis.html)
+[https://www.cdc.gov/groupastrep/diseases-public/cellulitis.html](https://www.cdc.gov/groupastrep/diseases-public/cellulitis.html) (accessed January 19,
 2023).
 
 8. Serup, J., H.K. Carlsen, and M. Sepehri, “Tattoo Complaints and Complications: Diagnosis
@@ -8946,14 +8946,14 @@ _Weekly Report, 61: 653-656 (2012)._
 
 10. “Debridement.” Merriam-Webster.com Dictionary, Merriam-Webster. Available at:
 
-[https://www.merriam-webster.com/dictionary/debridement (accessed January 19, 2023).](https://www.merriam-webster.com/dictionary/debridement)
+[https://www.merriam-webster.com/dictionary/debridement](https://www.merriam-webster.com/dictionary/debridement) (accessed January 19, 2023).
 
 *11. Food and Drug Administration, “Fusion Ink”: Recall, posted November 30, 2017; available
-[at https://www.accessdata.fda.gov/scripts/ires/index.cfm?Product=158974 (accessed](https://www.accessdata.fda.gov/scripts/ires/index.cfm?Product=158974)
+[at https://www.accessdata.fda.gov/scripts/ires/index.cfm?Product=158974](https://www.accessdata.fda.gov/scripts/ires/index.cfm?Product=158974) (accessed
 January 19, 2023).
 
 *12. Food and Drug Administration, “Radiant Colors”: Recall, posted December 21, 2017;
-[available at https://www.accessdata.fda.gov/scripts/ires/index.cfm?Product=160130](https://www.accessdata.fda.gov/scripts/ires/index.cfm?Product=160130)
+available at [https://www.accessdata.fda.gov/scripts/ires/index.cfm?Product=160130](https://www.accessdata.fda.gov/scripts/ires/index.cfm?Product=160130)
 (accessed January 19, 2023).
 
 *13. Food and Drug Administration, “Solid Ink”: Recall, posted June 20, 2018; available at
@@ -8963,7 +8963,7 @@ January 19, 2023).
 
 *14. Food and Drug Administration, “Intenze Ink”: Recall, posted July 31, 2018; available at
 
-[https://www.accessdata.fda.gov/scripts/ires/index.cfm?Product=165649 (accessed January](https://www.accessdata.fda.gov/scripts/ires/index.cfm?Product=165649)
+[https://www.accessdata.fda.gov/scripts/ires/index.cfm?Product=165649](https://www.accessdata.fda.gov/scripts/ires/index.cfm?Product=165649) (accessed January
 19, 2023).
 
 
@@ -8975,13 +8975,13 @@ January 19, 2023).
 
 *15. Food and Drug Administration, “Eternal Ink”: Recall, posted October 24, 2018; available at
 
-[https://www.accessdata.fda.gov/scripts/ires/index.cfm?Product=167698 (accessed January](https://www.accessdata.fda.gov/scripts/ires/index.cfm?Product=167698)
+[https://www.accessdata.fda.gov/scripts/ires/index.cfm?Product=167698](https://www.accessdata.fda.gov/scripts/ires/index.cfm?Product=167698) (accessed January
 19, 2023).
 
 *16. Food and Drug Administration, “FDA Advises Consumers, Tattoo Artists, and Retailers to
 Avoid Using or Selling Certain Tattoo Inks Contaminated with Microorganisms”; available
 [at https://www.fda.gov/cosmetics/cosmetics-recalls-alerts/fda-advises-consumers-tattoo-](https://www.fda.gov/cosmetics/cosmetics-recalls-alerts/fda-advises-consumers-tattoo-artists-and-retailers-avoid-using-or-selling-certain-tattoo-inks)
-[artists-and-retailers-avoid-using-or-selling-certain-tattoo-inks (accessed January 19, 2023).](https://www.fda.gov/cosmetics/cosmetics-recalls-alerts/fda-advises-consumers-tattoo-artists-and-retailers-avoid-using-or-selling-certain-tattoo-inks)
+[artists-and-retailers-avoid-using-or-selling-certain-tattoo-inks](https://www.fda.gov/cosmetics/cosmetics-recalls-alerts/fda-advises-consumers-tattoo-artists-and-retailers-avoid-using-or-selling-certain-tattoo-inks) (accessed January 19, 2023).
 
 *17. Nho, S.W., S-J. Kim, O. Kweon, et al. “Microbiological Survey of Commercial Tattoo and
 Permanent Makeup Inks Available in the United States.” Journal of Applied Microbiology,
@@ -8989,7 +8989,7 @@ Permanent Makeup Inks Available in the United States.” Journal of Applied Micr
 
 18. ISO 22716:2007, Cosmetics--Good Manufacturing Practices (GMP)--Guidelines on Good
 [Manufacturing Practices. Available at: https://www.iso.org/obp/ui/#iso:std:iso:22716:ed-](https://www.iso.org/obp/ui/#iso:std:iso:22716:ed-1:v2:en)
-[1:v2:en (accessed May 16, 2023).](https://www.iso.org/obp/ui/#iso:std:iso:22716:ed-1:v2:en)
+[1:v2:en](https://www.iso.org/obp/ui/#iso:std:iso:22716:ed-1:v2:en) (accessed May 16, 2023).
 
 
 -----
@@ -9680,13 +9680,13 @@ safety aspects, October, 2012; available online at:
 
 Comments and suggestions regarding this draft document should be submitted within 60 days of
 publication in the Federal Register of the notice announcing the availability of the draft
-[guidance. Submit electronic comments to http://www.regulations.gov. Submit written](http://www.regulations.gov/)
+[guidance. Submit electronic comments to http://www.regulations.gov.](http://www.regulations.gov/) Submit written
 comments to the Dockets Management Staff (HFA-305), Food and Drug Administration, 5630
 Fishers Lane, Room 1061, Rockville, MD 20852. All comments should be identified with the
 docket number FDA-2021-D-0593.
 
 For questions regarding this draft document contact the Office of Regulatory Affairs (ORA),
-[Office of Strategic Planning and Operational Policy (OSPOP) at ORAPolicyStaffs@fda.hhs.gov.](mailto:ORAPolicyStaffs@fda.hhs.gov)
+Office of Strategic Planning and Operational Policy (OSPOP) at [ORAPolicyStaffs@fda.hhs.gov.](mailto:ORAPolicyStaffs@fda.hhs.gov)
 
 **U.S. Department of Health and Human Services**
 **Food and Drug Administration**
@@ -10178,7 +10178,7 @@ model number, or other identification of the sampled product). The owner who req
 
 4 FDA’s Office of Regulatory Affairs (ORA) staff are assigned to program areas, where they specialize in a
 [commodity. Each program area is organized by Divisions. See https://www.fda.gov/about-fda/office-regulatory-](https://www.fda.gov/about-fda/office-regulatory-affairs/ora-program-division-boundary-maps-and-fact-sheets)
-[affairs/ora-program-division-boundary-maps-and-fact-sheets for more information.](https://www.fda.gov/about-fda/office-regulatory-affairs/ora-program-division-boundary-maps-and-fact-sheets)
+[affairs/ora-program-division-boundary-maps-and-fact-sheets](https://www.fda.gov/about-fda/office-regulatory-affairs/ora-program-division-boundary-maps-and-fact-sheets) for more information.
 [5 Contact information is available at https://www.fda.gov/about-fda/contact-ora/ora-field-leadership-contacts.](https://www.fda.gov/about-fda/contact-ora/ora-field-leadership-contacts)
 
 
