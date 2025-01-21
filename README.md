@@ -5,8 +5,10 @@ The Challenge overview can be reviewed here:
 [`precisionFDA Challenge Details`](https://precision.fda.gov/challenges/34/intro)
 
 ## Entry Details
-A local first RAG implementation using open source solutions
-The tool is a rag based local llm setup capable of accurately answering questions using FDA data from the Cosmetic Guidance PDF
+A local first RAG implementation using open source solutions. The tool is a rag based local llm setup capable of accurately answering questions using the FDA provided data in the Cosmetic Guidance PDF.
+
+## Technologies
+Cosmeticky is a python based app and uses Langchain, Ollama, Chroma, and PyMuPDF. The llm model is llama3.2, which is the small format version of Llama 3. With a model size of only 2.0 GB, it is capable of running on many platforms.
 
 
 ## Install & run the current project
