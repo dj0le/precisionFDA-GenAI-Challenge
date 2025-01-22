@@ -11,33 +11,27 @@ from pprint import pprint
 
 CHROMA_PATH = "chroma"
 PROMPT_TEMPLATE = """
-Answer the question based only on the following context:
-
-{context}
+Answer the question based only on the following context: {context}
 
 ---
 
 Answer the question based on the above context: {question}
 """
 
-context_text = "\nSome people think the best number is 32, but science has determined that 24 is actually the best number.  \n"
-# query_text = "\nWhat is objectively the best number? \n\n"
-
 
 def main():
     data = load_documents()
     if data:
-        # todo: pass to embedding and then chroma
-        print("First page preview:")
+        print("First page metadata:")
         create_ids(data)
         print(json.dumps(data[0]["metadata"], indent=4))
         populate_vectordb(data)
 
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument("query_text", type=str, help="The query text.")
-    # args = parser.parse_args()
-    # query_text = args.query_text
-    # chat = llama_bot(query_text)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("query_text", type=str, help="The query text.")
+    args = parser.parse_args()
+    query_text = args.query_text
+    chat = query_llm(query_text)
 
 
 def load_documents():
@@ -105,25 +99,18 @@ def populate_vectordb(data: dict):
 
     return db
 
-    # /home/djole/dev/precisionFDA-GenAI-Challenge/data/atest.pdf
-    # # add new documents to DB
-    # new_chunks = []
-    # for page in data:
-    #     if page.metadata["id"] not in existing_ids:
-    #         new_chunks.append(chunk)
-
-    # if len(new_chunks):
-    #     print(f"👉 Adding new documents: {len(new_chunks)}")
-    #     new_chunk_ids = [chunk.metadata["id"] for chunk in new_chunks]
-    #     db.add_documents(new_chunks, ids=new_chunk_ids)
-    #     db.persist()
-    # else:
-    #     print("✅ No new documents to add")
-
 
 def create_ids(data: dict):
     for page in data:
+        # Get title, or set metadata title if field is empty
         source = page["metadata"].get("title")
+        if not source:
+            file_path = page["metadata"].get("file_path", "")
+            filename = file_path.split('/')[-1].split('\\')[-1]
+            filename = filename.rsplit('.', 1)[0]
+            page["metadata"]["title"] = filename
+            source = filename
+
         page_num = page["metadata"].get("page")
         page_id = f"{source}:{page_num}"
         page["metadata"]["id"] = page_id
@@ -135,12 +122,16 @@ def process_embeddings():
         model="mxbai-embed-large"
     )
 
+def query_llm(query_text: str):
+    embedding = process_embeddings()
+    db = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding)
 
-def llama_bot(query_text: str):
+    results = db.similarity_search_with_score(query_text, k=5)
 
+    context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in results])
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
     prompt = prompt_template.format(context=context_text, question=query_text)
-    print(prompt)
+    # print(prompt)
 
     llm = ChatOllama(
         model="llama3.2",
@@ -149,12 +140,10 @@ def llama_bot(query_text: str):
 
     response_text = llm.invoke(prompt)
 
-    formatted_response = f"Response: {response_text}\n\n"
+    sources = [doc.metadata.get("id", None) for doc, _score in results]
+    formatted_response = f"Response: {response_text}\nSources: {sources}"
     print(formatted_response)
     return response_text
-
-
-
 
 
 if __name__ == "__main__":
