@@ -1,3 +1,5 @@
+# helper script if you want to create md versions of PDF documents directly
+
 import pymupdf4llm
 
 data = pymupdf4llm.to_markdown("./data/MERGED_cosmetic_guidances.pdf", page_chunks=True)

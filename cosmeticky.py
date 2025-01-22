@@ -1,11 +1,16 @@
 import argparse
 import pymupdf4llm
-from pprint import pprint
+import ollama
+import json
+from langchain_chroma import Chroma
 from langchain.prompts import ChatPromptTemplate
 from langchain_ollama import ChatOllama
+from langchain_ollama.llms import OllamaLLM
+from langchain_ollama import OllamaEmbeddings
 from langchain.text_splitter import MarkdownTextSplitter
 from pprint import pprint
 
+CHROMA_PATH = "chroma"
 PROMPT_TEMPLATE = """
 Answer the question based only on the following context:
 
@@ -21,31 +26,83 @@ context_text = "\nSome people think the best number is 32, but science has deter
 
 
 def main():
-    documents = load_documents()
-    parser = argparse.ArgumentParser()
-    parser.add_argument("query_text", type=str, help="The query text.")
-    args = parser.parse_args()
-    query_text = args.query_text
-    # pprint(documents)
-    # chunks = split_documents(documents)
-    chat = llama_bot(query_text)
+    data = load_documents()
+    if data:
+        # todo: pass to embedding and then chroma
+        print("First page preview:")
+        create_ids(data)
+        print(json.dumps(data[0]["metadata"], indent=4))
+        populate_vectordb(data)
 
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument("query_text", type=str, help="The query text.")
+    # args = parser.parse_args()
+    # query_text = args.query_text
+    # chat = llama_bot(query_text)
 
 
 def load_documents():
-    data = pymupdf4llm.to_markdown("./data/tattoo_inks_fg_2024-456_final_for_posting_10242024.pdf")
-    #data2 = pymupdf4llm.to_markdown(".data/MERGED_cosmetic_guidances.pdf", page_chunks=True)
+    try:
+        file_path = input("Please enter the path to your PDF document: ")
 
-    splitter = MarkdownTextSplitter(chunk_size=90, chunk_overlap=8)
+        if not file_path.endswith('.pdf'):
+            raise ValueError("File must be a PDF document")
 
-    splitter.create_documents([data])
-    print(len(data))
-    print(len(splitter))
-    # return data
+        # Convert PDF to list of DICTs with metadata
+        pdf_data = process_pdf(file_path)
+
+        print(f"Document loaded successfully! Number of pages: {len(pdf_data)}")
+        return pdf_data
+
+    except FileNotFoundError:
+        print("Error: File not found. Please check the file path and try again.")
+    except ValueError as e:
+        print(f"Error: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+def process_pdf(file_path):
+    data = pymupdf4llm.to_markdown(file_path, page_chunks=True)
+    return data
+
+def populate_vectordb(data: dict):
+    db = Chroma(
+        persist_directory=CHROMA_PATH, embedding_function=process_embeddings()
+    )
+
+    # Add or Update the documents
+    existing_items = db.get(include=[])
+    existing_ids = set(existing_items["ids"])
+    print(f"Number of existing documents in DB: {len(existing_ids)}")
+
+    # # add new documents to DB
+    # new_chunks = []
+    # for page in data:
+    #     if page.metadata["id"] not in existing_ids:
+    #         new_chunks.append(chunk)
+
+    # if len(new_chunks):
+    #     print(f"👉 Adding new documents: {len(new_chunks)}")
+    #     new_chunk_ids = [chunk.metadata["id"] for chunk in new_chunks]
+    #     db.add_documents(new_chunks, ids=new_chunk_ids)
+    #     db.persist()
+    # else:
+    #     print("✅ No new documents to add")
 
 
+def create_ids(data: dict):
+    for page in data:
+        source = page["metadata"].get("title")
+        page_num = page["metadata"].get("page")
+        page_id = f"{source}:{page_num}"
+        page["metadata"]["id"] = page_id
 
-# def split_documents(documents):
+    return data
+
+def process_embeddings():
+    embeddings = ollama.embeddings(
+        model="mxbai-embed-large"
+    )
 
 
 def llama_bot(query_text: str):
