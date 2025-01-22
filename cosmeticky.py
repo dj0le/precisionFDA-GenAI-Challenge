@@ -1,6 +1,5 @@
 import argparse
 import pymupdf4llm
-import ollama
 import json
 from langchain_chroma import Chroma
 from langchain.prompts import ChatPromptTemplate
@@ -71,10 +70,42 @@ def populate_vectordb(data: dict):
     )
 
     # Add or Update the documents
-    existing_items = db.get(include=[])
-    existing_ids = set(existing_items["ids"])
-    print(f"Number of existing documents in DB: {len(existing_ids)}")
+    db_items = db.get(include=[])
+    db_ids = set(db_items["ids"])
+    print(f"Number of existing documents in DB: {len(db_ids)}")
 
+    # Prepare new documents for addition
+    new_documents = []
+    new_ids = []
+    new_metadatas = []
+
+    for page in data:
+        page_id = page["metadata"]["id"]
+        if page_id not in db_ids:
+            cleaned_metadata = {
+                k: v for k, v in page["metadata"].items()
+                if v is not None and isinstance(v, (str, int, float, bool))
+            }
+
+            new_documents.append(page["text"])
+            new_ids.append(page_id)
+            new_metadatas.append(cleaned_metadata)
+
+    if new_documents:
+        print(f"👉 Adding new documents: {len(new_documents)}")
+        db.add_texts(
+            texts=new_documents,
+            ids=new_ids,
+            metadatas=new_metadatas
+        )
+
+        print("✅ Documents added successfully")
+    else:
+        print("✅ No new documents to add")
+
+    return db
+
+    # /home/djole/dev/precisionFDA-GenAI-Challenge/data/atest.pdf
     # # add new documents to DB
     # new_chunks = []
     # for page in data:
@@ -100,7 +131,7 @@ def create_ids(data: dict):
     return data
 
 def process_embeddings():
-    embeddings = ollama.embeddings(
+    return OllamaEmbeddings(
         model="mxbai-embed-large"
     )
 
