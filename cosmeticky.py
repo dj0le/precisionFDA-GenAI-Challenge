@@ -1,6 +1,8 @@
 import argparse
 import pymupdf4llm
 import json
+import shutil
+import os
 from langchain_chroma import Chroma
 from langchain.prompts import ChatPromptTemplate
 from langchain_ollama import ChatOllama
@@ -20,6 +22,7 @@ Answer the question based on the above context: {question}
 
 
 def main():
+    # clear_database()
     data = load_documents()
     if data:
         print("First page metadata:")
@@ -145,6 +148,9 @@ def query_llm(query_text: str):
     print(formatted_response)
     return response_text
 
+def clear_database():
+    if os.path.exists(CHROMA_PATH):
+        shutil.rmtree(CHROMA_PATH)
 
 if __name__ == "__main__":
     main()
