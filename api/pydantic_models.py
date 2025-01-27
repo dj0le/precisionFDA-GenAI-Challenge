@@ -1,38 +1,30 @@
-from pydantic import BaseModel, Field, validator
-from enum import Enum
+import ollama
 from datetime import datetime
+from pydantic import BaseModel, Field, validator
 
-class ModelName(str, Enum):
-    @classmethod
-    def _missing_(cls, value):
-        # This allows the Enum to accept any string value
-        return value
+def get_available_models():
+    try:
+        model_list = ollama.list()
+        return [model_info['model'].split(':')[0] for model_info in model_list['models']]
+    except Exception:
+        return ['llama3.2']
 
 class QueryInput(BaseModel):
     question: str
     session_id: str = Field(default=None)
-    model: ModelName = Field(default=None)
+    model: str = Field(default="llama3.2")
 
-    class Config:
-        arbitrary_types_allowed = True
-
-    @validator('model', pre=True, always=True)
-    def set_default_model(cls, v):
-        if v is None:
-            # You could also fetch this from a config or environment variable
-            return "llama2"  # default model
+    @validator('model')
+    def validate_model(cls, v):
+        available_models = get_available_models()
+        if v not in available_models:
+            raise ValueError(f"Model must be one of: {available_models}")
         return v
-
-# class QueryInput(BaseModel):
-#     question: str
-#     session_id: str = Field(default=None)
-#     model: ModelName = Field(default="llama3.2")
-
 
 class QueryResponse(BaseModel):
     answer: str
     session_id: str
-    model: ModelName
+    model: str
 
 class DocumentInfo(BaseModel):
     id: int

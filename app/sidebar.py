@@ -1,10 +1,10 @@
-import streamlit as st
 import ollama
+import streamlit as st
 from api_utils import upload_document, list_documents, delete_document
 
 def display_sidebar():
+    # get available models
     try:
-        # Fetch available models
         model_list = ollama.list()
         models = []
         for model_info in model_list['models']:
@@ -20,12 +20,6 @@ def display_sidebar():
         )
 
         selected_model = st.session_state["model"]
-
-        # Ollama Model Debug information if erroring:
-        # with st.sidebar.expander("Debug Info"):
-        #     st.write("First model:", model_list['models'][0])
-        # or you can list all models:
-        #     st.write("All models:", models)
 
     except Exception as e:
         st.sidebar.error(f"Error loading models: {str(e)}")

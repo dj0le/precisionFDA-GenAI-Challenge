@@ -1,12 +1,14 @@
-from langchain_ollama import ChatOllama
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+import os
+import streamlit as st
+from chroma_utils import vectorstore
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
-from typing import List
 from langchain_core.documents import Document
-import os
-from chroma_utils import vectorstore
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_ollama import ChatOllama
+from typing import List
+
 
 retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
 output_parser = StrOutputParser()
@@ -48,8 +50,6 @@ question_prompt = ChatPromptTemplate.from_messages([
     ("human", "{input}")
 ])
 
-
-
 def build_chain(model=None):
     model_name = st.session_state.get("model")
     llm = ChatOllama(model=model, temperature=0)
@@ -57,21 +57,3 @@ def build_chain(model=None):
     response_chain = create_stuff_documents_chain(llm, question_prompt)
     rag_chain = create_retrieval_chain(history_aware_retriever, response_chain)
     return rag_chain
-
-
-# DEBUG VERSION ONLY
-# def build_chain(model="llama3_2"):
-#     llm = ChatOllama(model=model, temperature=0)
-#     history_aware_retriever = create_history_aware_retriever(llm, retriever, updated_prompt)
-
-#     print("\nRetrieved documents:")
-#     try:
-#         docs = history_aware_retriever.get_relevant_documents("test query")
-#         for doc in docs:
-#             print(f"Document content: {doc.page_content[:200]}...\n")
-#     except Exception as e:
-#         print(f"Error retrieving documents: {e}")
-
-#     response_chain = create_stuff_documents_chain(llm, qa_prompt)
-#     rag_chain = create_retrieval_chain(history_aware_retriever, response_chain)
-#     return rag_chain

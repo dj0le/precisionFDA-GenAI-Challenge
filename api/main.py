@@ -1,40 +1,34 @@
-from fastapi import FastAPI, File, UploadFile, HTTPException
-from pydantic_models import QueryInput, QueryResponse, DocumentInfo, DeleteFileRequest
-from langchain_utils import build_chain
-from db_utils import insert_application_logs, get_chat_history, get_all_documents, insert_document_record, delete_document_record
-from chroma_utils import index_document_to_chroma, delete_doc_from_chroma
 import os
 import uuid
 import logging
 import shutil
-
+from chroma_utils import index_document_to_chroma, delete_doc_from_chroma
+from db_utils import insert_application_logs, get_chat_history, get_all_documents, insert_document_record, delete_document_record
+from fastapi import FastAPI, File, UploadFile, HTTPException
+from langchain_utils import build_chain
+from pydantic_models import QueryInput, QueryResponse, DocumentInfo, DeleteFileRequest
 
 
 logging.basicConfig(filename='app.log', level=logging.INFO)
 app = FastAPI()
 
-
 @app.post("/chat", response_model=QueryResponse)
 def chat(query_input: QueryInput):
     session_id = query_input.session_id
-    logging.info(f"Session ID: {session_id}, User Query: {query_input.question}, Model: {query_input.model.value}")
+    logging.info(f"Session ID: {session_id}, User Query: {query_input.question}, Model: {query_input.model}")
     if not session_id:
         session_id = str(uuid.uuid4())
 
-
-
     chat_history = get_chat_history(session_id)
-    rag_chain = build_chain(query_input.model.value)
+    rag_chain = build_chain(query_input.model)
     answer = rag_chain.invoke({
         "input": query_input.question,
         "chat_history": chat_history
     })['answer']
 
-    insert_application_logs(session_id, query_input.question, answer, query_input.model.value)
+    insert_application_logs(session_id, query_input.question, answer, query_input.model)
     logging.info(f"Session ID: {session_id}, AI Response: {answer}")
     return QueryResponse(answer=answer, session_id=session_id, model=query_input.model)
-
-
 
 @app.post("/upload-doc")
 def upload_and_index_document(file: UploadFile = File(...)):
@@ -73,11 +67,11 @@ def delete_document(request: DeleteFileRequest):
     chroma_delete_success = delete_doc_from_chroma(request.file_id)
 
     if chroma_delete_success:
-        # If successfully deleted from Chroma, delete from our database
+        # Also delete from database
         db_delete_success = delete_document_record(request.file_id)
         if db_delete_success:
-            return {"message": f"Successfully deleted document with file_id {request.file_id} from the system."}
+            return {"message": f"Successfully deleted {request.file_id}"}
         else:
-            return {"error": f"Deleted from Chroma but failed to delete document with file_id {request.file_id} from the database."}
+            return {"error": f"Deleted from Chroma but failed to delete {request.file_id} from database"}
     else:
-        return {"error": f"Failed to delete document with file_id {request.file_id} from Chroma."}
+        return {"error": f"Failed to delete {request.file_id} from Chroma"}

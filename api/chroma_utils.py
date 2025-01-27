@@ -1,10 +1,11 @@
+import os
 from langchain_community.document_loaders import Docx2txtLoader, UnstructuredHTMLLoader, PyMuPDFLoader
+from langchain_core.documents import Document
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_ollama import OllamaEmbeddings
 from langchain_chroma import Chroma
 from typing import List
-from langchain_core.documents import Document
-import os
+
 
 # Currently NOT implemented but I would like to use it for pdf eventually
 # def process_pdf(file_path):
