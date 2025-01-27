@@ -8,7 +8,7 @@ The Challenge overview can be reviewed here:
 A local first RAG implementation using open source solutions. The tool is a rag based local llm setup capable of accurately answering questions using the FDA provided data in the Cosmetic Guidance PDF.
 
 ## Technologies
-Cosmeticky is a python based app and uses Langchain, Ollama, Chroma, and PyMuPDF. The llm model is llama3.2, which is the small format version of Llama 3. With a model size of only 2.0 GB, it is capable of running on many platforms.
+Cosmeticky is a python based app and uses Langchain, Ollama, Chroma, and PyMuPDF. The default llm model is llama3.2, which is the small format version of Llama 3. With a model size of only 2.0 GB, it is capable of running on many platforms. Users can also choose from any other models they have in Ollama if they prefer.
 
 
 ## Install & run the current project
@@ -39,17 +39,22 @@ source .pvenv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
+7. Start the front and back end services
+```bash
+python3 run.py
+```
 
-Now you should be able to run the various py scripts individually until I finish the api / ui / full implementation of the project.
+That will get you up and running on the current version with a FASTapi backend (http://localhost:8000/ most likely) and the currently packaged front end. Right now it's a super basic streamlit instance, but once I have time to focus on that more, I will migrate to Svelte.
 
-If in doubt, choose 'cosmeticky.py'
+If you prefer a command line approach, inside the CLi folder is the complete local rag implementation without fastapi etc. This is much more crusty though.
+
 ```bash
 python3 cosmeticky.py
 ```
 
 ## Remaining Steps:
 
-1. Finish rag implementation
-2. FastAPI implementation
+1. Improve rag implementation
+2. Add user features and maybe multimodal model capability for images and graphs
 3. UI implementation
 4. Local first refactoring
