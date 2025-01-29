@@ -1,0 +1,411 @@
+Batch Processing Results
+Generated: 2025-01-29 13:09:50
+Model Used: llama3.1
+Number of Questions: 28
+Total Processing Time: 1.20 minutes
+Average Time per Question: 2.57 seconds
+
+===========================================
+
+Question 1: What is a cosmetic guidance?
+Answer: A "cosmetic guidance" refers to a document prepared by the FDA's Office of Cosmetics and Colors in the Center for Food Safety and Applied Nutrition. This guidance provides recommendations on various aspects related to cosmetics regulation.
+
+Specifically, it mentions that this guidance applies to cosmetic lip products (such as lipsticks, lip glosses, and lip liners) and externally applied cosmetics (such as eye shadows, blushes, shampoos, and body lotions) marketed in the United States. The guidance covers topics such as:
+
+* Statutory requirements for submitting cosmetic product facility registrations and product listings
+* Definitions related to cosmetics regulation
+* Responsibilities for making submissions
+* Information to include in submissions
+* How to make submissions
+* When to make submissions
+
+It's worth noting that FDA's guidance documents, including this one, do not establish legally enforceable responsibilities. Instead, they describe the agency's current thinking on a topic and should be viewed as recommendations unless specific regulatory or statutory requirements are cited.
+
+Source: The context mentions "FDA's guidance documents, including this guidance" in Section I, which suggests that this document is an example of a cosmetic guidance.
+Model: llama3.1
+
+---
+
+Question 2: What are the key recommendations for good manufacturing practices (GMP) in the cosmetic industry?
+Answer: I can identify some key recommendations for Good Manufacturing Practices (GMP) in the cosmetic industry. However, please note that the document appears to be a guidance and not an exhaustive list of GMPs.
+
+From Section I: Introduction, it is mentioned that:
+
+* This guidance revises the “Cosmetic Good Manufacturing (GMP) Guidelines/Inspection Checklist” by updating it to set forth current practice.
+* The FDA considered the International Organization for Standardization (ISO) standard for cosmetic GMPs (ISO 22716:2007) when revising this guidance.
+
+Unfortunately, the provided context does not explicitly list the key recommendations for GMP in the cosmetic industry. However, I can infer that the revised guidance likely incorporates best practices and standards from ISO 22716:2007.
+
+To provide a more accurate answer, I would recommend consulting the actual document or searching for relevant information on the FDA's website or other reliable sources.
+
+If you'd like to proceed with this context, I can try to provide some general insights on GMP in the cosmetic industry based on common practices and standards. However, please keep in mind that these might not be specific recommendations from the provided context.
+Model: llama3.1
+
+---
+
+Question 3: How does the FDA define "insanitary conditions" in the preparation, packing, and holding of tattoo inks?
+Answer: Specifically Section I. Introduction (21 U.S.C. 361(c)), the FDA defines "insanitary conditions" as those that could render a cosmetic adulterated if it has been prepared, packed, or held under such conditions whereby it may have become contaminated with filth, or whereby it may have been rendered injurious to health.
+
+However, for tattoo inks specifically, the context provides more detailed examples of insanitary conditions in Section 6 B. Examples of Insanitary Conditions:
+
+• Preparing or packing of tattoo inks in facilities not suitable for such activities (e.g., spaces that are difficult to clean and sanitize, such as carpeted areas);
+• Ink, ink components (e.g., pigments, water, solvents), and primary packaging containers held uncovered, especially near open air ducts, potentially exposing them to airborne microbial contaminants and filth;
+• The presence of ink and ink components (e.g., pigments, water, other solvents) contaminated with microorganisms;
+• Ink and ink components (e.g., pigments, water, other solvents) held in containers that have not been cleaned and sanitized; and
+• Insanitary mixing of tattoo inks, including: the use of containers and utensils that are not cleaned and sanitized.
+
+These examples provide a more detailed understanding of what the FDA considers to be insanitary conditions in the preparation, packing, and holding of tattoo inks.
+Model: llama3.1
+
+---
+
+Question 4: What are the main components of the FDA's guidance on the safety of nanomaterials in cosmetic products?
+Answer: The main components of the FDA's guidance on the safety of nanomaterials in cosmetic products can be identified as follows:
+
+1. **General Framework for Assessing the Safety of Cosmetic Products**: This is a general framework that provides an overview of how to assess the safety of cosmetic products.
+2. **Points to Consider in Assessing the Safety of Nanomaterials in Cosmetic Products**: This section specifically addresses the safety assessment of nanomaterials in cosmetic products and includes:
+	* **Nanomaterial Characterization**:
+		+ **Physicochemical Properties**: The physical and chemical properties of the nanomaterial.
+		+ **Impurities**: Any impurities present in the nanomaterial.
+	* **Toxicology Considerations**:
+		+ **Routes of Exposure**: How the nanomaterial can enter the body (e.g., skin contact, inhalation).
+		+ **Uptake and Absorption**: How the nanomaterial is absorbed by the body.
+		+ **Toxicity Testing**: The testing required to assess the potential toxicity of the nanomaterial.
+
+These components provide a framework for industry stakeholders to identify potential safety issues with nanomaterials in cosmetic products and develop a plan for evaluating them.
+Model: llama3.1
+
+---
+
+Question 5: What are the specific requirements for cosmetic product facility registration and product listing under the Modernization of Cosmetics Regulation Act of 2022?
+Answer: The Modernization of Cosmetics Regulation Act of 2022 (MoCRA) added section 607 to the Federal Food, Drug, and Cosmetic Act (FD&C Act), establishing requirements for cosmetic product facility registration and product listing.
+
+However, it does not explicitly state the specific requirements in the given text. It only mentions that FDA is developing an electronic submission portal, Cosmetics Direct, to streamline submission and receipt of facility registration and product listing information under section 607.
+
+It also states that a draft guidance entitled “Registration and Listing of Cosmetic Product Facilities and Products” was issued on August 8, 2023 (88 FR 53490), which will provide recommendations and instructions to assist persons submitting cosmetic product facility registrations and product listings to FDA. This suggests that the specific requirements are outlined in this draft guidance.
+
+Therefore, I would say that the specific requirements for cosmetic product facility registration and product listing under MoCRA are not explicitly stated in the provided context, but rather referenced as being outlined in a separate document (the draft guidance) or through an electronic submission portal.
+Model: llama3.1
+
+---
+
+Question 6: How does the FDA address the risk of microbial contamination in tattoo inks?
+Answer: The FDA addresses the risk of microbial contamination in tattoo inks through guidance and recommendations for manufacturers. Specifically:
+
+* The FDA has prepared a guidance document (Office of Cosmetics and Colors and the Office of Regulations and Policy in the Center for Food Safety and Applied Nutrition at the U.S. Food and Drug Administration) that focuses on microbial contamination of finished tattoo inks.
+* Manufacturers are recommended to take measures to ensure that tattoo inks are not prepared, packed, or held under insanitary conditions whereby they may be contaminated with microorganisms (Recommendation C).
+* Specifically, manufacturers are advised to:
+	+ Test ink and ink components for microbial contamination or purchase these materials from suppliers that test for microbial contamination.
+	+ Discard any materials that contain microorganisms of a type or at a level that may harm any consumer if present in the finished product.
+
+This guidance suggests that the FDA is taking steps to address the risk of microbial contamination in tattoo inks, and manufacturers are expected to follow these recommendations to ensure the safety of their products.
+Model: llama3.1
+
+---
+
+Question 7: What are the FDA's recommendations for ensuring the safety of cosmetic products that contain nanomaterials?
+Answer: The FDA's guidance document outlines specific points to consider in assessing the safety of nanomaterials in cosmetic products. The key recommendations can be found in Section III.B, "Points to Consider in Assessing the Safety of Nanomaterials in Cosmetic Products".
+
+The FDA recommends considering the following:
+
+1. **Nanomaterial Characterization**:
+	* Physicochemical Properties (Section III.B.1.a)
+	* Impurities (Section III.B.1.b)
+2. **Toxicology Considerations**:
+	* Routes of Exposure (Section III.B.2.a)
+	* Uptake and Absorption (Section III.B.2.b)
+	* Toxicity Testing (Section III.B.2.c)
+
+These points to consider are intended to help industry stakeholders identify potential safety issues with nanomaterials in cosmetic products and develop a framework for evaluating them.
+
+Note that the FDA's guidance documents, including this one, do not establish legally enforceable responsibilities but rather describe the Agency's current thinking on a topic (Section I).
+Model: llama3.1
+
+---
+
+Question 8: How does the FDA suggest handling complaints, adverse events, and recalls related to cosmetic products?
+Answer: The FDA suggests the following for handling complaints, adverse events, and recalls related to cosmetic products:
+
+1. **Complaints:**
+	* Review product complaints and determine if there are Standard Operating Procedures (SOPs) for reporting, recording, filing, evaluating, and following up on both written and oral complaints.
+2. **Adverse Events involving Bodily Injury:**
+	* For complaints alleging adverse events involving bodily injury:
+		+ Determine the kind and severity of each reported injury
+		+ Identify the body part involved
+		+ Note the product and code numbers
+		+ Find out if medical treatment was sought, and if so, the nature of the medical treatment and the name of the attending physician or other healthcare professional
+		+ Determine if resolution of the event occurred, with or without long-term or persistent effects (if long-term or persistent effects occurred, note the nature of those effects)
+3. **Recalls:**
+	* Evaluate your recall for termination when all possible customer responses have been received and it is reasonable to assume that the product subject to the recall has been removed and proper disposition or correction has been made commensurate with the degree of hazard of the recalled product.
+	* Provide a final Recall Status Report and documentation of recalled product disposition to your DRC (District Recall Coordinator) after which the FDA will consider formal termination of the recall action.
+
+These steps are outlined in the provided context, specifically under the sections "Complaints, Adverse Events, and Recalls" and "TERMINATION OF THE RECALL".
+Model: llama3.1
+
+---
+
+Question 9: What are the FDA's guidelines for the use of color additives in Wsmetic products?
+Answer: The FDA's guidelines for the use of color additives in cosmetic products can be found in 21 CFR parts 73, 74, and 82. Specifically:
+
+* You should determine whether color additives are approved for use in your specific cosmetic products (21 CFR parts 73, 74, and 82).
+* If an unlisted color additive is an ingredient of the cosmetic, approval of a petition for a new color additive is required pursuant to 21 CFR parts 70 and 71.
+* A summary chart for color additives can be found on FDA's website.
+
+Additionally, color additives subject to certification must be labeled with the lot number assigned by the Color Certification Branch (21 CFR 70.25(d)), except in the case of any mixture for household use which contains not more than 15 percent of pure color and is in packages containing not more than 3 ounces (see exception below).
+
+It's also mentioned that you should check the CFR, specifically 21 CFR part 700, Subpart B, for any additional requirements regarding specific cosmetic products or their ingredients that may have been added to FDA's regulations.
+Model: llama3.1
+
+---
+
+Question 10: What is the numeric code for eye liner?
+Answer: The numeric code for eye liners is (03)(b), which falls under the category "Eye makeup preparations (other than children’s eye makeup preparations)".
+Model: llama3.1
+
+---
+
+Question 11: What types of childrens makeup are there?
+Answer: There are several types of children's makeup preparations listed:
+
+(a) Children’s blushers and rouges (all types)
+(b) Children’s face paints
+(c) Children’s face powders
+(d) Children’s foundations
+(e) Children’s lipsticks and lip glosses
+
+Additionally, there is a separate section for children's eye makeup preparations:
+
+(04) Children’s eye makeup preparations.
+(a) Children’s eyeshadows
+(b) Other children’s eye makeup
+Model: llama3.1
+
+---
+
+Question 12: What are the code numbers for childrens makeup?
+Answer: The code number for children's makeup is (09). This category includes various types of makeup preparations specifically designed for children, excluding eye makeup.
+
+Here are the specific subcategories under (09) Children's Makeup Preparations (not eye):
+
+(a) Children's blushers and rouges (all types)
+(b) Children's face paints
+(c) Children's face powders
+(d) Children's foundations
+(e) Children's lipsticks and lip glosses
+Model: llama3.1
+
+---
+
+Question 13: What are the codes for each children's non eye makeup, include numbers?
+Answer: I can see that there is a category for "Children’s eye makeup preparations" with code (04), and another category for "Other baby products" with code (01d). However, I couldn't find any specific codes for children's non-eye makeup.
+
+But, I did notice that under the category "(06) Hair preparations (non-coloring)" there is a subcategory "(f) Shampoos (non-coloring)" which might be related to children's hair care.
+Model: llama3.1
+
+---
+
+Question 14: What is the FDA guidance on product testing?
+Answer: There is no specific information about FDA guidance on product testing. The document appears to be related to the requirements for FDA to collect and provide portions of official samples under section 702(b) of the Federal Food, Drug, & Cosmetic Act (FD&C Act) and its implementing regulation in Title 21 Code of Federal Regulations (CFR) section 2.10 (21 CFR 2.10).
+
+However, it does mention "Product Recalls, Including Removals and Corrections" as a separate guidance document for industry. This suggests that there might be some information related to product testing within this specific guidance document.
+
+To get accurate information on FDA guidance on product testing, I would recommend searching for the relevant guidance documents or contacting the FDA directly.
+Model: llama3.1
+
+---
+
+Question 15: What is the FDA guidance for product testing for eye makeup?
+Answer: I can answer that.
+
+The FDA guidance mentions "externally applied cosmetics (such as eye shadows, blushes...)" in the section where it describes what this guidance applies to. However, it does not specifically mention product testing for eye makeup.
+
+However, since eye shadows and other externally applied cosmetics are mentioned, we can infer that the FDA guidance likely includes recommendations or guidelines for testing these products. But, unfortunately, the provided context does not explicitly state the specific guidance for product testing of eye makeup.
+
+If you need more detailed information on this topic, I recommend checking the official FDA website (http://www.fda.gov) or contacting the FDA directly for further clarification.
+Model: llama3.1
+
+---
+
+Question 16: I'm starting a small cosmetic company, what should I do first to comply with FDA cosmetic guidance?
+Answer: It seems that as a small cosmetic company, you would be considered a "small business" under section 612(a) of the Federal Food, Drug, and Cosmetic Act (FD&C Act).
+
+To comply with FDA cosmetic guidance, I recommend starting by reviewing the specific requirements for your type of products. According to the context, if your facility manufactures or processes any of the following types of cosmetic products:
+
+1. Products that regularly come into contact with mucus membrane of the eye under conditions of use that are customary or usual.
+2. Injected products.
+3. Products intended for internal use.
+4. Products intended to alter appearance for more than 24 hours under conditions of use that are customary or usual and removal by the consumer is not part of such conditions of use that are customary or usual.
+
+You would need to include information required under section 607(b)(2)(D) and (E) for all of these products. However, since you mentioned starting a small cosmetic company, it's likely that your business may be eligible for an exemption as a "small business" under section 612(a).
+
+To confirm this, I would recommend contacting the FDA office responsible for this guidance (listed on the title page of the document) to discuss your specific situation and determine if you qualify for the small business exemption. They can provide guidance on how to proceed and may be able to offer an exemption certificate.
+
+Please note that this is not a comprehensive list, and it's essential to consult with the FDA directly or seek professional advice from a qualified expert in cosmetic regulation to ensure compliance with all applicable laws and regulations.
+Model: llama3.1
+
+---
+
+Question 17: What are the best practices for registering a new facility for cosmetic manufacturing?
+Answer: I can provide some guidance on the best practices for registering a new facility for cosmetic manufacturing. However, please note that this is not an exhaustive list and it's always recommended to consult with relevant authorities or experts for specific guidance.
+
+From the context, it appears that:
+
+1. **Single registration required**: If a facility manufactures or processes cosmetic products on behalf of a responsible person (i.e., a contract manufacturer), only a single registration is required for such facility.
+2. **Responsible person can submit registration**: A responsible person whose products are manufactured or processed at the facility may submit the facility registration for such facility.
+
+Best practices for registering a new facility for cosmetic manufacturing:
+
+1. **Identify the responsible person**: Determine who will be submitting the facility registration, as this individual will be responsible for ensuring compliance with FDA regulations.
+2. **Verify eligibility**: Confirm that the facility is eligible to register under section 607(a)(3) of the FD&C Act.
+3. **Gather required information**: Collect and submit all necessary information, including:
+	* Facility details (e.g., address, contact information)
+	* Product information (e.g., cosmetic products manufactured or processed at the facility)
+	* Responsible person's details
+4. **Submit registration on time**: Ensure that the facility registration is submitted within the required timeframe to avoid any delays or penalties.
+5. **Maintain accurate records**: Keep accurate and up-to-date records of all submissions, including facility registrations and updates.
+
+Please note that these best practices are based solely on the provided context and may not be comprehensive or up-to-date. It's essential to consult with relevant authorities or experts for specific guidance on registering a new facility for cosmetic manufacturing.
+Model: llama3.1
+
+---
+
+Question 18: What are common mistakes with non compliance when starting a cosmetic business?
+Answer: I can identify some potential common mistakes related to non-compliance when starting a cosmetic business. However, please note that these are not explicitly stated in the given text.
+
+1. **Incorrect classification as a small business**: If a business's average gross annual sales exceed $1,000,000 (adjusted for inflation), they may not be exempt from registration and listing requirements.
+2. **Manufacturing or processing of restricted cosmetic products**: Engaging in the production of products that regularly come into contact with the mucus membrane of the eye, are injected, or intended for internal use without proper registration and listing can lead to non-compliance.
+3. **Lack of documentation and records**: Failing to maintain accurate and complete documentation, including records of buildings and facilities, equipment, personnel, raw materials, water, color additives, prohibited and restricted ingredients, production processes, laboratory controls, internal audits, complaints, adverse events, and recalls can lead to non-compliance.
+4. **Insufficient compliance with Good Manufacturing Practices (GMPs)**: Not adhering to GMPs for cosmetic products, including proper handling, storage, and testing of raw materials, equipment maintenance, personnel training, and quality control measures, can result in non-compliance.
+
+Please note that these are potential mistakes based on the provided context. It is essential to consult with relevant authorities and experts to ensure compliance with specific regulations and guidelines for your cosmetic business.
+Model: llama3.1
+
+---
+
+Question 19: When is a cosmetic product considered a drug according to FDA?
+Answer: There is no specific information that directly answers when a cosmetic product is considered a drug by the FDA. However, it does mention that "cosmetic means 'articles intended to be rubbed, poured, sprinkled, or sprayed on, introduced into, or otherwise applied to the human body or any part thereof for cleansing, beautifying, promoting attractiveness, or altering the appearance, and (2) articles intended for use as a component of any such articles; except that such term shall not include soap'" (section 201(i)).
+
+It also mentions that FDA occasionally performs environmental sampling to identify the presence of chemicals or microbes where food, drugs, or cosmetics are produced. These environmental samples do not meet the definitions of food, drug, or cosmetic.
+
+The context does provide information on when a sample is considered an official sample for analysis under the FD&C Act (21 CFR 2.10(a)(1)), but it does not specifically address when a cosmetic product would be considered a drug by the FDA.
+
+Therefore, I must state that there is no clear answer to this question based on the provided context.
+Model: llama3.1
+
+---
+
+Question 20: Give me a list of things to consider for extranal labeling of my cosmetic product based on FDA guidelines.
+Answer: Here is a list of things to consider for external labeling of your cosmetic product according to FDA guidelines:
+
+1. **Parent company name (if applicable)**: Include the parent company name if it's applicable.
+2. **Type of business**: Specify the type of business as listed on the label, i.e., manufacturer, packer, or distributor.
+3. **Image of the label**: Provide an image of the label in a jpg file format.
+4. **Product webpage link**: Include a link to your product's webpage.
+5. **Whether the cosmetic product is for professional use only**: Indicate if the product is intended for professional use only.
+6. **Responsible person DUNS Number**: Provide the DUNS Number of the responsible person listed on the product label.
+7. **Unique Ingredient Identifiers (UNIIs)**: Include UNIIs for each ingredient in the cosmetic product.
+
+Additionally, consider the following:
+
+8. **Applicable cosmetic category or categories**: Specify the applicable cosmetic category or categories for your product (refer to Appendix A).
+9. **List of ingredients**: Provide a list of ingredients, including fragrances, flavors, and colors, with each ingredient identified by name or common/usual name.
+10. **Product listing number**: If previously assigned, include the product listing number.
+11. **Type of submission**: Specify the type of submission (initial, update to content, abbreviated renewal).
+
+Note that these requirements are based on the provided context and might not be an exhaustive list of all FDA guidelines for external labeling. It's essential to consult the official FDA regulations and guidelines for the most accurate information.
+Model: llama3.1
+
+---
+
+Question 21: Write a sample company mission statement for a cosmetic company?
+Answer: I can create a sample company mission statement that aligns with the information presented.
+
+**Sample Company Mission Statement:**
+
+"At [Company Name], our mission is to provide high-quality, innovative cosmetics that enhance the beauty and well-being of our customers. We are committed to delivering exceptional products, built on a foundation of safety, efficacy, and sustainability. Our goal is to become the trusted partner for consumers seeking reliable, effective, and stylish cosmetic solutions.
+
+We strive to foster a culture of innovation, collaboration, and customer-centricity within our organization. By embracing diversity, promoting inclusivity, and prioritizing environmental responsibility, we aim to make a positive impact on our community and the world at large.
+
+At [Company Name], we believe that beauty is not just about appearance; it's also about feeling confident, empowered, and connected. We are dedicated to helping our customers unlock their full potential, one product at a time."
+
+Please note that this is a sample mission statement, and actual companies may have different values, goals, or priorities.
+
+Also, I'd like to mention that the provided context does not explicitly state any company name or specific information about the cosmetic company. The context appears to be related to regulatory requirements for cosmetics submissions to the FDA.
+Model: llama3.1
+
+---
+
+Question 22: Write a sample facility registration for me?
+Answer: I can attempt to create a sample facility registration. However, please note that this is not an actual registration and should be used as a placeholder or example only.
+
+**Sample Facility Registration**
+
+* **Facility Name:** XYZ Contract Manufacturing
+* **Address:** 123 Main St, Anytown, USA 12345
+* **Registration Type:** Cosmetic Product Facility Registration (Section 607(a)(3) of the FD&C Act)
+* **Responsible Person:** John Doe, President and CEO of XYZ Contract Manufacturing
+
+**Additional Information:**
+
+* **Facility Description:** XYZ Contract Manufacturing is a contract manufacturer that produces cosmetics products for various clients.
+* **Products Manufactured/Processed:** Cosmetics products such as skincare creams, lotions, and serums.
+
+Please note that this sample registration does not include any actual facility registration number or UNII (Unique Ingredient Identifier) information. If you need to submit an actual facility registration, I recommend consulting the FDA's official guidelines and resources for more information.
+
+Also, keep in mind that the provided context mentions that a facility name/address can be provided instead of a facility registration number if the facility has not been registered yet.
+Model: llama3.1
+
+---
+
+Question 23: What cosmetic products will exist in 50 years?
+Answer: I cannot provide information on future cosmetic products. Is there anything else I can help you with?
+Model: llama3.1
+
+---
+
+Question 24: Does FDA require animal testing for cosmetics?
+Answer: There is no direct mention of FDA requiring animal testing for cosmetics. However, it does mention that manufacturers or distributors are responsible for obtaining all data and information needed to substantiate the safety of their products before introducing them into the marketplace.
+
+In particular, the text states: "Although satisfactory toxicological data may exist for each ingredient of a cosmetic product, it will still be necessary to conduct some toxicological testing with the product itself" (emphasis mine). This suggests that some form of testing, which could potentially include animal testing, is required. However, I must note that this does not explicitly state that FDA requires animal testing.
+
+Therefore, my answer would be: "It's possible, but not explicitly stated in the provided context."
+Model: llama3.1
+
+---
+
+Question 25: What are "hypoallergenic" cosmetics?
+Answer: Unfortunately, the provided context does not mention "hypoallergenic" cosmetics. The context only discusses the distinction between cosmetics and drugs under the Act, as well as categorizes various types of cosmetic products.
+
+However, I can tell you that in general, "hypoallergenic" refers to a product or ingredient that is designed to be less likely to cause an allergic reaction. In the context of cosmetics, hypoallergenic products are often marketed as being gentle and suitable for sensitive skin.
+
+If you would like to know more about hypoallergenic cosmetics, I can try to provide general information on the topic.
+Model: llama3.1
+
+---
+
+Question 26: Does FDA pre-approve cosmetic product labeling?
+Answer: No, according to the provided context, the FD&C Act does not require premarket approval for cosmetics. However, it does prohibit the marketing of adulterated or misbranded cosmetics in interstate commerce.
+
+Additionally, the context states that manufacturers or distributors are responsible for obtaining all data and information needed to substantiate the safety of their products before introducing them into the marketplace. This implies that while FDA may not pre-approve cosmetic product labeling, companies must ensure that their labels accurately reflect the safety and composition of their products.
+
+There is no specific mention in the provided context about FDA pre-approving cosmetic product labeling.
+Model: llama3.1
+
+---
+
+Question 27: How should products be labeled if they are both drugs and cosmetics?
+Answer: If your product is both a drug and a cosmetic, it should be identified as such in the drug listing submission. This means that when you submit the product for listing with FDA, you should indicate that it is both a drug and a cosmetic.
+
+There is no specific information provided on how the product itself should be labeled (e.g., on the packaging or labeling), but rather on how to identify it correctly in the regulatory submission process.
+
+(See "G. What if my product is both a drug and a cosmetic product?" and the following response for more details.)
+Model: llama3.1
+
+---
+
+Question 28: Does FDA have a definition for the term “organic”?
+Answer: No, there is no mention of the term "organic" in the provided context. The text discusses regulations and definitions related to dietary supplements, food additives, and nanotechnology, but does not address the term "organic".
+Model: llama3.1
+
+---
+

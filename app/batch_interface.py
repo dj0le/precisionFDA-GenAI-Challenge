@@ -35,6 +35,7 @@ def get_safe_filename(model_name):
     return f"Test-Results-{safe_model_name}-{timestamp}.txt"
 
 def clean_response(response):
+    #stop the llm from starting every response with these phrases
     common_prefixes = [
         "According to the provided context,",
         "Based on the provided context,",
@@ -53,11 +54,12 @@ def clean_response(response):
         answer = answer[0].upper() + answer[1:]
 
     response['answer'] = answer
+
     return response
 
 def process_batch_questions(file):
     try:
-        start_time = time.time()  # Start timing
+        start_time = time.time()
         questions = [line.decode('utf-8').strip() for line in file.readlines() if line.decode('utf-8').strip()]
 
         if not questions:
@@ -65,7 +67,7 @@ def process_batch_questions(file):
             return
 
         results_container = st.container()
-        responses = []  # Store responses for later use
+        responses = []
 
         with results_container:
             st.write("### Batch Processing Results")
@@ -83,6 +85,7 @@ def process_batch_questions(file):
                             responses.append((question, response))
 
                             if response:
+                                clean_response(response)
                                 st.write("**Answer:**")
                                 st.write(response['answer'])
                                 st.write("---")
@@ -98,7 +101,7 @@ def process_batch_questions(file):
         processing_time = end_time - start_time
         formatted_time = format_time_duration(processing_time)
 
-        # Display processing time in the UI
+        # Display processing time
         st.write(f"### Processing Complete")
         st.write(f"Total processing time: {formatted_time}")
         st.write(f"Average time per question: {format_time_duration(processing_time/len(questions))}")

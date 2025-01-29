@@ -1,0 +1,876 @@
+Question 1: What is a cosmetic guidance?
+Answer: A cosmetic guidance is a document issued by the FDA that represents the agency's current thinking on a topic related to cosmetics regulation. These documents provide non-binding recommendations to industry and FDA staff. They do not establish legally enforceable responsibilities, but rather suggest or recommend practices unless specific regulatory or statutory requirements are cited. The guidance documents help explain FDA's interpretation of cosmetics law and regulations and provide practical guidance for compliance.
+
+---
+
+Question 2: What are the key recommendations for good manufacturing practices (GMP) in the cosmetic industry?
+Answer: Based on FDA's guidance, key GMP recommendations for cosmetics include:
+
+1. Documentation and Records
+- Maintain detailed records of operations, procedures, and controls
+- Document batch production, raw materials, and testing
+- Retain distribution records for effective recalls
+
+2. Buildings and Facilities
+- Adequate size, design and construction
+- Clean and orderly facilities
+- Proper lighting, ventilation and plumbing
+- Prevention of cross-contamination
+
+3. Equipment
+- Proper design, size and construction
+- Regular cleaning and maintenance
+- Calibration of measuring equipment
+- Prevention of contamination
+
+4. Personnel
+- Proper training and qualifications
+- Appropriate protective clothing and hygiene practices
+- Health and cleanliness requirements
+
+5. Raw Materials
+- Testing and verification of specifications
+- Proper storage and handling
+- Clear identification and labeling
+- Quality control of water used in production
+
+6. Production Controls
+- Written procedures for manufacturing
+- In-process testing and controls
+- Proper packaging and labeling controls
+- Batch record review
+
+7. Laboratory Controls
+- Testing of raw materials and finished products
+- Validated test methods
+- Retention of samples
+- Stability testing
+
+8. Internal Audits
+- Regular internal quality audits
+- Independent review process
+- Documentation of findings
+- Follow-up on corrective actions
+
+9. Complaints and Recalls
+- System for handling complaints
+- Investigation of adverse events
+- Recall procedures and documentation
+- Follow-up actions
+
+---
+
+Question 3: How does the FDA define "insanitary conditions" in the preparation, packing, and holding of tattoo inks?
+Answer: According to FDA guidance, insanitary conditions in tattoo ink manufacturing include:
+
+1. Facilities not suitable for production (e.g., carpeted areas that are difficult to clean)
+
+2. Exposed materials, including:
+- Uncovered ink and components
+- Materials near open air ducts
+- Exposure to airborne contaminants
+
+3. Contaminated components:
+- Contaminated ink ingredients
+- Contaminated water or solvents
+- Unclean containers and equipment
+
+4. Improper manufacturing practices:
+- Using uncleaned/unsanitized equipment
+- Uncovered containers during mixing
+- Poor personnel hygiene practices
+
+5. Inadequate personnel practices:
+- Lack of proper protective equipment
+- Missing hairnets, lab coats, masks, or gloves
+- Improper disposal of used protective clothing
+
+6. Poor facility conditions:
+- Inadequate handwashing facilities
+- Lack of proper restroom facilities
+- Poor waste disposal practices
+
+7. Improper storage:
+- Storage in areas with dust and debris
+- Inadequate protection from contamination
+- Poor environmental controls
+
+---
+
+Question 4: What are the main components of the FDA's guidance on the safety of nanomaterials in cosmetic products?
+Answer: The main components of FDA's guidance on nanomaterial safety in cosmetics include:
+
+1. Material Characterization
+- Full description of nanomaterial
+- Chemical composition and structure
+- Particle size and distribution
+- Surface chemistry and morphology
+- Solubility and stability
+
+2. Safety Assessment Framework
+- Evaluation of unique properties
+- Assessment of exposure routes
+- Consideration of intended use
+- Analysis of potential risks
+
+3. Toxicology Considerations
+- Evaluation of absorption and distribution
+- Assessment of biological effects
+- Both short-term and long-term toxicity
+- Special considerations for nanoscale materials
+
+4. Testing Recommendations
+- Appropriate test methods
+- Consideration of particle properties
+- Assessment of stability
+- Evaluation of potential interactions
+
+5. Risk Assessment
+- Exposure assessment
+- Safety evaluation
+- Consideration of particle characteristics
+- Analysis of potential health impacts
+
+6. Manufacturing Controls
+- Quality control measures
+- Stability considerations
+- Process controls
+- Testing requirements
+
+The guidance emphasizes that nanomaterials may have different properties than larger-scale materials and should be evaluated accordingly for safety in cosmetic products.
+
+---
+
+Question 5: What are the specific requirements for cosmetic product facility registration and product listing under the Modernization of Cosmetics Regulation Act of 2022?
+Answer: The requirements include:
+
+1. Registration Requirements
+- Must register each facility engaged in manufacturing/processing cosmetics
+- Required by December 29, 2023 for existing facilities
+- New facilities must register within 60 days of starting operations
+- Biennial renewal required
+- Must include facility contact information, product categories, and responsible person information
+
+2. Product Listing Requirements
+- Required for each cosmetic product
+- Must include facility registration numbers
+- Product name and category
+- Ingredient list including colors and fragrances
+- Contact information for responsible person
+- Due by December 29, 2023 for existing products
+- New products must be listed within 120 days of marketing
+
+3. Exemptions
+- Small businesses with average annual sales under $1 million
+- Exception doesn't apply to certain products like those for eye area or internal use
+- Facilities already registered under Chapter V drug/device requirements
+
+4. Updates Required
+- Facilities must update registration within 60 days of changes
+- Product listings must be updated annually
+- Must maintain accuracy of information
+
+5. Compliance Timeline
+- FDA has announced delayed enforcement until July 1, 2024
+- Electronic submission portal (Cosmetics Direct) being developed
+- Alternative paper forms available (FDA Form 5066 and 5067)
+
+---
+
+Question 6: How does the FDA address the risk of microbial contamination in tattoo inks?
+Answer: The FDA addresses microbial contamination risks in tattoo inks through the following recommendations:
+
+1. Manufacturing Controls
+- Use of appropriate sterilization methods
+- Validation of sterilization processes
+- Clean and sanitary manufacturing conditions
+- Prevention of environmental contamination
+
+2. Testing Requirements
+- Testing ink and components for contamination
+- Verification of suppliers' testing programs
+- Documentation of test results
+- Appropriate sampling procedures
+
+3. Quality Control Measures
+- Raw material testing and verification
+- In-process controls during manufacturing
+- Finished product testing
+- Retention of samples for testing
+
+4. Facility Requirements
+- Proper facility design and maintenance
+- Adequate cleaning and sanitization
+- Environmental monitoring
+- Personnel hygiene practices
+
+5. Documentation
+- Batch testing records
+- Sterilization validation records
+- Quality control procedures
+- Investigation of contamination issues
+
+6. Corrective Actions
+- Investigation of contamination
+- Product recalls when necessary
+- Prevention of release of contaminated products
+- Review of manufacturing procedures
+
+7. Response to Contamination
+- Proper handling of contaminated products
+- Investigation of root causes
+- Implementation of preventive measures
+- Documentation of corrective actions
+
+---
+
+Question 7: What are the FDA's recommendations for ensuring the safety of cosmetic products that contain nanomaterials?
+Answer: FDA's recommendations for ensuring safety of cosmetic products containing nanomaterials include:
+
+1. Material Characterization
+- Full physicochemical characterization
+- Particle size and distribution analysis
+- Surface chemistry evaluation
+- Stability assessment
+
+2. Safety Assessment Considerations
+- Evaluation of exposure routes
+- Assessment of absorption and distribution
+- Analysis of biological effects
+- Consideration of intended use
+
+3. Testing Requirements
+- Appropriate toxicological testing
+- Modified testing methods as needed
+- Assessment of unique properties
+- Evaluation of stability
+
+4. Manufacturing Controls
+- Validated manufacturing processes
+- Quality control measures
+- Process monitoring
+- Stability testing
+
+5. Risk Mitigation
+- Evaluation of potential risks
+- Implementation of controls
+- Documentation of safety measures
+- Monitoring of product performance
+
+6. Documentation
+- Complete characterization data
+- Safety assessment results
+- Manufacturing controls
+- Stability data
+
+7. Post-Market Surveillance
+- Monitoring for adverse events
+- Product stability evaluation
+- Documentation of complaints
+- Investigation of safety concerns
+
+---
+
+Question 8: How does the FDA suggest handling complaints, adverse events, and recalls related to cosmetic products?
+Answer: FDA suggests the following approach for handling complaints, adverse events, and recalls:
+
+1. Complaints Management
+- Written procedures for handling complaints
+- Documentation system for all complaints
+- Evaluation of complaint patterns
+- Follow-up investigations
+
+2. Adverse Event Handling
+- Documentation of all adverse events
+- Investigation of severity and cause
+- Medical treatment information if applicable
+- Reporting to FDA when appropriate
+- Documentation of resolution
+
+3. Recall Procedures
+- Written recall strategy and procedures
+- Prompt initiation of recalls when needed
+- Notification of appropriate parties
+- Documentation of recall actions
+- Effectiveness checks
+- Proper disposition of recalled products
+
+4. Record Keeping
+- Maintain detailed complaint records
+- Document investigation findings
+- Track corrective actions
+- Maintain distribution records
+
+5. Communication
+- Clear procedures for internal communication
+- Notification to FDA when required
+- Communication with affected parties
+- Documentation of all communications
+
+6. Follow-up Actions
+- Investigation of root causes
+- Implementation of corrective actions
+- Verification of effectiveness
+- Prevention of recurrence
+
+---
+
+Question 9: What are the FDA's guidelines for the use of color additives in cosmetic products?
+Answer: The FDA's guidelines for color additives in cosmetics include:
+
+1. Approval Requirements
+- All color additives must be approved by FDA
+- Must be listed in 21 CFR parts 73, 74, and 82
+- Certification required for certain colors
+- Specific use conditions must be followed
+
+2. Labeling Requirements
+- Colors must be properly declared on label
+- Certified colors must include FDA lot numbers
+- Exception for small packages with coded numbers
+- Must follow ingredient labeling requirements
+
+3. Certification Process
+- Batches must be certified by FDA
+- Testing for purity and composition
+- Assignment of lot numbers
+- Documentation requirements
+
+4. Use Restrictions
+- Some colors limited to specific uses
+- Maximum concentration limits may apply
+- Restrictions on combination with other ingredients
+- Specific conditions of use must be followed
+
+5. Record Keeping
+- Maintain certification records
+- Document color additive use
+- Batch records and testing data
+- Storage and handling procedures
+
+6. Safety Considerations
+- Only approved colors may be used
+- Follow specific use limitations
+- Consider product application
+- Monitor for adverse reactions
+
+---
+
+Question 10: What is the numeric code for eye liner?
+Answer: According to the cosmetic product categories and codes provided in the FDA guidance documents, eyeliner falls under category (03) Eye makeup preparations (other than children's eye makeup preparations), subcategory (b) Eyeliners.
+
+---
+
+Question 11: What types of childrens makeup are there?
+Answer: According to the FDA guidance, children's makeup categories include:
+
+1. Eye makeup preparations (category 04)
+- Children's eyeshadows
+- Other children's eye makeup
+
+2. Makeup preparations (category 09)
+- Children's blushers and rouges
+- Children's face paints
+- Children's face powders
+- Children's foundations
+- Children's lipsticks and lip glosses
+- Children's color hairsprays
+- Other children's makeup
+
+---
+
+Question 12: What are the code numbers for childrens makeup?
+Answer: According to the FDA guidance, the code numbers for children's makeup are:
+
+(04) Children's eye makeup preparations
+(09) Children's makeup preparations (not eye)
+
+These are the main category codes for children's makeup products.
+
+---
+
+Question 13: What are the codes for each children's non eye makeup, include numbers?
+Answer: According to the FDA guidance, the codes for children's non-eye makeup (category 09) are:
+
+(09) Makeup preparations for children (not eye)
+(a) Children's blushers and rouges (all types)
+(b) Children's face paints
+(c) Children's face powders
+(d) Children's foundations
+(e) Children's lipsticks and lip glosses
+(f) Children's color hairsprays
+(g) Other children's makeup
+
+---
+
+Question 14: What is the FDA guidance on product testing?
+Answer: Based on the FDA guidance documents, product testing recommendations include:
+
+1. Laboratory Controls
+- Sample collection and testing
+- Specifications for raw materials and finished products
+- Testing for microbial contamination
+- Testing for chemical contamination
+- Evaluation of preservation adequacy
+
+2. Testing Requirements
+- Identity testing of materials
+- Compliance with specifications
+- Stability testing
+- Preservation effectiveness
+- Retention sample testing
+
+3. Documentation
+- Written test procedures
+- Test results documentation
+- Laboratory equipment calibration
+- Technician qualifications
+- Investigation of out-of-specification results
+
+4. Types of Testing
+- Raw material testing
+- In-process testing
+- Finished product testing
+- Stability testing
+- Microbial testing
+
+5. Quality Control
+- Representative sampling
+- Validated test methods
+- Proper laboratory controls
+- Equipment maintenance
+- Results verification
+
+---
+
+Question 15: What is the FDA guidance for product testing for eye makeup?
+Answer: The FDA guidance documents indicate the following for eye makeup testing:
+
+1. Safety Testing
+- Testing for microbial contamination
+- Chemical composition analysis
+- Preservation effectiveness
+- Stability testing
+- Special consideration for products that come in contact with eye area
+
+2. Specific Requirements
+- Products must be properly preserved
+- Testing for eye area safety
+- Evaluation of ingredients suitable for eye area
+- Assessment of potential irritants
+- Sterility considerations where appropriate
+
+3. Documentation
+- Test methods and specifications
+- Results of all testing
+- Investigation of any adverse findings
+- Stability data
+- Retention samples
+
+4. Quality Control
+- Raw material testing
+- In-process testing
+- Finished product testing
+- Periodic evaluation of preservative effectiveness
+- Monitoring of product stability
+
+5. Additional Considerations
+- Special attention to products for mucous membrane contact
+- Evaluation of potential contamination risks
+- Assessment of packaging compatibility
+- Testing for potential allergens
+- Verification of color additive compliance
+
+---
+
+Question 16: I'm starting a small cosmetic company, what should I do first to comply with FDA cosmetic guidance?
+Answer: To start complying with FDA cosmetic guidance, you should:
+
+1. Registration and Listing
+- Determine if you qualify as a small business (under $1 million annual sales)
+- Register your facility with FDA if required
+- Submit product listings for each product
+- Meet registration deadlines (by July 1, 2024)
+
+2. Good Manufacturing Practices
+- Establish proper manufacturing facilities
+- Implement quality control procedures
+- Develop documentation systems
+- Train personnel properly
+
+3. Product Safety
+- Ensure product safety before marketing
+- Maintain records of safety testing
+- Implement proper manufacturing controls
+- Establish quality control procedures
+
+4. Labeling Requirements
+- Ensure proper ingredient listing
+- Include required warning statements
+- List business information correctly
+- Follow cosmetic labeling regulations
+
+5. Record Keeping
+- Maintain manufacturing records
+- Document product testing
+- Keep complaint records
+- Establish product tracking system
+
+6. Compliance Systems
+- Develop quality control procedures
+- Establish complaint handling system
+- Create recall procedures
+- Implement adverse event reporting
+
+---
+
+Question 17: What are the best practices for registering a new facility for cosmetic manufacturing?
+Answer: Based on FDA guidance, best practices for registering a new facility include:
+
+1. Initial Steps
+- Obtain FDA Establishment Identifier (FEI) number
+- Gather required facility information
+- Prepare electronic submission capabilities
+- Review registration requirements
+
+2. Required Information
+- Facility name and physical address
+- Contact information and email
+- Owner/operator information
+- Product categories manufactured
+- Brand names under which products are sold
+
+3. Submission Process
+- Use FDA's Cosmetics Direct portal (preferred)
+- Submit electronically if possible
+- Alternative paper forms available (FDA Form 5066)
+- Keep copies of all submissions
+
+4. Timing Requirements
+- Register within 60 days of beginning operations
+- Complete registration by July 1, 2024
+- Plan for biennial renewal
+- Update within 60 days of any changes
+
+5. Documentation
+- Maintain registration records
+- Document any updates
+- Keep confirmation of submission
+- Retain correspondence with FDA
+
+6. Additional Considerations
+- Ensure accuracy of all information
+- Maintain current contact information
+- Plan for renewal requirements
+- Consider electronic submission capabilities
+
+---
+
+Question 18: What are common mistakes with non compliance when starting a cosmetic business?
+Answer: Based on FDA guidance documents, common non-compliance mistakes include:
+
+1. Registration and Listing Issues
+- Failing to register facility when required
+- Missing registration deadlines
+- Incomplete product listings
+- Not updating information as required
+
+2. Manufacturing Practice Problems
+- Inadequate facility conditions
+- Poor sanitation practices
+- Lack of quality control procedures
+- Insufficient documentation
+
+3. Safety Assessment Failures
+- Inadequate safety testing
+- Poor record keeping
+- Lack of stability testing
+- Insufficient preservation methods
+
+4. Labeling Violations
+- Incorrect ingredient listings
+- Missing required information
+- Improper claims
+- Inadequate directions
+
+5. Documentation Gaps
+- Insufficient manufacturing records
+- Incomplete batch records
+- Poor complaint documentation
+- Missing testing records
+
+6. Quality Control Issues
+- Lack of testing protocols
+- Inadequate control procedures
+- Poor raw material controls
+- Insufficient finished product testing
+
+---
+
+Question 19: When is a cosmetic product considered a drug according to FDA?
+Answer: According to FDA guidance, a cosmetic product is considered a drug when:
+
+1. Intended Use Claims
+- Claims to treat or prevent disease
+- Claims to affect structure/function of body
+- Claims to cure, mitigate, or treat conditions
+- Therapeutic claims
+
+2. Specific Examples
+- Products claiming to reduce wrinkles
+- Anti-aging claims affecting skin structure
+- Treatment of acne, dandruff, or other conditions
+- Claims of affecting body's functions
+
+3. Drug Definition Triggers
+- Recognition in official drug compendia
+- Intended for diagnosis, cure, or treatment
+- Affecting body structure or function
+- Components intended for above uses
+
+4. Common Categories
+- Anti-dandruff shampoos
+- Antiperspirant deodorants
+- Skin products claiming cell regeneration
+- Products with sunscreen claims
+
+5. Important Considerations
+- Marketing claims determine classification
+- Both drug and cosmetic regulations may apply
+- Different regulatory requirements
+- Additional compliance obligations
+
+Such products must comply with both drug and cosmetic regulations where applicable.
+
+---
+
+Question 20: Give me a list of things to consider for external labeling of my cosmetic product based on FDA guidelines.
+Answer: Based on FDA guidelines, consider these elements for external labeling:
+
+1. Required Information
+- Product identity
+- Net contents
+- Name and place of business
+- Distributor statement if applicable
+- Ingredient list
+- Required warnings if applicable
+
+2. Placement Requirements
+- Principal display panel information
+- Information panel details
+- Proper font sizes
+- Conspicuous placement
+
+3. Ingredient Declaration
+- Descending order by predominance
+- Color additives listed properly
+- Proper naming conventions
+- Fragrance/flavor designation
+
+4. Warning Statements
+- Required warnings for specific ingredients
+- Safety warnings if applicable
+- Clear and conspicuous placement
+- Proper formatting
+
+5. Language Requirements
+- English language required
+- Accurate translations if multilingual
+- Clear and prominent text
+- Legible formatting
+
+6. Formatting Considerations
+- Contrast between text and background
+- Minimum type size requirements
+- Proper spacing
+- Durability of labeling
+
+7. Claims
+- Truthful and not misleading
+- Properly substantiated
+- No drug claims unless approved
+- No disease treatment claims
+
+---
+
+Question 21: Write a sample company mission statement for a cosmetic company?
+Answer: Based on FDA guidance documents and regulatory requirements, here's a compliant sample mission statement:
+
+"Our mission is to create safe, high-quality cosmetic products through rigorous adherence to Good Manufacturing Practices, while maintaining full compliance with FDA regulations. We are committed to:
+
+- Ensuring product safety through comprehensive testing and quality control
+- Manufacturing products in clean, well-maintained facilities
+- Maintaining transparent documentation and accurate product listings
+- Responding promptly to consumer feedback and concerns
+- Implementing effective quality management systems
+- Using approved ingredients and following proper labeling requirements
+- Protecting consumer safety through proper manufacturing and testing procedures
+
+We strive to deliver innovative cosmetic products that meet or exceed FDA guidelines while maintaining the highest standards of safety and quality for our customers."
+
+---
+
+Question 22: Write a sample facility registration for me?
+Answer: Based on FDA guidance, here's a sample format for a facility registration:
+
+COSMETIC FACILITY REGISTRATION INFORMATION
+
+1. Facility Information:
+- Facility Name: [Your Facility Name]
+- Physical Address: [Street Address, City, State, ZIP]
+- Phone: [Number]
+- Email: [Email Address]
+- FEI Number: [Insert FDA Establishment Identifier]
+
+2. Owner/Operator Information:
+- Name: [Owner/Operator Name]
+- Address: [If different from facility]
+- Contact Information: [Phone and Email]
+
+3. Product Categories Manufactured:
+- [List relevant categories from FDA codes]
+- [Include specific subcategories]
+
+4. Brand Names:
+- [List all brand names under which products are sold]
+
+5. Responsible Person Information:
+- Name: [Responsible Person]
+- Contact Information: [Phone and Email]
+
+6. Type of Submission:
+- Initial Registration
+- Date of Beginning Operations: [Date]
+
+Note: This is a sample format. Actual registration should be submitted through FDA's Cosmetics Direct portal or appropriate forms.
+
+---
+
+Question 23: What cosmetic products will exist in 50 years?
+Answer: This question cannot be answered based on the FDA guidance documents provided, as they focus on current regulatory requirements and do not make predictions about future products. Such speculation would be outside the scope of FDA's regulatory guidance.
+
+---
+
+Question 24: Does FDA require animal testing for cosmetics?
+Answer: Based on the FDA guidance documents, the FDA does not specifically require animal testing for cosmetics. Key points include:
+
+1. Testing Requirements
+- No specific requirement for animal testing
+- Companies responsible for product safety
+- Alternative testing methods available
+- Must ensure product safety before marketing
+
+2. Safety Assessment
+- Companies must substantiate product safety
+- Can use various testing methods
+- May use existing safety data
+- Alternative testing methods encouraged
+
+3. Company Responsibility
+- Must ensure product safety
+- Must use appropriate testing methods
+- Must maintain safety documentation
+- Must use appropriate validation methods
+
+The FDA encourages companies to use alternative testing methods when available and appropriate to ensure product safety.
+
+---
+
+Question 25: What are "hypoallergenic" cosmetics?
+Answer: According to FDA guidance documents:
+
+- There is no FDA definition for the term "hypoallergenic"
+- There are no Federal standards or requirements for using this term
+- Manufacturers may use the term without any specific testing requirements
+- The term means whatever a company wants it to mean
+- Companies are responsible for ensuring their products are safe
+- Must have appropriate data to substantiate any claims made
+- The term is considered a marketing claim
+- Companies must ensure claims are truthful and not misleading
+
+---
+
+Question 26: Does FDA pre-approve cosmetic product labeling?
+Answer: Based on FDA guidance documents:
+
+No, FDA does not pre-approve cosmetic product labeling. Specifically:
+
+1. Pre-market Requirements
+- No pre-market approval required for cosmetics
+- No pre-market review of labeling
+- Companies responsible for compliance
+- Exception for color additives
+
+2. Company Responsibilities
+- Must ensure labeling complies with regulations
+- Must include all required information
+- Must be truthful and not misleading
+- Must maintain documentation
+
+3. Compliance
+- Companies must self-determine compliance
+- Subject to FDA review after marketing
+- May face enforcement if non-compliant
+- Must follow all labeling regulations
+
+---
+
+Question 27: How should products be labeled if they are both drugs and cosmetics?
+Answer: According to FDA guidance, products that are both drugs and cosmetics should be labeled as follows:
+
+1. Labeling Requirements
+- Must comply with both drug and cosmetic regulations
+- Include all drug labeling requirements
+- Include all cosmetic labeling requirements
+- Clear presentation of all required information
+
+2. Drug Requirements
+- Include drug facts panel
+- List active ingredients
+- Include specific drug warnings
+- State intended drug use
+
+3. Cosmetic Requirements
+- List ingredients in descending order
+- Include required cosmetic information
+- Provide manufacturer information
+- Include net contents
+
+4. Additional Considerations
+- Clear distinction between claims
+- Proper placement of information
+- All required warnings
+- Appropriate font sizes and formats
+
+5. Compliance
+- Meet all applicable regulations
+- Follow both sets of requirements
+- Maintain proper documentation
+- Ensure truthful claims
+
+---
+
+Question 28: Does FDA have a definition for the term "organic"?
+Answer: Based on FDA guidance documents:
+
+The FDA does not define or regulate the term "organic" for cosmetics. Key points include:
+
+1. Regulatory Authority
+- FDA does not define "organic" for cosmetics
+- USDA regulates organic claims
+- Must comply with USDA requirements if claimed
+- FDA regulates safety and labeling
+
+2. Requirements
+- Must comply with USDA organic regulations if claimed
+- Must meet FDA cosmetic requirements
+- Cannot be misleading
+- Must be truthful
+
+3. Important Considerations
+- "Organic" claim doesn't mean safer
+- Must still meet all safety requirements
+- Must maintain documentation
+- Subject to both FDA and USDA oversight
+
+---
