@@ -37,12 +37,6 @@ def main():
         create_ids(data)
         populate_vectordb(data)
 
-    query_text1 = "What is a cosmetic guidance?"
-    query_text = "What are the key recommendations for good manufacturing practices (GMP) in the cosmetic industry?"
-    query_text3 = "How does the FDA define insanitary conditions in the preparation, packing, and holding of tattoo inks?"
-
-    build_chain(query_text)
-
 def load_documents(folder_path: str) -> List[Document]:
     documents = []
     for filename in os.listdir(folder_path):
@@ -124,99 +118,99 @@ def process_embeddings():
         model="mxbai-embed-large"
     )
 
-def build_chain(query_text: str, chat_history=[]):
-    db = Chroma(
-        persist_directory=CHROMA_PATH, embedding_function=process_embeddings()
-    )
-
-    retriever = db.as_retriever(search_kwargs={"k": 2})
-
-    llm = ChatOllama(
-        model="llama3.2",
-        temperature=0
-    )
-
-    # Create memory
-    memory = ConversationBufferMemory(
-        memory_key="chat_history",
-        return_messages=True,
-        output_key="answer"
-    )
-
-    # Create the conversational chain
-    chain = ConversationalRetrievalChain.from_llm(
-        llm=llm,
-        retriever=retriever,
-        memory=memory,
-        return_source_documents=True,
-        # verbose=True
-    )
-
-    # Get response
-    result = chain({"question": query_text})
-
-    # Extract answer and sources
-    answer = result['answer']
-    sources = [doc.metadata.get("id", None) for doc in result.get('source_documents', [])]
-
-    formatted_response = f"\n-----\n Question: {query_text}\n-------\n Answer: {answer}\n-----\n Sources:"
-    print(formatted_response)
-    print(json.dumps(sources, indent=4))
-
-    return result
-
-# def build_chain(query_text: str):
+# def build_chain(query_text: str, chat_history=[]):
 #     db = Chroma(
 #         persist_directory=CHROMA_PATH, embedding_function=process_embeddings()
 #     )
 
-#     answers = db.similarity_search_with_score(query_text, k=4)
-
-#     template  = """Answer the question based only on the following context: {context}
-#     Question: {question}
-#     Answer: """
-
-#     prompt = ChatPromptTemplate.from_template(template)
-
-#     def doc2str(docs):
-#         return "\n\n".join(doc.page_content for doc in docs)
+#     retriever = db.as_retriever(search_kwargs={"k": 2})
 
 #     llm = ChatOllama(
 #         model="llama3.2",
 #         temperature=0
 #     )
 
-#     output_parser = StrOutputParser()
-
-#     retriever = db.as_retriever(search_kwargs={"k": 2})
-
-#     qa_prompt = ChatPromptTemplate.from_messages([
-#         ("system", "Use only the context provided to answer user questions"),
-#         ("system", "Context: {context}"),
-#         MessagesPlaceholder(variable_name="chat_history"),
-#         ("human", "{input}")
-#     ])
-
-#     question_answer_chain = create_stuff_documents_chain(llm, qa_prompt)
-
-#     rag_chain = create_retrieval_chain(history_aware_retriever, question_answer_chain)
-
-
-#     rag_chain = (
-#         {"context": retriever | doc2str, "question": RunnablePassthrough()}
-#         | prompt
-#         | llm
-#         | StrOutputParser()
+#     # Create memory
+#     memory = ConversationBufferMemory(
+#         memory_key="chat_history",
+#         return_messages=True,
+#         output_key="answer"
 #     )
-#     question = query_text
-#     answer = rag_chain.invoke(question)
-#     sources = [doc.metadata.get("id", None) for doc, _score in answers]
-#     formatted_response = f"\n-----\n Question: {question}\n-------\n Answer: {answer}\n-----\n Sources:"
+
+#     # Create the conversational chain
+#     chain = ConversationalRetrievalChain.from_llm(
+#         llm=llm,
+#         retriever=retriever,
+#         memory=memory,
+#         return_source_documents=True,
+#         # verbose=True
+#     )
+
+#     # Get response
+#     result = chain({"question": query_text})
+
+#     # Extract answer and sources
+#     answer = result['answer']
+#     sources = [doc.metadata.get("id", None) for doc in result.get('source_documents', [])]
+
+#     formatted_response = f"\n-----\n Question: {query_text}\n-------\n Answer: {answer}\n-----\n Sources:"
 #     print(formatted_response)
 #     print(json.dumps(sources, indent=4))
 
+#     return result
 
-#     rag_chain.invoke({"input": "Which standard is referenced?", "chat_history":chat_history})
+def build_chain(query_text: str):
+    db = Chroma(
+        persist_directory=CHROMA_PATH, embedding_function=process_embeddings()
+    )
+
+    answers = db.similarity_search_with_score(query_text, k=4)
+
+    template  = """Answer the question based only on the following context: {context}
+    Question: {question}
+    Answer: """
+
+    prompt = ChatPromptTemplate.from_template(template)
+
+    def doc2str(docs):
+        return "\n\n".join(doc.page_content for doc in docs)
+
+    llm = ChatOllama(
+        model="llama3.2",
+        temperature=0
+    )
+
+    output_parser = StrOutputParser()
+
+    retriever = db.as_retriever(search_kwargs={"k": 2})
+
+    qa_prompt = ChatPromptTemplate.from_messages([
+        ("system", "Use only the context provided to answer user questions"),
+        ("system", "Context: {context}"),
+        MessagesPlaceholder(variable_name="chat_history"),
+        ("human", "{input}")
+    ])
+
+    question_answer_chain = create_stuff_documents_chain(llm, qa_prompt)
+
+    rag_chain = create_retrieval_chain(history_aware_retriever, question_answer_chain)
+
+
+    rag_chain = (
+        {"context": retriever | doc2str, "question": RunnablePassthrough()}
+        | prompt
+        | llm
+        | StrOutputParser()
+    )
+    question = query_text
+    answer = rag_chain.invoke(question)
+    sources = [doc.metadata.get("id", None) for doc, _score in answers]
+    formatted_response = f"\n-----\n Question: {question}\n-------\n Answer: {answer}\n-----\n Sources:"
+    print(formatted_response)
+    print(json.dumps(sources, indent=4))
+
+
+    rag_chain.invoke({"input": "Which standard is referenced?", "chat_history":chat_history})
 
 def clear_database():
     if os.path.exists(CHROMA_PATH):

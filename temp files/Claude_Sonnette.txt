@@ -1,3 +1,12 @@
+Batch Processing Results -- LONG CONTEXT NON RAG RESULTS
+Generated: 2025-01-29 13:25:04
+Model Used: Claude 3.5 Sonnet
+Number of Questions: 28
+Total Processing Time: 1.24 minutes
+Average Time per Question: 2.65 seconds
+
+===========================================
+
 Question 1: What is a cosmetic guidance?
 Answer: A cosmetic guidance is a document issued by the FDA that represents the agency's current thinking on a topic related to cosmetics regulation. These documents provide non-binding recommendations to industry and FDA staff. They do not establish legally enforceable responsibilities, but rather suggest or recommend practices unless specific regulatory or statutory requirements are cited. The guidance documents help explain FDA's interpretation of cosmetics law and regulations and provide practical guidance for compliance.
 
