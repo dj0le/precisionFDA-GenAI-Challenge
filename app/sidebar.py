@@ -3,6 +3,20 @@ import streamlit as st
 from api_utils import upload_document, list_documents, delete_document
 
 def display_sidebar():
+
+    st.sidebar.title("App Section")
+    mode = st.sidebar.radio(
+        "mode select",
+        ["AI Chat", "Batch Questions"],
+        captions=[
+            "Converse with the LLM about a question",
+            "Upload a text file of questions (one per line) ",
+        ],
+    )
+    st.session_state.app_mode = mode
+
+    st.sidebar.divider()
+
     # get available models
     try:
         model_list = ollama.list()
@@ -25,7 +39,10 @@ def display_sidebar():
         st.sidebar.error(f"Error loading models: {str(e)}")
         return None
 
+    st.sidebar.divider()
+
     # Sidebar: Upload Document
+    st.sidebar.title("Database Section")
     st.sidebar.header("Upload Document")
     uploaded_file = st.sidebar.file_uploader("Choose a file", type=["pdf", "docx", "html"])
     if uploaded_file is not None:

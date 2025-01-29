@@ -33,7 +33,11 @@ def chat(query_input: QueryInput):
 @app.post("/upload-doc")
 def upload_and_index_document(file: UploadFile = File(...)):
     allowed_extensions = ['.pdf', '.docx', '.html']
-    file_extension = os.path.splitext(file.filename)[1].lower()
+
+    if file.filename is None:
+        raise HTTPException(status_code=400, detail="Filename is required")
+
+    file_extension = os.path.splitext(str(file.filename))[1].lower()
 
     if file_extension not in allowed_extensions:
         raise HTTPException(status_code=400, detail=f"Unsupported file type. Allowed types are: {', '.join(allowed_extensions)}")
@@ -46,7 +50,10 @@ def upload_and_index_document(file: UploadFile = File(...)):
             shutil.copyfileobj(file.file, buffer)
 
         file_id = insert_document_record(file.filename)
-        success = index_document_to_chroma(temp_file_path, file_id)
+        if file_id is None:
+            raise HTTPException(status_code=500, detail="Failed to create document record")
+
+        success = index_document_to_chroma(temp_file_path, int(file_id))
 
         if success:
             return {"message": f"File {file.filename} has been successfully uploaded and indexed.", "file_id": file_id}
