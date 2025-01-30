@@ -1,6 +1,19 @@
 import subprocess
 import os
 from pathlib import Path
+import requests
+import time
+
+def wait_for_api(url="http://localhost:8000", timeout=30):
+    start_time = time.time()
+    while time.time() - start_time < timeout:
+        try:
+            response = requests.get(url)
+            if response.status_code == 200:
+                return True
+        except requests.ConnectionError:
+            time.sleep(0.1)
+    raise TimeoutError(f"API failed to start within {timeout} seconds")
 
 def start_services():
     root_dir = Path(__file__).parent
@@ -10,6 +23,9 @@ def start_services():
         ["uvicorn", "main:app", "--reload"],
         cwd=root_dir / "api"
     )
+
+    # Wait for API to be ready
+    wait_for_api()
 
     # Start Streamlit
     streamlit_process = subprocess.Popen(
