@@ -8,6 +8,7 @@ pull nvidia-smi type data for memory usage and process length to add to details
 setup test suite to determine model accuracy and rank them / their answers
 front end design and svelte implementation
 
+add option to invoke Kokoro voice reply to questions
 
 BATCH MODE
 add other doc types besides txt for the upload options

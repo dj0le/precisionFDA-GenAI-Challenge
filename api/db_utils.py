@@ -77,6 +77,9 @@ def nuke_db():
     if os.path.exists(DB_NAME):
         os.remove(DB_NAME)
 
+
 # Initialize the database tables
+
+# nuke_db()
 create_application_logs()
 create_document_store()

@@ -51,6 +51,12 @@ def display_sidebar():
                 upload_response = upload_document(uploaded_file)
                 if upload_response:
                     st.sidebar.success(f"File '{uploaded_file.name}' uploaded successfully with ID {upload_response['file_id']}.")
+
+                    # Display metadata if available
+                    if 'metadata' in upload_response:
+                        with st.sidebar.expander("Document Metadata"):
+                            st.json(upload_response['metadata'])
+
                     st.session_state.documents = list_documents()  # Refresh the list after upload
 
     # Sidebar: List Documents

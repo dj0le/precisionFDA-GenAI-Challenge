@@ -1,0 +1,99 @@
+I can help you modify the code to use your original PDF processing method while keeping the current method for other file types. Here's how you can update your `chroma_utils.py`:
+
+```python
+import os
+from langchain_community.document_loaders import Docx2txtLoader, UnstructuredHTMLLoader, PyMuPDFLoader
+from langchain_core.documents import Document
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_ollama import OllamaEmbeddings
+from langchain_chroma import Chroma
+from typing import List
+import pymupdf4llm
+
+def process_embeddings():
+    return OllamaEmbeddings(
+        model="mxbai-embed-large"
+    )
+
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200, length_function=len)
+embedding_function = process_embeddings()
+vectorstore = Chroma(persist_directory="./chroma_db", embedding_function=embedding_function)
+
+def process_pdf_original(file_path: str) -> List[Document]:
+    # Use your original PDF processing method
+    pdf_data = pymupdf4llm.to_markdown(file_path, page_chunks=True)
+    documents = []
+
+    for page in pdf_data:
+        # Create a Document object for each page
+        doc = Document(
+            page_content=page["text"],
+            metadata={
+                "source": file_path,
+                "page": page["metadata"].get("page"),
+                "title": page["metadata"].get("title", os.path.basename(file_path).rsplit('.', 1)[0])
+            }
+        )
+        documents.append(doc)
+
+    return documents
+
+def load_and_split_document(file_path: str) -> List[Document]:
+    if file_path.endswith('.pdf'):
+        # Use your original PDF processing method
+        documents = process_pdf_original(file_path)
+    elif file_path.endswith('.docx'):
+        loader = Docx2txtLoader(file_path)
+        documents = loader.load()
+        documents = text_splitter.split_documents(documents)
+    elif file_path.endswith('.html'):
+        loader = UnstructuredHTMLLoader(file_path)
+        documents = loader.load()
+        documents = text_splitter.split_documents(documents)
+    else:
+        raise ValueError(f"Unsupported file type: {file_path}")
+
+    return documents
+
+def index_document_to_chroma(file_path: str, file_id: int) -> bool:
+    try:
+        splits = load_and_split_document(file_path)
+
+        # Add file_id to each split's metadata
+        for split in splits:
+            split.metadata['file_id'] = file_id
+
+        vectorstore.add_documents(splits)
+        return True
+    except Exception as e:
+        print(f"Error indexing document: {e}")
+        return False
+
+def delete_doc_from_chroma(file_id: int):
+    try:
+        docs = vectorstore.get(where={"file_id": file_id})
+        print(f"Found {len(docs['ids'])} document chunks for file_id {file_id}")
+
+        vectorstore._collection.delete(where={"file_id": file_id})
+        print(f"Deleted all documents with file_id {file_id}")
+
+        return True
+    except Exception as e:
+        print(f"Error deleting document with file_id {file_id} from Chroma: {str(e)}")
+        return False
+```
+
+Key changes made:
+
+1. Added a new `process_pdf_original()` function that uses your original PDF processing method with `pymupdf4llm`
+2. Modified `load_and_split_document()` to use different processing methods based on file type:
+   - PDF files use your original method
+   - DOCX and HTML files continue to use the existing method with text splitting
+
+The main differences in how PDFs are processed:
+- Your original method uses `pymupdf4llm` which creates markdown-formatted chunks
+- It preserves the original page-based structure
+- The metadata is handled differently, maintaining more of the original PDF metadata
+- The chunking is handled by `pymupdf4llm` instead of the `RecursiveCharacterTextSplitter`
+
+DOCX and HTML files will continue to use the `RecursiveCharacterTextSplitter` for chunking, as they don't have the same page-based structure that PDFs do.
