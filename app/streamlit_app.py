@@ -22,7 +22,7 @@ if "app_mode" not in st.session_state:
 display_sidebar()
 
 # Display the correct interface based on mode
-if st.session_state.app_mode == "Batch Questions":
+if st.session_state.app_mode == "Batch":
     display_batch_interface()
 else:
     display_chat_interface()

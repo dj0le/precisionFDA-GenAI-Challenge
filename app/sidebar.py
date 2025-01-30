@@ -7,7 +7,7 @@ def display_sidebar():
     st.sidebar.title("App Section")
     mode = st.sidebar.radio(
         "mode select",
-        ["AI Chat", "Batch Questions"],
+        ["AI Chat", "Batch"],
         captions=[
             "Converse with the LLM about a question",
             "Upload a text file of questions (one per line) ",
