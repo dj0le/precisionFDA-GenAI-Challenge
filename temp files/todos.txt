@@ -1,5 +1,13 @@
 GENERAL
 
+FORK CHECK
+switch to mdsplitter for better results
+ or
+remove langchain vectorstore
+
+
+
+
 re-implement pymupdf4llm and separate pdf files from other doc types
 investigate utility of converting remaining docs to md for better splitting and embedding
 re-implement metadata and id tags from cli version
