@@ -12,7 +12,7 @@ def process_embeddings():
         model="mxbai-embed-large"
     )
 
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=250, chunk_overlap=30, length_function=len)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=400, chunk_overlap=30, length_function=len)
 embedding_function = process_embeddings()
 vectorstore = Chroma(persist_directory="./chroma_db", embedding_function=embedding_function)
 
