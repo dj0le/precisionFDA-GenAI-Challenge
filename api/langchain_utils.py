@@ -50,8 +50,8 @@ question_prompt = ChatPromptTemplate.from_messages([
     ("human", "{input}")
 ])
 
-def build_chain(model=None):
-    model_name = st.session_state.get("model")
+def build_chain(model):
+    # model_name = st.session_state.get("model")
     llm = ChatOllama(model=model, temperature=0)
     history_aware_retriever = create_history_aware_retriever(llm, retriever, updated_prompt)
     response_chain = create_stuff_documents_chain(llm, question_prompt)

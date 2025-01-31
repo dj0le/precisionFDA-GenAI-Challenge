@@ -12,7 +12,7 @@ def process_embeddings():
         model="mxbai-embed-large"
     )
 
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200, length_function=len)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=250, chunk_overlap=30, length_function=len)
 embedding_function = process_embeddings()
 vectorstore = Chroma(persist_directory="./chroma_db", embedding_function=embedding_function)
 
@@ -21,21 +21,17 @@ vectorstore = Chroma(persist_directory="./chroma_db", embedding_function=embeddi
 def load_and_split_document(file_path: str) -> List[Document]:
     if file_path.endswith('.pdf'):
         documents = process_pdf(file_path)
-        return documents
     elif file_path.endswith('.docx'):
         loader = Docx2txtLoader(file_path)
         documents = loader.load()
-        documents = text_splitter.split_documents(documents)
-        return documents
     elif file_path.endswith('.html'):
         loader = UnstructuredHTMLLoader(file_path)
         documents = loader.load()
-        documents = text_splitter.split_documents(documents)
-        return documents
     else:
         raise ValueError(f"Unsupported file type: {file_path}")
 
-
+    documents = text_splitter.split_documents(documents)
+    return documents
 
 def index_document_to_chroma(file_path: str, file_id: int) -> bool:
     try:
