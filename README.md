@@ -46,11 +46,8 @@ python3 run.py
 
 That will get you up and running on the current version with a FASTapi backend (http://localhost:8000/ most likely) and the currently packaged front end. Right now it's a super basic streamlit instance, but once I have time to focus on that more, I will migrate to Svelte.
 
-If you prefer a command line approach, inside the CLi folder is the complete local rag implementation without fastapi etc. This is much more crusty though.
+If you prefer a command line approach, inside the CLi folder is the complete local rag implementation without fastapi etc. This has it's own README which will explain it further.
 
-```bash
-python3 cosmeticky.py
-```
 
 ## Remaining Steps:
 

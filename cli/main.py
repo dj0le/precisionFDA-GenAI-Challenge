@@ -10,6 +10,7 @@ class Config:
     RAG_QUESTIONS = "./docs/test-questions.txt"
     CHROMA_PATH = "chroma"
     OUTPUT_FILE = "llm-output.txt"
+    MODEL = "llama3.2"
 
 def main():
 
@@ -28,7 +29,7 @@ def main():
     doc_processor.populate_vectordb(data)
 
     # Initialize LLM
-    llm_engine = LLMQueryEngine(config.CHROMA_PATH, embedding_function)
+    llm_engine = LLMQueryEngine(config.CHROMA_PATH, embedding_function, config.MODEL)
     results_processor = ResultsProcessor(config.OUTPUT_FILE)
 
     # Process questions

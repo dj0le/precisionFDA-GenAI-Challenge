@@ -3,9 +3,10 @@ from langchain.prompts import ChatPromptTemplate
 from langchain_ollama import ChatOllama
 
 class LLMQueryEngine:
-    def __init__(self, chroma_path: str, embedding_function):
+    def __init__(self, chroma_path: str, embedding_function, model):
+        self.model = model
         self._db = Chroma(persist_directory=chroma_path, embedding_function=embedding_function)
-        self._llm = ChatOllama(model="mistral-nemo", temperature=0)
+        self._llm = ChatOllama(model=self.model, temperature=0)
         self._prompt_template = ChatPromptTemplate.from_template("""
             Answer the question based only on the following context: {context}
             ---
