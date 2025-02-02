@@ -1,9 +1,9 @@
 SUMMARY
-Date: 01 Feb 2025 at 14:59
+Date: 02 Feb 2025 at 11:43
 Model: llama3.2
 Number of Questions: 28
-Total Processing Time: 32.77s
-Average Time per Question: 1.17s
+Total Processing Time: 33.19s
+Average Time per Question: 1.19s
 Total Tokens Used: 46,487
 Average Tokens per Question: 1,660
 
@@ -21,7 +21,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:130
 
 DETAILS:
-Processing Time: 1.45s
+Processing Time: 2.21s
 Total Tokens: 993
 
 =============================================
@@ -50,7 +50,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:136
 
 DETAILS:
-Processing Time: 2.04s
+Processing Time: 2.05s
 Total Tokens: 2073
 
 =============================================
@@ -102,7 +102,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:102
 
 DETAILS:
-Processing Time: 1.53s
+Processing Time: 1.60s
 Total Tokens: 1813
 
 =============================================
@@ -127,7 +127,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:151
 
 DETAILS:
-Processing Time: 1.89s
+Processing Time: 1.96s
 Total Tokens: 1321
 
 =============================================
@@ -157,7 +157,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:186
 
 DETAILS:
-Processing Time: 1.65s
+Processing Time: 1.72s
 Total Tokens: 1827
 
 =============================================
@@ -208,7 +208,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:37
 
 DETAILS:
-Processing Time: 1.45s
+Processing Time: 1.46s
 Total Tokens: 1689
 
 =============================================
@@ -248,7 +248,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:79
 
 DETAILS:
-Processing Time: 0.37s
+Processing Time: 0.36s
 Total Tokens: 1570
 
 =============================================
@@ -276,7 +276,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:156
 
 DETAILS:
-Processing Time: 0.72s
+Processing Time: 0.74s
 Total Tokens: 1254
 
 =============================================
@@ -329,7 +329,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:156
 
 DETAILS:
-Processing Time: 0.87s
+Processing Time: 0.88s
 Total Tokens: 1300
 
 =============================================
@@ -345,7 +345,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:25
 
 DETAILS:
-Processing Time: 0.48s
+Processing Time: 0.49s
 Total Tokens: 1104
 
 =============================================
@@ -383,7 +383,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:147
 
 DETAILS:
-Processing Time: 1.56s
+Processing Time: 1.50s
 Total Tokens: 2142
 
 =============================================
@@ -415,7 +415,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:149
 
 DETAILS:
-Processing Time: 2.01s
+Processing Time: 1.96s
 Total Tokens: 2062
 
 =============================================
@@ -431,7 +431,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:160
 
 DETAILS:
-Processing Time: 0.64s
+Processing Time: 0.57s
 Total Tokens: 1813
 
 =============================================
@@ -447,7 +447,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:152
 
 DETAILS:
-Processing Time: 0.45s
+Processing Time: 0.42s
 Total Tokens: 1072
 
 =============================================
@@ -483,7 +483,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:133
 
 DETAILS:
-Processing Time: 1.81s
+Processing Time: 1.74s
 Total Tokens: 1864
 
 =============================================
@@ -509,7 +509,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:146
 
 DETAILS:
-Processing Time: 1.69s
+Processing Time: 1.61s
 Total Tokens: 1493
 
 =============================================
@@ -577,7 +577,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:143
 
 DETAILS:
-Processing Time: 2.49s
+Processing Time: 2.47s
 Total Tokens: 2089
 
 =============================================
@@ -593,7 +593,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:166
 
 DETAILS:
-Processing Time: 0.73s
+Processing Time: 0.69s
 Total Tokens: 2074
 
 =============================================
@@ -625,7 +625,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:82
 
 DETAILS:
-Processing Time: 0.71s
+Processing Time: 0.64s
 Total Tokens: 2011
 
 =============================================
@@ -641,7 +641,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:149
 
 DETAILS:
-Processing Time: 0.70s
+Processing Time: 0.67s
 Total Tokens: 1786
 
 =============================================
@@ -661,7 +661,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:149
 
 DETAILS:
-Processing Time: 1.18s
+Processing Time: 1.12s
 Total Tokens: 1694
 
 =============================================
@@ -677,7 +677,7 @@ SOURCES:
   3. MERGED_cosmetic_guidances:100
 
 DETAILS:
-Processing Time: 0.70s
+Processing Time: 0.67s
 Total Tokens: 1994
 
 =============================================

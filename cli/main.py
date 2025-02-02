@@ -3,13 +3,13 @@ from src.pdf_utils import process_pdf
 from src.config_utils import process_embeddings
 from src.llm_engine import LLMQueryEngine
 from src.document_processor import DocumentProcessor
-from src.results_processor import ResultsProcessor
+from src.results_processor import ResultsProcessor, OutputFormat
 
 class Config:
     RAG_DOCUMENT = "./docs/MERGED_cosmetic_guidances.pdf"
     RAG_QUESTIONS = "./docs/test-questions.txt"
     CHROMA_PATH = "chroma"
-    OUTPUT_FILE = "llm-output.txt"
+    OUTPUT_FILE = "llm-output"
     MODEL = "llama3.2"
 
 def main():
@@ -30,7 +30,12 @@ def main():
 
     # Initialize LLM
     llm_engine = LLMQueryEngine(config.CHROMA_PATH, embedding_function, config.MODEL)
-    results_processor = ResultsProcessor(config.OUTPUT_FILE)
+    # Return both .txt and .json versions of the output
+    results_processor = ResultsProcessor(config.OUTPUT_FILE, OutputFormat.BOTH)
+
+    # Or specify just one format if needed:
+    # results_processor = ResultsProcessor(config.OUTPUT_FILE, OutputFormat.TEXT)
+    # results_processor = ResultsProcessor(config.OUTPUT_FILE, OutputFormat.JSON)
 
     # Process questions
     with open(config.RAG_QUESTIONS, "r") as f:
