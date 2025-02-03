@@ -1,2 +1,6 @@
+# these are the base requirements for running only the terminal version of the app
+
+langchain
 langchain-chroma
 langchain-ollama
+pymupdf4llm
