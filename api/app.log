@@ -4318,3 +4318,30 @@ INFO:root:Session ID: 3eeb2705-95a4-4552-8ca6-54372533fbce, AI Response: The pro
 
 For information on the FDA's definition of "organic", I would recommend consulting other sources or guidance documents from the FDA specifically addressing organic standards.
 INFO:backoff:Backing off send_request(...) for 0.6s (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x74e09b3ef8c0>: Failed to establish a new connection: [Errno 111] Connection refused')))
+INFO:backoff:Backing off send_request(...) for 0.3s (requests.exceptions.ConnectionError: HTTPSConnectionPool(host='us.i.posthog.com', port=443): Max retries exceeded with url: /batch/ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7d478b5eb770>: Failed to establish a new connection: [Errno 111] Connection refused')))
+INFO:httpx:HTTP Request: GET http://127.0.0.1:11434/api/tags "HTTP/1.1 200 OK"
+INFO:root:Session ID: None, User Query: hello, Model: llama3.2
+INFO:httpx:HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO:root:Session ID: bcdf8a54-ce36-4290-83ed-908348379e1c, AI Response: Hello! It seems like we just started our conversation. You mentioned a context earlier, but I don't see any specific topic or question discussed yet. If you'd like to share the context or ask a question related to it, I'm here to help. What's on your mind?
+INFO:httpx:HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://127.0.0.1:11434/api/tags "HTTP/1.1 200 OK"
+INFO:root:Session ID: bcdf8a54-ce36-4290-83ed-908348379e1c, User Query: What are the FDA's recommendations for ensuring the safety of cosmetic products that contain nanomaterials?, Model: llama3.2
+INFO:httpx:HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO:root:Session ID: bcdf8a54-ce36-4290-83ed-908348379e1c, AI Response: Based on the provided context, it appears that the FDA guidance document provides general framework and points to consider for assessing the safety of nanomaterials in cosmetic products. However, I couldn't find specific recommendations or guidelines for ensuring the safety of cosmetic products that contain nanomaterials.
+
+The context mentions a "General Framework for Assessing the Safety of Cosmetic Products" (Section III.A), but it doesn't provide detailed information on how to implement this framework specifically for nanomaterials. It also mentions "Points to Consider in Assessing the Safety of Nanomaterials in Cosmetic Products," which includes "Nanomaterial Characterization" as one of the points, but again, no specific recommendations are provided.
+
+If you're looking for more detailed information on the FDA's recommendations for ensuring the safety of cosmetic products that contain nanomaterials, I would recommend reviewing the full guidance document or contacting the FDA directly for more information.
+INFO:httpx:HTTP Request: GET http://127.0.0.1:11434/api/tags "HTTP/1.1 200 OK"
+INFO:root:Session ID: bcdf8a54-ce36-4290-83ed-908348379e1c, User Query: What are the key recommendations for good manufacturing practices (GMP) in the cosmetic industry?, Model: llama3.2
+INFO:httpx:HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:11434/api/embed "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+INFO:root:Session ID: bcdf8a54-ce36-4290-83ed-908348379e1c, AI Response: Unfortunately, the provided context doesn't explicitly mention Good Manufacturing Practices (GMP) in the cosmetic industry. However, it does mention that the FDA is issuing guidance on safety issues related to nanomaterials in cosmetic products as part of their ongoing efforts to implement Task Force recommendations.
+
+The context does mention a "General Framework for Assessing the Safety of Cosmetic Products" and points to consider for assessing the safety of nanomaterials, but it doesn't provide specific information on GMP guidelines for the cosmetic industry.
+
+If you're looking for general guidance on GMP in the cosmetic industry, I would recommend searching for industry-specific guidelines or regulations, such as those provided by the International Fragrance Association (IFRA), the Personal Care Products Council (PCPC), or other relevant organizations.

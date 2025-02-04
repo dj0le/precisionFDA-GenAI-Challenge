@@ -1,6 +1,7 @@
 import subprocess
 import os
 from pathlib import Path
+import time
 
 
 def start_services():
@@ -11,6 +12,9 @@ def start_services():
         ["uvicorn", "main:app", "--reload"],
         cwd=root_dir / "api"
     )
+
+    # Add 2 second delay before starting streamlit
+    time.sleep(2)
 
     # Start Streamlit
     streamlit_process = subprocess.Popen(

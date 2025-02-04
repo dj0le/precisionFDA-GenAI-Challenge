@@ -1,9 +1,10 @@
-docx2txt
 langchain
-langchain_chroma
-langchain_community
-langchain-core
+langchain-chroma
 langchain-ollama
 pymupdf4llm
+
+docx2txt
+langchain_community
+langchain-core
 python-multipart
 streamlit
