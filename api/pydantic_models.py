@@ -1,24 +1,17 @@
 import ollama
 from datetime import datetime
 from pydantic import BaseModel, Field, validator
-
-def get_available_models():
-    try:
-        model_list = ollama.list()
-        return [model_info['model'].split(':')[0] for model_info in model_list['models']]
-    except Exception:
-        return ['llama3.2']
+from config import settings
 
 class QueryInput(BaseModel):
     question: str
     session_id: str = Field(default=None)
-    model: str = Field(default="llama3.2")
+    model: str = Field(default=settings.DEFAULT_MODEL)
 
     @validator('model')
     def validate_model(cls, v):
-        available_models = get_available_models()
-        if v not in available_models:
-            raise ValueError(f"Model must be one of: {available_models}")
+        if v not in settings.AVAILABLE_MODELS:
+            raise ValueError(f"Model must be one of: {settings.AVAILABLE_MODELS}")
         return v
 
 class QueryResponse(BaseModel):
