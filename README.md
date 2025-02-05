@@ -8,7 +8,7 @@ The Challenge overview can be reviewed here:
 A local first RAG implementation using open source solutions. The tool is a rag based local llm setup capable of accurately answering questions using the FDA provided data in the Cosmetic Guidance PDF.
 
 ## Technologies
-Cosmeticky is a python based app and uses Langchain, Ollama, Chroma, and PyMuPDF. The default llm model is llama3.2, which is the small format version of Llama 3. With a model size of only 2.0 GB, it is capable of running on many platforms. Users can also choose from any other models they have in Ollama if they prefer.
+Python based app using Langchain, Ollama, Chroma, and PyMuPDF. The default llm model is llama3.2, which is the small format version of Llama 3. With a model size of only 2.0 GB, it is capable of running on many platforms. Users can also choose from any other models they have in Ollama if they prefer.
 
 
 ## Install & run the current project
@@ -32,21 +32,23 @@ git clone https://github.com/dj0le/precisionFDA-GenAI-Challenge
 5. Setup the Virtual Env
 ```bash
 cd precisiionFDA-GenAI-Challenge
-python -m venv .pvenv
-source .pvenv/bin/activate
+python -m venv .venv
+source .venv/bin/activate
 ```
 6. Install requirements
 ```bash
 pip install -r requirements.txt
 ```
-7. Start the front and back end services
+7. Start the api
 ```bash
-python3 run.py
+python3 main.py
 ```
 
-That will get you up and running on the current version with a FASTapi backend (http://localhost:8000/ most likely) and the currently packaged front end. Right now it's a super basic streamlit instance, but once I have time to focus on that more, I will migrate to Svelte.
+Now, your backend api should be running (http://localhost:8000/) and you can see all the endpoints available in swagger at (http://localhost:8000/docs)
 
 If you prefer a command line approach, inside the CLi folder is the complete local rag implementation without fastapi etc. This has it's own README which will explain it further.
+
+The deprecated version folder contains an initial implementation FastAPI implementation that did not perform robustly, and is only listed still as reference, it is otherwise unnecessary.
 
 
 ## Remaining Steps:
@@ -54,4 +56,4 @@ If you prefer a command line approach, inside the CLi folder is the complete loc
 1. Improve rag implementation
 2. Add user features and maybe multimodal model capability for images and graphs
 3. UI implementation
-4. Local first refactoring
+4. PWA

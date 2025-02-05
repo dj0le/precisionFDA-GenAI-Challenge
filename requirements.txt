@@ -2,9 +2,3 @@ langchain
 langchain-chroma
 langchain-ollama
 pymupdf4llm
-
-docx2txt
-langchain_community
-langchain-core
-python-multipart
-streamlit

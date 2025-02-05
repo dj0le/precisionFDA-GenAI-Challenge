@@ -1,22 +1,10 @@
-GENERAL
 
-FORK CHECK
-switch to mdsplitter for better results
- or
-remove langchain vectorstore
+investigate utility of converting remaining docs to md for better splitting and embedding if adding non pdf files back
 
-
-re-implement pymupdf4llm and separate pdf files from other doc types
-investigate utility of converting remaining docs to md for better splitting and embedding
-re-implement metadata and id tags from cli version
-incorporate metadata information and search result pages ranked by score in details
 pull nvidia-smi type data for memory usage and process length to add to details
+
 setup test suite to determine model accuracy and rank them / their answers
+
 front end design and svelte implementation
 
 add option to invoke Kokoro voice reply to questions
-
-BATCH MODE
-add other doc types besides txt for the upload options
-create structured output prompt for answers
-allow user to select either txt or json to save file

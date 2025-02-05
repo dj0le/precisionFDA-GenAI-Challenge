@@ -1,23 +1,7 @@
 Move new CLI version to FastAPI / UI version
 
-### Phase 1: Core Infrastructure
-1. **Setup and Configuration**
-   - Set up basic FastAPI with CORS for JavaScript frontend
-   - Create a unified configuration system
-   - Basic project structure alignment with CLI version
 
-2. **Port Core Components**
-   - Move `DocumentProcessor` from CLI to shared location
-   - Move `LLMEngine` from CLI to shared location
-   - Create shared Pydantic models
-   - Basic error handling structure
 
-### Phase 2: Basic API Functionality
-3. **Update Document Processing Endpoint**
-   - Implement new document processing using CLI version
-   - Add basic progress tracking
-   - Update response format
-   - Basic error handling
 
 4. **Update Chat Endpoint**
    - Implement new LLM engine
@@ -36,27 +20,8 @@ Move new CLI version to FastAPI / UI version
    - Implement progress tracking
    - Add status endpoints
 
-### Phase 4: Frontend Support
-7. **API Documentation and Testing**
-   - Add Swagger documentation
-   - Basic API tests
-   - Frontend-specific endpoints
-
-8. **Advanced Features**
-   - Batch operations
-   - Enhanced session management
-   - Performance monitoring
-
-This approach:
-- Keeps the system functional while rebuilding
-- Lets you test each component as you go
-- Breaks the work into manageable chunks
-- Allows for incremental improvement
 
 
-1. Core Component Integration
-   - Integrate the new document processor, LLM engine, and results processor from the CLI
-   - Replace the current `langchain_utils.py` and `chroma_utils.py` with the more robust implementations we created
 
 2. Response Structure
    - Modify the API responses to include the additional metadata we're collecting in the CLI version (processing time, tokens, sources)
