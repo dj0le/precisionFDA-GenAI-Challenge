@@ -2,3 +2,5 @@ langchain
 langchain-chroma
 langchain-ollama
 pymupdf4llm
+pydantic-settings
+python-multipart
