@@ -1,7 +1,6 @@
 import os
 import sqlite3
 from contextlib import contextmanager
-from datetime import datetime
 
 DB_NAME = "document_metadata.db"
 

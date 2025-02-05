@@ -2,10 +2,11 @@ from typing import List, Optional, Dict, Any
 from datetime import datetime
 from pydantic import BaseModel, Field, validator
 from utils.model_utils import get_available_models
+from enum import Enum
 
 class QueryInput(BaseModel):
     question: str
-    session_id: Optional[str] = Field(default=None)
+    session_id: str
     model: str = Field(default="llama3.2")
     filename: Optional[str] = None
 
@@ -36,3 +37,34 @@ class DocumentMetadata(BaseModel):
 
 class DeleteFileRequest(BaseModel):
     file_id: int
+
+class OutputFormat(str, Enum):
+    TEXT = "text"
+    JSON = "json"
+    BOTH = "both"
+
+class BatchQueryQuestion(BaseModel):
+    question: str
+    metadata: Dict[str, Any] = Field(default_factory=dict)
+
+class QuestionResponse(BaseModel):
+    question_number: int
+    question: str
+    answer: str
+    sources: List[str]
+    processing_time_ns: int
+    total_tokens: int
+    metadata: Dict[str, Any]
+
+class BatchSummary(BaseModel):
+    timestamp: str
+    model: str
+    question_count: int
+    total_processing_time_ns: int
+    avg_processing_time_ns: float
+    total_tokens: int
+    avg_tokens_per_question: float
+
+class BatchQueryResponse(BaseModel):
+    summary: BatchSummary
+    responses: List[QuestionResponse]

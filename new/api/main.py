@@ -1,12 +1,18 @@
-import os, uuid, shutil, tempfile
+import os, shutil, tempfile
 from config import settings
-from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi import FastAPI, UploadFile, File, HTTPException, Response
 from document_processor import DocumentProcessor
 from utils.db_utils import get_all_documents, insert_document_record, delete_document_record
 from utils.pdf_utils import process_pdf
 from utils.model_utils import process_embeddings, get_available_models
 from llm_engine import LLMQueryEngine
-from utils.pydantic_models import DocumentMetadata, DeleteFileRequest, QueryResponse, QueryInput
+from utils.pydantic_models import DocumentMetadata, DeleteFileRequest, QueryResponse, QueryInput, OutputFormat, BatchSummary, QuestionResponse, BatchQueryResponse
+from results_processor import BatchResultsProcessor
+from utils.hash_utils import get_file_hash
+from typing import List
+import csv
+import json
+import io
 
 app = FastAPI()
 
@@ -55,7 +61,7 @@ async def process_document(
 
                 # Process the file
                 contents = await file.read()
-                file_hash = DocumentProcessor.get_file_hash(contents)
+                file_hash = get_file_hash(contents)
 
                 try:
                     file_id = insert_document_record(file.filename, file_hash)
@@ -142,3 +148,88 @@ def delete_document(request: DeleteFileRequest):
             return {"error": f"Deleted from Chroma but failed to delete {request.file_id} from database"}
     else:
         return {"error": f"Failed to delete document {request.file_id} from Chroma"}
+
+@app.post("/batch-query/upload", response_model=BatchQueryResponse)
+async def batch_query_upload(
+    file: UploadFile = File(...),
+    model: str = "llama2",
+    output_format: OutputFormat = OutputFormat.JSON
+):
+    try:
+        # Read and validate CSV file
+        content = await file.read()
+        text_content = content.decode('utf-8')
+        csv_reader = csv.reader(io.StringIO(text_content))
+        questions = [row[0] for row in csv_reader if row]  # Assuming one question per row
+
+        # Process questions
+        processor = BatchResultsProcessor(model_name=model)
+        llm_engine = LLMQueryEngine(
+            settings.CHROMA_PATH,
+            process_embeddings(),
+            model
+        )
+
+        for question in questions:
+            result = llm_engine.query(question)
+            processor.add_result(question, result)
+
+        # Get formatted results
+        results = processor.get_formatted_results()
+
+        # Handle different output formats
+        if output_format == OutputFormat.TEXT:
+            text_output = processor.to_text()
+            return Response(
+                content=text_output,
+                media_type="text/plain",
+                headers={
+                    "Content-Disposition": f"attachment; filename=batch_results.txt"
+                }
+            )
+        else:  # JSON format
+            return results
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error processing batch query: {str(e)}"
+        )
+
+@app.post("/batch-query/list", response_model=BatchQueryResponse)
+async def batch_query_list(
+    questions: List[str],
+    model: str = "llama2",
+    output_format: OutputFormat = OutputFormat.JSON
+):
+    try:
+        processor = BatchResultsProcessor(model_name=model)
+        llm_engine = LLMQueryEngine(
+            settings.CHROMA_PATH,
+            process_embeddings(),
+            model
+        )
+
+        for question in questions:
+            result = llm_engine.query(question)
+            processor.add_result(question, result)
+
+        results = processor.get_formatted_results()
+
+        if output_format == OutputFormat.TEXT:
+            text_output = processor.to_text()
+            return Response(
+                content=text_output,
+                media_type="text/plain",
+                headers={
+                    "Content-Disposition": f"attachment; filename=batch_results.txt"
+                }
+            )
+        else:  # JSON format
+            return results
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error processing batch query: {str(e)}"
+        )

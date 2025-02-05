@@ -1,4 +1,3 @@
-import hashlib
 from fastapi import HTTPException
 from langchain_chroma import Chroma
 from typing import List, Dict, Any
@@ -14,10 +13,6 @@ class DocumentProcessor:
                 status_code=500,
                 detail=f"Failed to initialize Chroma database: {str(e)}"
             )
-
-    @staticmethod
-    def get_file_hash(contents: bytes) -> str:
-        return hashlib.sha256(contents).hexdigest()
 
     def populate_vectordb(self, data: List[Dict[str, Any]], file_id: int) -> None:
         try:
