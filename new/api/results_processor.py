@@ -1,7 +1,7 @@
 from typing import List, Dict, Any
 from datetime import datetime
 from utils.formatting import format_timestamp, format_duration
-from .pydantic_models import BatchSummary, QuestionResponse, BatchQueryResponse
+from utils.pydantic_models import BatchSummary, QuestionResponse, BatchQueryResponse
 import json
 
 class BatchResultsProcessor:

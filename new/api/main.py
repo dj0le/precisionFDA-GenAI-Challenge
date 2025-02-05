@@ -149,10 +149,11 @@ def delete_document(request: DeleteFileRequest):
     else:
         return {"error": f"Failed to delete document {request.file_id} from Chroma"}
 
+# submit questions from a file
 @app.post("/batch-query/upload", response_model=BatchQueryResponse)
 async def batch_query_upload(
     file: UploadFile = File(...),
-    model: str = "llama2",
+    model: str = "llama3.2",
     output_format: OutputFormat = OutputFormat.JSON
 ):
     try:
@@ -196,10 +197,11 @@ async def batch_query_upload(
             detail=f"Error processing batch query: {str(e)}"
         )
 
+# submit questions directly as a JSON array in the request body
 @app.post("/batch-query/list", response_model=BatchQueryResponse)
 async def batch_query_list(
     questions: List[str],
-    model: str = "llama2",
+    model: str = "llama3.2",
     output_format: OutputFormat = OutputFormat.JSON
 ):
     try:
