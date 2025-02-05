@@ -3,7 +3,7 @@ import sqlite3
 from contextlib import contextmanager
 from datetime import datetime
 
-DB_NAME = "documenent_metadata.db"
+DB_NAME = "document_metadata.db"
 
 @contextmanager
 def get_db():

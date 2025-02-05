@@ -8,7 +8,10 @@ def process_pdf(file_path: str, file_id: int, file_hash: str) -> List[Dict[str, 
     pdf_data: List[Dict[str, Any]] = raw_data
 
     for page in pdf_data:
-        metadata = page.get("metadata", {})
+        if not isinstance(page, dict):
+            raise TypeError(f"Expected dictionary for page, got {type(page)}")
+
+        metadata: Dict[str, Any] = page.get("metadata", {})
         if not isinstance(metadata, dict):
             metadata = {}
 
