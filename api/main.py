@@ -3,6 +3,7 @@ import io
 import os
 import shutil
 import tempfile
+import uuid
 from typing import List
 
 # Third-party imports
@@ -13,10 +14,13 @@ from config import settings
 from document_processor import DocumentProcessor
 from llm_engine import LLMQueryEngine
 from results_processor import BatchResultsProcessor
+from chat_engine import ChatEngine
 from utils.db_utils import (
     get_all_documents,
     insert_document_record,
-    delete_document_record
+    delete_document_record,
+    get_chat_history,
+    insert_chat_history
 )
 from utils.hash_utils import get_file_hash
 from utils.model_utils import process_embeddings, get_available_models
@@ -59,6 +63,37 @@ async def health_check():
 @app.get("/available-models")
 def get_models():
     return {"models": get_available_models()}
+
+@app.post("/chat", response_model=QueryResponse)
+def chat(query_input: QueryInput):
+    session_id = query_input.session_id or str(uuid.uuid4())
+
+    chat_history = get_chat_history(session_id)
+
+    chat_engine = ChatEngine(model=query_input.model)
+    result = chat_engine.get_response(query_input.question, chat_history)
+
+    processing_time = result["response_metadata"].get("total_duration", 0)
+    tokens = result["usage_metadata"].get("total_tokens", 0)
+
+    insert_chat_history(
+        session_id=session_id,
+        user_query=query_input.question,
+        llm_response=result["response"],
+        sources=",".join(result["sources"]),
+        processing_time=processing_time,
+        tokens=tokens
+    )
+
+    return QueryResponse(
+        answer=result["response"],
+        sources=result["sources"],
+        response_metadata=result["response_metadata"],
+        usage_metadata=result["usage_metadata"],
+        session_id=session_id,
+        model=query_input.model,
+        filename=query_input.filename
+    )
 
 @app.post("/upload-doc")
 async def process_document(

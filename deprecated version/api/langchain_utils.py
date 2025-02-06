@@ -16,13 +16,13 @@ output_parser = StrOutputParser()
 
 # setup prompt to include message history as context
 add_context_prompt = """
-Given the chat history and the latest user question, formulate a search-optimized question that:
+Given the chat history and the latest user question, formulate a question that:
 1. Captures the full context of the conversation
 2. Includes relevant details from the chat history
 3. Can be used to find appropriate information in a document database
 4. Maintains the original intent of the user's question
 
-Your task is to reformulate the question to be more detailed and search-friendly, not to answer it.
+Your task is to reformulate the question, not to answer it.
 If the question is already well-formed and specific, you can return it as is.
 """
 

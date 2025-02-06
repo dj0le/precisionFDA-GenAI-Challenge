@@ -30,3 +30,7 @@ class LLMQueryEngine:
             "response_metadata": response.response_metadata,
             "usage_metadata": getattr(response, 'usage_metadata', {})
         }
+
+    def retrieve_relevant_documents(self, query_text: str):
+            results = self._db.similarity_search_with_score(query_text, k=3)
+            return [doc for doc, _score in results]

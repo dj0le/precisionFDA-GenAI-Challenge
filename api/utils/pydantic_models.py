@@ -1,5 +1,6 @@
 from typing import List, Optional, Dict, Any
 from datetime import datetime
+from utils.formatting import format_duration
 from pydantic import BaseModel, Field, validator
 from utils.model_utils import get_available_models
 from enum import Enum
@@ -19,12 +20,23 @@ class QueryInput(BaseModel):
 
 class QueryResponse(BaseModel):
     answer: str
-    sources: List[str]  # Document IDs used as sources
-    response_metadata: Dict[str, Any]  # For flexible metadata structure
-    usage_metadata: Dict[str, Any]  # For flexible metadata structure
+    sources: List[str]
+    response_metadata: Dict[str, Any]
+    usage_metadata: Dict[str, Any]
     session_id: str
     model: str
     filename: Optional[str] = None
+
+    @property
+    def formatted_processing_time(self) -> str:
+        """Returns human-readable processing time"""
+        duration = self.response_metadata.get("total_duration", 0)
+        return format_duration(duration)
+
+    @property
+    def total_tokens(self) -> int:
+        """Returns total tokens used"""
+        return self.usage_metadata.get("total_tokens", 0)
 
 class DocumentMetadata(BaseModel):
     file_id: int  # metadata sqltable row

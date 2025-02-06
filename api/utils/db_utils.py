@@ -15,6 +15,7 @@ def get_db():
         if conn:
             conn.close()
 
+""" This section is for creating and maintaining the database that stores document metadata. This metadata is useful for general information about what is available in the rag system, to check if a document already exists in the rag database, and for easily deleting documents from the vector db if no longer needed. This is not the rag vector db"""
 
 def create_document_store():
     with get_db() as conn:
@@ -54,7 +55,43 @@ def get_all_documents():
         ''')
         return [dict(doc) for doc in cursor.fetchall()]
 
-# completely reset all db data
+
+"""This section is for the chat implementation, and creates a database that tracks relevant data such as the session id, and chat history, so that the llm can use it in context and maintain an ongoing conversation with the user"""
+
+def create_chat_history_store():
+    with get_db() as conn:
+        conn.execute('''CREATE TABLE IF NOT EXISTS chat_history_store
+                    (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                     session_id TEXT,
+                     user_query TEXT,
+                     llm_response TEXT,
+                     sources TEXT,
+                     processing_time INT,
+                     tokens INT,
+                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)''')
+
+
+def insert_chat_history(session_id, user_query, llm_response, sources, processing_time, tokens):
+    with get_db() as conn:
+        conn.execute('INSERT INTO chat_history_store (session_id, user_query, llm_response, sources, processing_time, tokens) VALUES (?, ?, ?, ?, ?, ?)',
+            (session_id, user_query, llm_response, sources, processing_time, tokens))
+        conn.commit()
+
+
+def get_chat_history(session_id):
+    with get_db() as conn:
+        cursor = conn.cursor()
+        cursor.execute('SELECT user_query, llm_response FROM chat_history_store WHERE session_id = ? ORDER BY created_at', (session_id,))
+        messages = []
+        for row in cursor.fetchall():
+            messages.extend([
+            {"role": "human", "content": row['user_query']},
+            {"role": "ai", "content": row['llm_response']}
+            ])
+        return messages
+
+
+""" testing utility to delete all database data if needed"""
 def nuke_db():
     if os.path.exists(DB_NAME):
         os.remove(DB_NAME)
@@ -63,3 +100,4 @@ def nuke_db():
 
 # Initialize the database tables
 create_document_store()
+create_chat_history_store()
