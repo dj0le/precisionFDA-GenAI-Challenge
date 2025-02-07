@@ -1,0 +1,66 @@
+@import 'open-props/normalize';
+@import 'open-props/style';
+
+:root {
+	--surface-1: hsl(225, 6%, 13%);
+	--surface-2: hsl(210, 4%, 18%);
+	--text-1: hsl(201, 98%, 94%);
+	--text-2: hsl(201, 98%, 4%);
+	--accent-1: hsl(201, 98%, 39%);
+	--accent-2: hsl(145, 77%, 34%);
+
+	--space-sm: var(--size-3);
+	--space-lg: var(--size-5);
+
+	--font-size-sm: var(--font-size-0);
+	--font-size-body: 1.125rem;
+	--line-height-body: 1.6em;
+	--font-weight-normal: var(--font-weight-5);
+	--font-weight-bold: var(--font-weight-6);
+	--font-weight-hero: var(--font-weight-8);
+	--letter-spacing-body: 0.03em;
+	--letter-spacing-title: -0.03em;
+
+	--font-body: 'Outfit', sans-serif;
+	--font-title: 'Oxanium', sans-serif;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	background-color: var(--surface-1);
+	color: var(--text-1);
+	font-family: var(--font-body);
+	font-size: var(--font-size-body);
+	letter-spacing: var(--letter-spacing-body);
+	font-weight: var(--font-weight-normal);
+	line-height: var(--line-height-body);
+}
+
+.button {
+	-webkit-font-smoothing: antialiased;
+	-webkit-tap-highlight-color: transparent;
+	cursor: pointer;
+	display: inline-grid;
+	gap: var(--space-sm);
+	grid-auto-flow: column;
+	place-items: center;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	border: 1px solid var(--accent-1);
+	border-radius: var(--radius-2);
+	color: var(--text-1);
+	background-color: var(--text-2);
+	padding: 12px 32px;
+	touch-action: manipulation;
+	transition: all 2500ms var(--timing-function-slow-ease);
+}
+
+.button:hover {
+	background-color: var(--accent-1);
+}
+
+.title {
+	color: var(--accent-1);
+	place-self: center stretch;
+}
