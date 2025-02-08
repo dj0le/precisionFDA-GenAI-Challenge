@@ -21,27 +21,63 @@
 {/if}
 
 {#if documents && documents.length > 0}
-	<div>
+	<div class="documents-section">
 		<h2>Available Documents</h2>
-		<table>
-			<thead>
-				<tr>
-					<th>File ID</th>
-					<th>Filename</th>
-					<th>Upload Date</th>
-				</tr>
-			</thead>
-			<tbody>
-				{#each documents as doc}
-					<tr>
-						<td>{doc.file_id}</td>
-						<td>{doc.filename}</td>
-						<td>{new Date(doc.upload_timestamp).toLocaleString()}</td>
-					</tr>
-				{/each}
-			</tbody>
-		</table>
+		<div class="grid-table">
+			<div class="grid-header">
+				<div class="cell">File ID</div>
+				<div class="cell">Filename</div>
+				<div class="cell">Upload Date</div>
+			</div>
+			{#each documents as doc}
+				<div class="row">
+					<div class="cell">{doc.file_id}</div>
+					<div class="cell">{doc.filename}</div>
+					<div class="cell">{new Date(doc.upload_timestamp).toLocaleString()}</div>
+				</div>
+			{/each}
+		</div>
 	</div>
 {:else}
 	<p>No documents available</p>
 {/if}
+
+<style>
+	.documents-section {
+		margin-block: 2rem;
+	}
+
+	.grid-table {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2px;
+		background-color: hsl(220, 13%, 90%);
+		border-radius: 6px;
+		overflow: hidden;
+	}
+
+	.grid-header {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		gap: 2px;
+		background-color: hsl(220, 13%, 90%);
+		font-weight: 600;
+	}
+
+	.row {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		gap: 2px;
+		background-color: white;
+		transition: background-color 200ms ease;
+	}
+
+	.row:hover {
+		background-color: hsl(220, 13%, 98%);
+	}
+
+	.cell {
+		padding: clamp(0.5rem, 2vw, 1rem);
+		color: hsl(220, 13%, 20%);
+	}
+</style>
