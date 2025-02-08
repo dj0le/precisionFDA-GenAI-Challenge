@@ -8,6 +8,7 @@ from typing import List
 
 # Third-party imports
 from fastapi import FastAPI, UploadFile, File, HTTPException, Response
+from fastapi.middleware.cors import CORSMiddleware
 
 # Local application imports
 from config import settings
@@ -36,13 +37,13 @@ from utils.pydantic_models import (
     QuestionResponse,
 )
 
-from fastapi.middleware.cors import CORSMiddleware
-
 app = FastAPI()
 
 origins = [
-    "http://localhost:*",
-    "http://127.0.0.1:*",
+    "http://localhost:5173",  # Add your Svelte dev server port
+    "http://localhost:4173",  # Add your Svelte preview port
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:4173",
 ]
 
 app.add_middleware(
