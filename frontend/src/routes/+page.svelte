@@ -11,7 +11,7 @@
 	}
 </script>
 
-<h1>Welcome to Feddy /guide</h1>
+<h1 class="title">Welcome to Feddy /guide</h1>
 <p>your personal assistant for FDA-related questions.</p>
 
 {#if health}
@@ -22,7 +22,7 @@
 
 {#if documents && documents.length > 0}
 	<div class="documents-section">
-		<h2>Available Documents</h2>
+		<h2 class="title">Available Documents</h2>
 		<div class="grid-table">
 			<div class="grid-header">
 				<div class="cell">File ID</div>
