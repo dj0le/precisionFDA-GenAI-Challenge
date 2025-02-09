@@ -11,8 +11,8 @@
 	}
 </script>
 
-<h1>Welcome to Cosmeticky</h1>
-<p>Answer your FDA related questions</p>
+<h1>Welcome to Feddy /guide</h1>
+<p>your personal assistant for FDA-related questions.</p>
 
 {#if health}
 	<div class="model-section">

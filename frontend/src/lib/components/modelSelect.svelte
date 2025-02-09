@@ -7,7 +7,7 @@
 	}
 </script>
 
-<div class="settings-container">
+<div class="model-container">
 	<div class="setting-item">
 		<label for="model-select">Select Model:</label>
 		<select value={storedModel.value} onchange={handleModelChange}>
@@ -19,11 +19,12 @@
 </div>
 
 <style>
-	.settings-container {
-		background-color: var(--surface-2);
+	.model-container {
+		color: var(--text-2);
+		background: var(--surface-1);
 		padding: 1rem;
 		border-radius: 6px;
-		margin-bottom: 1rem;
+		border: 2px solid var(--border-1);
 	}
 
 	.setting-item {
