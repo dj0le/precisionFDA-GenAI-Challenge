@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { storedModel, availableModels } from '$lib/stores';
-	import ModelSelect from '$lib/components/modelSelect.svelte';
 
 	let { data } = $props();
 	const { health, documents } = data;
@@ -11,12 +10,18 @@
 	}
 </script>
 
-<h1>Welcome to Cosmeticky</h1>
-<p>Answer your FDA related questions</p>
-
 {#if health}
-	<div class="model-section">
-		<ModelSelect />
+	<div>
+		<h2>System Status</h2>
+		<p>Status: {health.status}</p>
+		<p>API Version: {health.api_version}</p>
+		<p>Current Model: {storedModel.value}</p>
+		<p>Models Loaded:</p>
+		<ul>
+			{#each health.models_loaded as model}
+				<li>{model}</li>
+			{/each}
+		</ul>
 	</div>
 {/if}
 
@@ -43,16 +48,15 @@
 {/if}
 
 <style>
-	.documents-section,
-	.model-section {
-		margin-block: 3rem;
+	.documents-section {
+		margin-block: 2rem;
 	}
 
 	.grid-table {
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 2px;
-		background-color: var(--surface-2);
+		background-color: hsl(220, 13%, 90%);
 		border-radius: 6px;
 		overflow: hidden;
 	}
@@ -61,7 +65,7 @@
 		display: grid;
 		grid-template-columns: auto 1fr auto;
 		gap: 2px;
-		color: var(--text-3);
+		background-color: hsl(220, 13%, 90%);
 		font-weight: 600;
 	}
 
@@ -69,17 +73,16 @@
 		display: grid;
 		grid-template-columns: auto 1fr auto;
 		gap: 2px;
-		color: var(--text-1);
-		background-color: var(--surface-2);
-		transition: ease-in-out all 200ms;
+		background-color: white;
+		transition: background-color 200ms ease;
 	}
 
 	.row:hover {
-		color: var(--text-2);
-		background-color: var(--surface-3);
+		background-color: hsl(220, 13%, 98%);
 	}
 
 	.cell {
-		padding: var(--padding);
+		padding: clamp(0.5rem, 2vw, 1rem);
+		color: hsl(220, 13%, 20%);
 	}
 </style>

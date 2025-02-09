@@ -2,13 +2,17 @@
 @import 'open-props/style';
 
 :root {
-	--surface-1: hsl(225, 6%, 13%);
-	--surface-2: hsl(210, 4%, 18%);
-	--text-1: hsl(201, 98%, 94%);
-	--text-2: hsl(201, 98%, 4%);
-	--accent-1: hsl(201, 98%, 39%);
-	--accent-2: hsl(145, 77%, 34%);
+	--surface-1: hsl(201, 16%, 17%);
+	--surface-2: hsl(186, 13%, 57%);
+	--surface-3: hsl(186, 13%, 37%);
+	--text-1: hsl(201, 16%, 14%);
+	--text-2: hsl(0, 0%, 85%);
+	--text-3: hsl(197, 77%, 17%);
+	--border-1: hsl(193, 43%, 67%);
+	--accent-1: hsl(195, 77%, 58%);
+	--accent-2: hsl(212, 52%, 52%);
 
+	--padding: clamp(0.5rem, 2vw, 1rem);
 	--space-sm: var(--size-3);
 	--space-lg: var(--size-5);
 
@@ -21,14 +25,14 @@
 	--letter-spacing-body: 0.03em;
 	--letter-spacing-title: -0.03em;
 
-	--font-body: 'Outfit', sans-serif;
-	--font-title: 'Oxanium', sans-serif;
+	--font-body: 'Work Sans', sans-serif;
+	--font-title: 'Mallanna', sans-serif;
 }
 
 body {
 	-webkit-font-smoothing: antialiased;
 	background-color: var(--surface-1);
-	color: var(--text-1);
+	color: var(--text-2);
 	font-family: var(--font-body);
 	font-size: var(--font-size-body);
 	letter-spacing: var(--letter-spacing-body);
@@ -50,7 +54,7 @@ body {
 	border: 1px solid var(--accent-1);
 	border-radius: var(--radius-2);
 	color: var(--text-1);
-	background-color: var(--text-2);
+	background-color: var(--surface-3);
 	padding: 12px 32px;
 	touch-action: manipulation;
 	transition: all 2500ms var(--timing-function-slow-ease);

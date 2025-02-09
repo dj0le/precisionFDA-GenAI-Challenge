@@ -1,24 +1,17 @@
-<nav>
-	<div><a href="/"><img src="./cosmetick.svg" alt="cosmeticky" class="logo" /></a></div>
-	<div class="primary">
-		<p>Chat</p>
-		<p>Batch</p>
-		<p>About</p>
+<nav class="primary">
+	<div><a href="/"><img src="./feddy-logo.svg" alt="cosmeticky" class="logo" /></a></div>
+	<div>
+		<a href="/settings">settings</a>
 	</div>
 </nav>
 
 <style>
-	nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding-top: 24px;
-	}
 	.primary {
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		justify-content: end;
+		grid-template-columns: 1fr 1fr;
+		justify-content: center;
 		place-items: center;
 		gap: 24px;
+		margin-block: 16px;
 	}
 </style>
