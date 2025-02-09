@@ -70,3 +70,39 @@ body {
 	color: var(--accent-1);
 	place-self: center stretch;
 }
+
+.documents-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2px;
+	background-color: var(--surface-2);
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+.documents-header {
+	display: grid;
+	grid-template-columns: 15% 1fr auto;
+	gap: 2px;
+	color: var(--text-3);
+	font-weight: 600;
+	border-bottom: 2px solid var(--border-1);
+}
+
+.documents-row {
+	display: grid;
+	grid-template-columns: 15% 1fr auto;
+	gap: 2px;
+	color: var(--text-1);
+	background-color: var(--surface-2);
+	transition: ease-in-out all 200ms;
+}
+
+.documents-row:hover {
+	color: var(--text-2);
+	background-color: var(--surface-3);
+}
+
+.documents-cell {
+	padding: var(--padding);
+}

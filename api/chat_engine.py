@@ -3,6 +3,7 @@ from llm_engine import LLMQueryEngine
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_ollama import ChatOllama
 from utils.model_utils import process_embeddings
+from utils.formatting import format_duration
 
 # define new prompt template for chat and historical context
 format_question_prompt = """
@@ -49,6 +50,6 @@ class ChatEngine:
         return {
             "response": response.content,
             "sources": [doc.metadata.get("id") for doc in documents],
-            "response_metadata": getattr(response, 'additional_kwargs', {}),
+            "response_metadata": response.response_metadata,
             "usage_metadata": getattr(response, 'usage_metadata', {})
         }

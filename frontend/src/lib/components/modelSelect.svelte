@@ -23,8 +23,6 @@
 		color: var(--text-2);
 		background: var(--surface-1);
 		padding: 1rem;
-		border-radius: 6px;
-		border: 2px solid var(--border-1);
 	}
 
 	.setting-item {
@@ -35,12 +33,18 @@
 	}
 
 	select {
-		padding: 0.5rem;
-		border-radius: 4px;
-		border: 1px solid hsl(220, 13%, 90%);
+		padding: 8px;
+		border-radius: 6px;
 	}
 
-	label {
-		font-weight: 500;
+	.setting-item select {
+		border: 1px solid var(--border-1);
+		background-color: var(--surface-1);
+		padding: 8px 16px;
+	}
+
+	.setting-item select:focus {
+		border-color: var(--accent-2);
+		outline: none;
 	}
 </style>
