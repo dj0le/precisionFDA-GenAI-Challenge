@@ -1,36 +1,18 @@
 import os
-import shutil
 from fastapi import HTTPException
-from langchain_chroma import Chroma
 from typing import List, Dict, Any
+from utils.chroma_manager import ChromaManager
 
 class DocumentProcessor:
     def __init__(self, chroma_path: str, embedding_function):
         self._chroma_path = chroma_path
         self._embedding_function = embedding_function
-        self._initialize_db()
-
-    def _initialize_db(self):
-        """Initialize or reinitialize the Chroma database"""
-        try:
-            os.makedirs(self._chroma_path, exist_ok=True)
-            self._db = Chroma(
-                persist_directory=self._chroma_path,
-                embedding_function=self._embedding_function,
-                collection_name="documents"
-            )
-        except Exception as e:
-            raise HTTPException(
-                status_code=500,
-                detail=f"Failed to initialize Chroma database: {str(e)}"
-            )
+        self._db_manager = ChromaManager()
+        self._db_manager.initialize(chroma_path, embedding_function)
 
     def populate_vectordb(self, data: List[Dict[str, Any]], file_id: str) -> None:
         try:
-            if not hasattr(self, '_db'):
-                self._initialize_db()
-
-            db_items = self._db.get(include=[])
+            db_items = self._db_manager.get_all_documents(include=[])
             db_ids = set(db_items["ids"])
 
             new_documents = []
@@ -61,7 +43,7 @@ class DocumentProcessor:
                     new_metadatas.append(cleaned_metadata)
 
             if new_documents:
-                self._db.add_texts(texts=new_documents, ids=new_ids, metadatas=new_metadatas)
+                self._db_manager.add_documents(new_documents, new_ids, new_metadatas)
 
         except Exception as e:
             raise HTTPException(
@@ -70,25 +52,4 @@ class DocumentProcessor:
             )
 
     def delete_doc_from_chroma(self, file_id: str) -> bool:
-            try:
-                matching_docs = self._db._collection.get(where={"file_id": file_id})
-                print(f"Found {len(matching_docs['ids'])} documents to delete")
-
-                self._db._collection.delete(where={"file_id": file_id})
-
-                remaining_docs = self._db._collection.get(where={"file_id": file_id})
-                if remaining_docs['ids']:
-                    print(f"Warning: {len(remaining_docs['ids'])} documents still remain")
-
-                all_docs = self._db.get(include=[])
-                if not all_docs["ids"]:
-                    if os.path.exists(self._chroma_path):
-                        shutil.rmtree(self._chroma_path)
-                    self._initialize_db()
-
-                return True
-            except Exception as e:
-                raise HTTPException(
-                    status_code=500,
-                    detail=f"Failed to delete document with file_id {file_id} from Chroma: {str(e)}"
-                )
+        return self._db_manager.delete_documents(file_id, self._chroma_path)

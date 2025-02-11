@@ -1,14 +1,15 @@
-from langchain_chroma import Chroma
 from langchain.prompts import ChatPromptTemplate
 from langchain_ollama import ChatOllama
 from config import settings
 from utils.model_utils import process_embeddings
+from utils.chroma_manager import ChromaManager
 from typing import Dict, Any
 
 class LLMQueryEngine:
     def __init__(self, chroma_path: str, embedding_function: Any, model: str):
         self.model = model
-        self._db = Chroma(persist_directory=settings.CHROMA_PATH, embedding_function=embedding_function)
+        self._db_manager = ChromaManager()
+        self._db_manager.initialize(chroma_path, embedding_function)
         self._llm = ChatOllama(model=self.model, temperature=0)
         self._prompt_template = ChatPromptTemplate.from_template("""
             Answer the question based only on the following context: {context}
@@ -24,7 +25,9 @@ class LLMQueryEngine:
         ]
 
     def query(self, query_text: str) -> Dict[str, Any]:
-        results = self._db.similarity_search_with_score(query_text, k=3)
+        results = self._db_manager.search_documents(query_text)
+        print(f"Found {len(results)} results for query: {query_text}")
+
         if not results:
             return {
                 "response": "I don't have any documents in my database to answer your question.",
@@ -34,9 +37,8 @@ class LLMQueryEngine:
             }
 
         documents = [doc for doc, _score in results]
-        context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in results])
+        context_text = "\n\n---\n\n".join([doc.page_content for doc in documents])
         prompt = self._prompt_template.format(context=context_text, question=query_text)
-
         response = self._llm.invoke(prompt)
 
         return {
@@ -47,5 +49,6 @@ class LLMQueryEngine:
         }
 
     def retrieve_relevant_documents(self, query_text: str):
-            results = self._db.similarity_search_with_score(query_text, k=3)
-            return [doc for doc, _score in results]
+        results = self._db_manager.search_documents(query_text)
+        print(f"Retrieved {len(results)} documents for query: {query_text}")
+        return [doc for doc, _score in results]

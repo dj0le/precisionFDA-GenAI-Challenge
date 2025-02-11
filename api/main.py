@@ -97,18 +97,15 @@ def chat(query_input: QueryInput):
 async def process_document(file: UploadFile):
     file_id = None
     try:
-        # Read file once
         contents = await file.read()
         file_size = len(contents)
 
-        # Validate file size
         if file_size > settings.MAX_FILE_SIZE:
             raise HTTPException(
                 status_code=400,
                 detail=f"File too large. Maximum size is {settings.MAX_FILE_SIZE/1_000_000:.1f}MB"
             )
 
-        # Validate filename and extension
         if not file.filename:
             raise HTTPException(status_code=400, detail="Filename is required")
 
@@ -119,7 +116,6 @@ async def process_document(file: UploadFile):
                 detail=f"Unsupported file type. Allowed types are: {', '.join(settings.ALLOWED_FILE_TYPES)}"
             )
 
-        # Generate hash from contents
         file_hash = get_file_hash(contents)
 
         try:
@@ -138,7 +134,7 @@ async def process_document(file: UploadFile):
             temp_file_path = temp_file.name
 
             try:
-                data = process_pdf(temp_file_path, file_id, file_hash)
+                data = process_pdf(temp_file_path, file_id, file_hash, original_filename=file.filename)
                 doc_processor = DocumentProcessor(settings.CHROMA_PATH, process_embeddings())
                 doc_processor.populate_vectordb(data, file_id)
 
