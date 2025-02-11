@@ -62,10 +62,6 @@ async def health_check():
         "models_loaded": get_available_models()
     }
 
-@app.get("/available-models")
-def get_models():
-    return {"models": get_available_models()}
-
 @app.post("/chat", response_model=QueryResponse)
 def chat(query_input: QueryInput):
     session_id = query_input.session_id or str(uuid.uuid4())

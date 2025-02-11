@@ -1,14 +1,17 @@
 <script lang="ts">
-	import { invalidateAll } from '$app/navigation';
+	import type { Document } from '$lib/types';
 
-	let { documents } = $props<{ documents: Array<any> }>();
+	let { listDocuments, refreshDocuments } = $props<{
+		listDocuments: Document[];
+		refreshDocuments: () => Promise<void>;
+	}>();
 
 	let fileInput: HTMLInputElement;
 	let isUploading = $state(false);
 	let uploadError = $state('');
 
 	let displayDocuments = $derived(
-		documents.map((doc, index) => ({
+		listDocuments.map((doc, index) => ({
 			...doc,
 			displayIndex: index + 1
 		}))
@@ -44,13 +47,14 @@
 				return;
 			}
 
-			const result = await response.json();
-			console.log('Upload successful:', result);
+			if (response.ok) {
+				console.log('Before refreshDocuments call');
+				await refreshDocuments();
+				console.log('After refreshDocuments call');
+			}
 
 			// Reset file input
 			if (fileInput) fileInput.value = '';
-
-			await invalidateAll();
 		} catch (error) {
 			console.error('Upload error:', error);
 			uploadError = error instanceof Error ? error.message : 'Upload failed';
@@ -75,7 +79,11 @@
 				throw new Error(errorData.detail || 'Delete failed');
 			}
 
-			await invalidateAll();
+			if (response.ok) {
+				const result = await response.json();
+				console.log('Delete successful:', result);
+				await refreshDocuments();
+			}
 		} catch (error) {
 			console.error('Delete error:', error);
 			alert(error instanceof Error ? error.message : 'Delete failed');
@@ -84,25 +92,31 @@
 </script>
 
 <div class="document-manager">
-	<div class="upload-section">
-		<input
-			type="file"
-			accept=".pdf"
-			onchange={(e) => handleFileUpload(e)}
-			bind:this={fileInput}
-			disabled={isUploading}
-		/>
-		{#if isUploading}
-			<div class="upload-status">Uploading...</div>
-		{/if}
-		{#if uploadError}
-			<div class="error-message" role="alert">
-				{uploadError}
-			</div>
-		{/if}
+	<div class="documents-section">
+		<div>
+			<h2 class="title">Available Documents</h2>
+		</div>
+
+		<div class="upload-section">
+			<input
+				type="file"
+				accept=".pdf"
+				onchange={(e) => handleFileUpload(e)}
+				bind:this={fileInput}
+				disabled={isUploading}
+			/>
+			{#if isUploading}
+				<div class="upload-status">Uploading...</div>
+			{/if}
+			{#if uploadError}
+				<div class="error-message" role="alert">
+					{uploadError}
+				</div>
+			{/if}
+		</div>
 	</div>
 
-	{#if documents && documents.length > 0}
+	{#if listDocuments && listDocuments.length > 0}
 		<div class="documents-grid">
 			<div class="documents-header">
 				<div class="documents-cell">Index</div>
@@ -129,12 +143,19 @@
 </div>
 
 <style>
+	.documents-section {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: center;
+		margin-bottom: 1rem;
+	}
+
 	.document-manager {
 		margin-bottom: 1rem;
 	}
 
 	.upload-section {
-		margin-bottom: 1rem;
+		justify-self: end;
 	}
 
 	.upload-status {
@@ -149,5 +170,17 @@
 		border-radius: 4px;
 		padding: 0.75rem 1.25rem;
 		margin-top: 0.5rem;
+	}
+	.delete-button {
+		background-color: #ff4444;
+		color: white;
+		border: none;
+		padding: 0.5rem 1rem;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+
+	.delete-button:hover {
+		background-color: #cc0000;
 	}
 </style>

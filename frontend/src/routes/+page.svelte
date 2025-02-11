@@ -1,11 +1,22 @@
 <script lang="ts">
-	import { storedModel, availableModels } from '$lib/stores';
+	import { availableModels } from '$lib/stores';
+	import { invalidateAll } from '$app/navigation';
 	import ModelSelect from '$lib/components/modelSelect.svelte';
 	import Chat from '$lib/components/chat.svelte';
 	import DocumentManager from '$lib/components/documentManager.svelte';
 
 	let { data } = $props();
-	const { health, documents } = data;
+	const { health, listDocuments } = data;
+
+	async function refreshDocuments() {
+		console.log('Starting refresh');
+		await invalidateAll();
+		console.log('Finished refresh');
+	}
+
+	$effect(() => {
+		console.log('listDocuments changed:', listDocuments);
+	});
 
 	if (health?.models_loaded) {
 		availableModels.value = health.models_loaded;
@@ -29,8 +40,9 @@
 </div>
 
 <div class="documents-section">
-	<h2 class="title">Available Documents</h2>
-	<DocumentManager {documents} />
+	{#if listDocuments}
+		<DocumentManager {listDocuments} {refreshDocuments} />
+	{/if}
 </div>
 
 <style>
@@ -53,17 +65,5 @@
 		border: 1px solid var(--border-1);
 		border-radius: 6px;
 		padding: var(--padding);
-	}
-	.delete-button {
-		background-color: #ff4444;
-		color: white;
-		border: none;
-		padding: 0.5rem 1rem;
-		border-radius: 4px;
-		cursor: pointer;
-	}
-
-	.delete-button:hover {
-		background-color: #cc0000;
 	}
 </style>
