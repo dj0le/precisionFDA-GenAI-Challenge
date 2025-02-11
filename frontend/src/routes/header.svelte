@@ -1,5 +1,5 @@
 <nav class="primary">
-	<div><a href="/"><img src="./feddy-logo.svg" alt="cosmeticky" class="logo" /></a></div>
+	<div><a href="/"><img src="./feddy-logo.svg" alt="feddi /guide" class="logo" /></a></div>
 	<div>
 		<a href="/settings">settings</a>
 	</div>

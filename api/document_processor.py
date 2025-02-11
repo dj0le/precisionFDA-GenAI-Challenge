@@ -14,7 +14,7 @@ class DocumentProcessor:
                 detail=f"Failed to initialize Chroma database: {str(e)}"
             )
 
-    def populate_vectordb(self, data: List[Dict[str, Any]], file_id: int) -> None:
+    def populate_vectordb(self, data: List[Dict[str, Any]], file_id: str) -> None:
         try:
             db_items = self._db.get(include=[])
             db_ids = set(db_items["ids"])
@@ -45,7 +45,7 @@ class DocumentProcessor:
                 detail=f"Failed to populate vector database: {str(e)}"
             )
 
-    def delete_doc_from_chroma(self, file_id: int) -> bool:
+    def delete_doc_from_chroma(self, file_id: str) -> bool:
         try:
             self._db._collection.delete(where={"file_id": file_id})
             return True

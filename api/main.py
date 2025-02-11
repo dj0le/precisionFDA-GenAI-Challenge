@@ -98,22 +98,19 @@ def chat(query_input: QueryInput):
     )
 
 @app.post("/upload-doc")
-async def process_document(
-    file: UploadFile):
+async def process_document(file: UploadFile):
     file_id = None
     try:
-        # Validate file size before reading
-        file_size = 0
-        while chunk := await file.read(8192):
-            file_size += len(chunk)
-            if file_size > settings.MAX_FILE_SIZE:
-                raise HTTPException(
-                    status_code=400,
-                    detail=f"File too large. Maximum size is {settings.MAX_FILE_SIZE/1_000_000:.1f}MB"
-                )
+        # Read file once
+        contents = await file.read()
+        file_size = len(contents)
 
-        # Reset file pointer
-        await file.seek(0)
+        # Validate file size
+        if file_size > settings.MAX_FILE_SIZE:
+            raise HTTPException(
+                status_code=400,
+                detail=f"File too large. Maximum size is {settings.MAX_FILE_SIZE/1_000_000:.1f}MB"
+            )
 
         # Validate filename and extension
         if not file.filename:
@@ -126,26 +123,25 @@ async def process_document(
                 detail=f"Unsupported file type. Allowed types are: {', '.join(settings.ALLOWED_FILE_TYPES)}"
             )
 
+        # Generate hash from contents
+        file_hash = get_file_hash(contents)
+
+        try:
+            file_id = insert_document_record(file.filename, file_hash)
+            if file_id is None:
+                raise HTTPException(
+                    status_code=500,
+                    detail="Failed to generate file ID"
+                )
+        except ValueError as e:
+            raise HTTPException(status_code=400, detail=str(e))
+
+        # Save to temp file for processing
         with tempfile.NamedTemporaryFile(suffix=file_extension, delete=False) as temp_file:
+            temp_file.write(contents)
+            temp_file_path = temp_file.name
+
             try:
-                # Save file to temp location
-                shutil.copyfileobj(file.file, temp_file)
-                temp_file_path = temp_file.name
-
-                # Process the file
-                contents = await file.read()
-                file_hash = get_file_hash(contents)
-
-                try:
-                    file_id = insert_document_record(file.filename, file_hash)
-                    if file_id is None:
-                        raise HTTPException(
-                            status_code=500,
-                            detail="Failed to generate file ID"
-                        )
-                except ValueError as e:
-                    raise HTTPException(status_code=400, detail=str(e))
-
                 data = process_pdf(temp_file_path, file_id, file_hash)
                 doc_processor = DocumentProcessor(settings.CHROMA_PATH, process_embeddings())
                 doc_processor.populate_vectordb(data, file_id)
@@ -156,14 +152,12 @@ async def process_document(
                 }
 
             finally:
-                # Cleanup temp file - using temp_file.name is more reliable
-                if os.path.exists(temp_file.name):
-                    os.remove(temp_file.name)
-
+                if os.path.exists(temp_file_path):
+                    os.remove(temp_file_path)
 
     except Exception as e:
         # Cleanup on failure
-        if 'file_id' in locals():
+        if file_id:
             delete_document_record(file_id)
         raise HTTPException(status_code=500, detail=str(e))
 

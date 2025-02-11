@@ -1,7 +1,7 @@
 from typing import List, Dict, Any
 import pymupdf4llm
 
-def process_pdf(file_path: str, file_id: int, file_hash: str) -> List[Dict[str, Any]]:
+def process_pdf(file_path: str, file_id: str, file_hash: str) -> List[Dict[str, Any]]:
     raw_data = pymupdf4llm.to_markdown(file_path, page_chunks=True)
     if not isinstance(raw_data, list):
         raise TypeError("Expected list from pymupdf4llm.to_markdown")

@@ -1,3 +1,22 @@
+add model to chat output to make sure it's correct
+
+add ability to see original page from the source results for a question
+
+change the sources to also say 'Page Number or something like that
+
+add an image capture to show front page of uploaded documents, and maybe to serve results when clicking on source
+
+file upload/delete
+
+delete unused endpoints
+
+put model on nav as a button, that opens up a grid of mini cards for each available model
+
+redesign home screen layout
+
+fix the broke ass nav layout
+
+
 
 investigate utility of converting remaining docs to md for better splitting and embedding if adding non pdf files back
 

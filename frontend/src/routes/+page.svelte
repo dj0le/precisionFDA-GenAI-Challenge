@@ -2,11 +2,11 @@
 	import { storedModel, availableModels } from '$lib/stores';
 	import ModelSelect from '$lib/components/modelSelect.svelte';
 	import Chat from '$lib/components/chat.svelte';
+	import DocumentManager from '$lib/components/documentManager.svelte';
 
 	let { data } = $props();
 	const { health, documents } = data;
 
-	// Update availableModels
 	if (health?.models_loaded) {
 		availableModels.value = health.models_loaded;
 	}
@@ -28,27 +28,10 @@
 	<Chat />
 </div>
 
-{#if documents && documents.length > 0}
-	<div class="documents-section">
-		<h2 class="title">Available Documents</h2>
-		<div class="documents-grid">
-			<div class="documents-header">
-				<div class="documents-cell">File ID</div>
-				<div class="documents-cell">Filename</div>
-				<div class="documents-cell">Upload Date</div>
-			</div>
-			{#each documents as doc}
-				<div class="documents-row">
-					<div class="documents-cell">{doc.file_id}</div>
-					<div class="documents-cell">{doc.filename}</div>
-					<div class="documents-cell">{new Date(doc.upload_timestamp).toLocaleString()}</div>
-				</div>
-			{/each}
-		</div>
-	</div>
-{:else}
-	<p>No documents available</p>
-{/if}
+<div class="documents-section">
+	<h2 class="title">Available Documents</h2>
+	<DocumentManager {documents} />
+</div>
 
 <style>
 	.documents-section {
@@ -70,5 +53,17 @@
 		border: 1px solid var(--border-1);
 		border-radius: 6px;
 		padding: var(--padding);
+	}
+	.delete-button {
+		background-color: #ff4444;
+		color: white;
+		border: none;
+		padding: 0.5rem 1rem;
+		border-radius: 4px;
+		cursor: pointer;
+	}
+
+	.delete-button:hover {
+		background-color: #cc0000;
 	}
 </style>

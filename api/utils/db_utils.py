@@ -1,5 +1,6 @@
 import os
 import sqlite3
+import uuid
 from contextlib import contextmanager
 
 DB_NAME = "document_metadata.db"
@@ -20,7 +21,7 @@ def get_db():
 def create_document_store():
     with get_db() as conn:
         conn.execute('''CREATE TABLE IF NOT EXISTS document_store
-                    (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    (id TEXT PRIMARY KEY,
                      filename TEXT,
                      file_hash TEXT UNIQUE,
                      upload_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP)''')
@@ -29,9 +30,9 @@ def insert_document_record(filename: str, file_hash: str):
     with get_db() as conn:
         cursor = conn.cursor()
         try:
-            cursor.execute('INSERT INTO document_store (filename, file_hash) VALUES (?, ?)',
-                         (filename, file_hash))
-            file_id = cursor.lastrowid
+            file_id = str(uuid.uuid4())
+            cursor.execute('INSERT INTO document_store (id, filename, file_hash) VALUES (?, ?, ?)',
+                         (file_id, filename, file_hash))
             conn.commit()
             return file_id
         except sqlite3.IntegrityError:
@@ -90,12 +91,24 @@ def get_chat_history(session_id):
             ])
         return messages
 
+""" generic reset for database to remove data """
+def reset_database():
+    with get_db() as conn:
+        conn.execute('DROP TABLE IF EXISTS document_store')
+        conn.execute('DROP TABLE IF EXISTS chat_history_store')
+    create_document_store()
+    create_chat_history_store()
 
-""" testing utility to delete all database data if needed"""
+""" testing utility to delete the database itself """
 def nuke_db():
     if os.path.exists(DB_NAME):
         os.remove(DB_NAME)
-# if reset:
+
+
+
+# if reset table data in database:
+# reset_database()
+# if delete the entire db:
 # nuke_db()
 
 # Initialize the database tables

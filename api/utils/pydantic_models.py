@@ -39,7 +39,7 @@ class QueryResponse(BaseModel):
         return self.usage_metadata.get("total_tokens", 0)
 
 class DocumentMetadata(BaseModel):
-    file_id: int  # metadata sqltable row
+    file_id: str  # metadata sqltable row
     file_hash: str  # SHA-256 hash
     filename: str
     upload_timestamp: datetime
@@ -48,7 +48,7 @@ class DocumentMetadata(BaseModel):
         from_attributes = True
 
 class DeleteFileRequest(BaseModel):
-    file_id: int
+    file_id: str
 
 class OutputFormat(str, Enum):
     TEXT = "text"

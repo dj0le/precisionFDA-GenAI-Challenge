@@ -1,5 +1,9 @@
+@layer openprops, normalize, components.base, components.has-deps;
+
 @import 'open-props/normalize';
 @import 'open-props/style';
+@import '$lib/css/textarea.css';
+@import '$lib/css/text-field.css';
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Mallanna&display=swap');
 
 :root {
@@ -28,6 +32,15 @@
 
 	--font-body: 'Atkinson Hyperlegible', sans-serif;
 	--font-title: 'Mallanna', sans-serif;
+}
+
+html {
+	/* Input Field */
+	--field-border-color: var(--border-color);
+	--field-border-radius: var(--size-1);
+	--field-border-width: 1px;
+	--field-size: 2.3lh;
+	--field-size-small: 1.9lh;
 }
 
 body {
@@ -82,7 +95,7 @@ body {
 
 .documents-header {
 	display: grid;
-	grid-template-columns: 15% 1fr auto;
+	grid-template-columns: 15% 1fr 1fr auto;
 	gap: 2px;
 	color: var(--text-3);
 	font-weight: 600;
@@ -91,7 +104,7 @@ body {
 
 .documents-row {
 	display: grid;
-	grid-template-columns: 15% 1fr auto;
+	grid-template-columns: 15% 1fr 1fr auto;
 	gap: 2px;
 	color: var(--text-1);
 	background-color: var(--surface-2);

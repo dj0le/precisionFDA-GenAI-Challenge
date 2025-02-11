@@ -88,7 +88,23 @@
 			</div>
 		{/if}
 	</div>
-	<div class="user-input">
+	<div>
+		<form on:submit|preventDefault={handleSubmit}>
+			<label class="field auto-fit">
+				<span class="label">User:</span>
+				<input
+					type="text"
+					bind:value={question}
+					placeholder="Ask a question..."
+					disabled={isLoading}
+				/>
+				<button type="submit" disabled={isLoading}>
+					{isLoading ? 'Sending...' : 'Send'}
+				</button>
+			</label>
+		</form>
+	</div>
+	<!-- <div class="user-input">
 		<form on:submit|preventDefault={handleSubmit}>
 			<input
 				type="text"
@@ -100,10 +116,13 @@
 				{isLoading ? 'Sending...' : 'Send'}
 			</button>
 		</form>
-	</div>
+	</div> -->
 </div>
 
 <style>
+	.chat-answer {
+		max-width: 75ch;
+	}
 	.chat-additional {
 		padding-block: 16px;
 	}
