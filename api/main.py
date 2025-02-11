@@ -192,9 +192,21 @@ async def query_documents(query_input: QueryInput):
 @app.get("/list-docs", response_model=list[DocumentMetadata])
 async def list_documents():
     try:
-        return get_all_documents()
+        documents = get_all_documents()
+
+        # If metadata database is empty, clear Chroma
+        if not documents:
+            if os.path.exists(settings.CHROMA_PATH):
+                shutil.rmtree(settings.CHROMA_PATH)
+                print("Cleared Chroma directory due to empty metadata database")
+
+        return documents
+
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error processing query: {str(e)}"
+        )
 
 @app.post("/delete-doc")
 def delete_document(request: DeleteFileRequest):

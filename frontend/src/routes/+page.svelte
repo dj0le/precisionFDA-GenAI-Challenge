@@ -25,8 +25,8 @@
 
 <div class="hero-grid">
 	<div>
-		<h1 class="title">Welcome to Feddy /guide</h1>
-		<p>your personal assistant for FDA-related questions.</p>
+		<h1 class="title">Meet Feddi</h1>
+		<p>your /guide for FDA-related questions.</p>
 	</div>
 	{#if health}
 		<div class="model-section">

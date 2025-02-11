@@ -16,17 +16,32 @@ class LLMQueryEngine:
             Answer the question based on the above context: {question}
             """)
 
+    def format_sources(self, documents):
+        """Common source formatting logic"""
+        return [
+            f"{doc.metadata.get('original_filename', 'Unknown')} (page{doc.metadata.get('page_number', 0)})"
+            for doc in documents
+        ]
+
     def query(self, query_text: str) -> Dict[str, Any]:
         results = self._db.similarity_search_with_score(query_text, k=3)
+        if not results:
+            return {
+                "response": "I don't have any documents in my database to answer your question.",
+                "sources": [],
+                "response_metadata": {},
+                "usage_metadata": {}
+            }
+
+        documents = [doc for doc, _score in results]
         context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in results])
         prompt = self._prompt_template.format(context=context_text, question=query_text)
 
         response = self._llm.invoke(prompt)
-        sources = [doc.metadata.get("id", None) for doc, _score in results]
 
         return {
             "response": response.content,
-            "sources": sources,
+            "sources": self.format_sources(documents),
             "response_metadata": response.response_metadata,
             "usage_metadata": getattr(response, 'usage_metadata', {})
         }

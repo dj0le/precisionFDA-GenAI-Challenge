@@ -104,8 +104,6 @@ def nuke_db():
     if os.path.exists(DB_NAME):
         os.remove(DB_NAME)
 
-
-
 # if reset table data in database:
 # reset_database()
 # if delete the entire db:

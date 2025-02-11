@@ -37,8 +37,11 @@ class ChatEngine:
 
     def get_response(self, query: str, chat_history: list):
         documents = self.llm_engine.retrieve_relevant_documents(query)
-        context = "\n\n---\n\n".join([doc.page_content for doc in documents])
 
+        if not documents:
+            return self.llm_engine.query(query)
+
+        context = "\n\n---\n\n".join([doc.page_content for doc in documents])
         prompt = self.context_prompt.format(
             context=context,
             chat_history=chat_history,
@@ -49,7 +52,7 @@ class ChatEngine:
 
         return {
             "response": response.content,
-            "sources": [doc.metadata.get("id") for doc in documents],
+            "sources": self.llm_engine.format_sources(documents),
             "response_metadata": response.response_metadata,
             "usage_metadata": getattr(response, 'usage_metadata', {})
         }
