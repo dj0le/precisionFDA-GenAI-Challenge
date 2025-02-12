@@ -15,6 +15,7 @@
 	--border-1: hsl(193, 43%, 67%);
 	--accent-1: hsl(195, 77%, 58%);
 	--accent-2: hsl(212, 52%, 52%);
+	--info: hsl(202, 67%, 36%);
 	--error: hsl(358, 71%, 55%);
 	--warning: hsl(40, 85%, 57%);
 	--success: hsl(140, 76%, 48%);
@@ -34,15 +35,6 @@
 
 	--font-body: 'Atkinson Hyperlegible', sans-serif;
 	--font-title: 'Mallanna', sans-serif;
-}
-
-html {
-	/* Input Field */
-	--field-border-color: var(--border-color);
-	--field-border-radius: var(--size-1);
-	--field-border-width: 1px;
-	--field-size: 2.3lh;
-	--field-size-small: 1.9lh;
 }
 
 body::before {
@@ -86,9 +78,9 @@ body {
 	text-transform: uppercase;
 	border: 1px solid var(--accent-1);
 	border-radius: var(--radius-2);
-	color: var(--text-1);
+	color: var(--text-3);
 	background-color: var(--surface-3);
-	padding: 12px 32px;
+	padding: 0.5rem 1rem;
 	touch-action: manipulation;
 	transition: all 2500ms var(--timing-function-slow-ease);
 }

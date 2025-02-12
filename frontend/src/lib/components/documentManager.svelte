@@ -1,17 +1,24 @@
 <script lang="ts">
+	import { documentStore } from '$lib/stores';
 	import type { Document } from '$lib/types';
 
-	let { listDocuments, refreshDocuments } = $props<{
+	let { listDocuments } = $props<{
 		listDocuments: Document[];
-		refreshDocuments: () => Promise<void>;
 	}>();
+
+	// Initialize store with listDocuments when it changes
+	$effect(() => {
+		if (listDocuments) {
+			documentStore.value = listDocuments;
+		}
+	});
 
 	let fileInput: HTMLInputElement;
 	let isUploading = $state(false);
 	let uploadError = $state('');
 
 	let displayDocuments = $derived(
-		listDocuments.map((doc, index) => ({
+		documentStore.value.map((doc, index) => ({
 			...doc,
 			displayIndex: index + 1
 		}))
@@ -36,21 +43,24 @@
 
 			if (!response.ok) {
 				const errorData = await response.json();
-				console.log('Error data received:', errorData);
-
 				if (errorData.detail?.includes('File already exists with ID:')) {
 					uploadError = 'This document has already been uploaded.';
 				} else {
 					uploadError = errorData.detail || 'Upload failed';
 				}
-				console.log('Upload error set to:', uploadError);
 				return;
 			}
 
 			if (response.ok) {
-				console.log('Before refreshDocuments call');
-				await refreshDocuments();
-				console.log('After refreshDocuments call');
+				const newDoc = await response.json();
+				// Ensure we have a complete document object
+				const completeDoc = {
+					file_id: newDoc.file_id,
+					filename: file.name, // Use the original file name if not provided in response
+					upload_timestamp: new Date().toISOString(),
+					...newDoc // This will override any default values if they exist in the response
+				};
+				documentStore.value = [...documentStore.value, completeDoc];
 			}
 
 			// Reset file input
@@ -58,7 +68,6 @@
 		} catch (error) {
 			console.error('Upload error:', error);
 			uploadError = error instanceof Error ? error.message : 'Upload failed';
-			console.log('Catch block upload error set to:', uploadError);
 		} finally {
 			isUploading = false;
 		}
@@ -80,9 +89,7 @@
 			}
 
 			if (response.ok) {
-				const result = await response.json();
-				console.log('Delete successful:', result);
-				await refreshDocuments();
+				documentStore.value = documentStore.value.filter((doc) => doc.file_id !== fileId);
 			}
 		} catch (error) {
 			console.error('Delete error:', error);
@@ -200,15 +207,11 @@
 		padding: 0.75rem 1.25rem;
 		margin-top: 0.5rem;
 	}
-	.delete-button {
+	.delete {
 		background-color: var(--error);
-		color: white;
 		border: none;
-		padding: 0.5rem 1rem;
-		border-radius: 4px;
-		cursor: pointer;
 	}
-	.delete-button:hover {
+	.delete:hover {
 		background-color: #c42126;
 	}
 </style>

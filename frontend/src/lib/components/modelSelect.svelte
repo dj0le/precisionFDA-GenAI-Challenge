@@ -10,7 +10,8 @@
 <div class="model-container">
 	<div class="setting-item">
 		<label for="model-select">Select Model:</label>
-		<select value={storedModel.value} onchange={handleModelChange}>
+		<select>
+			value={storedModel.value} onchange={handleModelChange}>
 			{#each availableModels.value as model}
 				<option value={model}>{model}</option>
 			{/each}
