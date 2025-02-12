@@ -9,6 +9,10 @@
 	import '../app.css';
 </script>
 
+<svelte:head>
+	<title>Feddi /guide</title>
+</svelte:head>
+
 <div class="layout">
 	<Header />
 	<main>
@@ -20,6 +24,7 @@
 
 <style>
 	.layout {
+		position: relative;
 		height: 100%;
 		min-height: 100vh;
 		display: grid;

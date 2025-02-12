@@ -22,6 +22,7 @@
 	.model-container {
 		color: var(--text-2);
 		background: var(--surface-1);
+		border-radius: 6px;
 		padding: 1rem;
 	}
 

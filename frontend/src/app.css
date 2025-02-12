@@ -1,21 +1,23 @@
-@layer openprops, normalize, components.base, components.has-deps;
-
 @import 'open-props/normalize';
 @import 'open-props/style';
-@import '$lib/css/textarea.css';
-@import '$lib/css/text-field.css';
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Mallanna&display=swap');
 
 :root {
 	--surface-1: hsl(201, 16%, 17%);
-	--surface-2: hsl(186, 13%, 57%);
-	--surface-3: hsl(186, 13%, 37%);
-	--text-1: hsl(201, 16%, 14%);
-	--text-2: hsl(0, 0%, 85%);
-	--text-3: hsl(197, 77%, 17%);
+	--surface-2: hsl(202, 25%, 15%);
+	--surface-3: hsl(203, 30%, 8%);
+	--surface-4: hsl(204, 38%, 5%);
+	--surface-5: hsl(200, 43%, 1%);
+	--text-1: hsl(200, 43%, 1%);
+	--text-2: hsl(198, 62%, 96%);
+	--text-3: hsl(203, 45%, 91%);
+	--text-4: hsl(202, 23%, 79%);
 	--border-1: hsl(193, 43%, 67%);
 	--accent-1: hsl(195, 77%, 58%);
 	--accent-2: hsl(212, 52%, 52%);
+	--error: hsl(358, 71%, 55%);
+	--warning: hsl(40, 85%, 57%);
+	--success: hsl(140, 76%, 48%);
 
 	--padding: clamp(0.5rem, 2vw, 1rem);
 	--space-sm: var(--size-3);
@@ -43,9 +45,26 @@ html {
 	--field-size-small: 1.9lh;
 }
 
+body::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('/bg-noise.svg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	opacity: 0.2;
+}
+
 body {
-	-webkit-font-smoothing: antialiased;
+	position: relative;
+	margin: 0;
+	min-height: 100vh;
 	background-color: var(--surface-1);
+	-webkit-font-smoothing: antialiased;
 	color: var(--text-2);
 	font-family: var(--font-body);
 	font-size: var(--font-size-body);
@@ -82,40 +101,4 @@ body {
 	font-family: var(--font-title);
 	color: var(--accent-1);
 	place-self: center stretch;
-}
-
-.documents-grid {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 2px;
-	background-color: var(--surface-2);
-	border-radius: 6px;
-	overflow: hidden;
-}
-
-.documents-header {
-	display: grid;
-	grid-template-columns: 15% 1fr 1fr auto;
-	gap: 2px;
-	color: var(--text-3);
-	font-weight: 600;
-	border-bottom: 2px solid var(--border-1);
-}
-
-.documents-row {
-	display: grid;
-	grid-template-columns: 15% 1fr 1fr auto;
-	gap: 2px;
-	color: var(--text-1);
-	background-color: var(--surface-2);
-	transition: ease-in-out all 200ms;
-}
-
-.documents-row:hover {
-	color: var(--text-2);
-	background-color: var(--surface-3);
-}
-
-.documents-cell {
-	padding: var(--padding);
 }

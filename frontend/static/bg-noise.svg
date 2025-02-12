@@ -1,0 +1,16 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" id="mesh-gradient" 
+	    width="1000" height="500" viewBox="0 0 1000 500" >
+	        <defs>
+	            <filter id="blur" filterUnits="userSpaceOnUse" x="0" y="0" width="1000" height="500">
+	                <feGaussianBlur stdDeviation="101" />
+	            </filter>
+	            <filter id="noise" x="0" y="0" width="100%" height="100%">
+				<feTurbulence type="fractalNoise" baseFrequency="1" octaves="3" result="turbulence" stitchTiles="stitch" />
+				<feBlend in="SourceGraphic" in2="turbulence" mode="overlay" />
+			</filter>
+	        </defs>
+	        <rect id="background" width="100%" height="100%" fill="#000" />
+	        <g id="swatches" width="1000" height="500" filter="url(#blur)"><rect x="100" y="0" width="560" height="580" fill="#080E12" /><rect x="50" y="-60" width="600" height="320" fill="#2C3D46" /><rect x="-140" y="190" width="420" height="480" fill="#0F171C" /><rect x="700" y="-200" width="500" height="580" fill="#1C282F" /></g>
+	    	<rect x="0" y="0" width="1000" height="500" 
+	    	style="mix-blend-mode: soft-light; filter: url(#noise); opacity: 20%"></rect>
+    	</svg>

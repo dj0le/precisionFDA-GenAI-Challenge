@@ -9,14 +9,8 @@
 	const { health, listDocuments } = data;
 
 	async function refreshDocuments() {
-		console.log('Starting refresh');
 		await invalidateAll();
-		console.log('Finished refresh');
 	}
-
-	$effect(() => {
-		console.log('listDocuments changed:', listDocuments);
-	});
 
 	if (health?.models_loaded) {
 		availableModels.value = health.models_loaded;

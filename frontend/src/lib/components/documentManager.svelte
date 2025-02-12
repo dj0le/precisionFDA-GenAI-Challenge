@@ -119,10 +119,10 @@
 	{#if listDocuments && listDocuments.length > 0}
 		<div class="documents-grid">
 			<div class="documents-header">
-				<div class="documents-cell">Index</div>
+				<div class="documents-cell">Number</div>
 				<div class="documents-cell">Filename</div>
-				<div class="documents-cell">Upload Date</div>
-				<div class="documents-cell">Actions</div>
+				<div class="documents-cell">Uploaded</div>
+				<div class="documents-cell"></div>
 			</div>
 			{#each displayDocuments as doc}
 				<div class="documents-row">
@@ -143,13 +143,44 @@
 </div>
 
 <style>
+	.documents-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2px;
+		background-color: var(--surface-1);
+		border: 1px solid var(--border-1);
+		border-radius: 6px;
+		overflow: hidden;
+	}
+	.documents-header {
+		display: grid;
+		grid-template-columns: 15% 1fr 1fr 15%;
+		background-color: var(--surface-2);
+		color: var(--text-2);
+		font-weight: 600;
+		border-bottom: 1px solid var(--border-1);
+	}
+	.documents-row {
+		display: grid;
+		grid-template-columns: 15% 1fr 1fr 15%;
+		gap: 2px;
+		color: var(--text-3);
+		background-color: var(--surface-1);
+		transition: ease-in-out all 200ms;
+	}
+	.documents-row:hover {
+		color: var(--text-3);
+		background-color: var(--surface-3);
+	}
+	.documents-cell {
+		padding: var(--padding);
+	}
 	.documents-section {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		align-items: center;
 		margin-bottom: 1rem;
 	}
-
 	.document-manager {
 		margin-bottom: 1rem;
 	}
@@ -157,30 +188,27 @@
 	.upload-section {
 		justify-self: end;
 	}
-
 	.upload-status {
 		color: var(--text-2);
 		margin-top: 0.5rem;
 	}
-
 	.error-message {
-		color: var(--error-color, #dc3545);
-		background-color: var(--error-bg, #f8d7da);
-		border: 1px solid var(--error-border, #f5c6cb);
-		border-radius: 4px;
+		color: var(--error);
+		background-color: var(#f7d4d7);
+		border: 1px solid var(#ed9ba4);
+		border-radius: 6px;
 		padding: 0.75rem 1.25rem;
 		margin-top: 0.5rem;
 	}
 	.delete-button {
-		background-color: #ff4444;
+		background-color: var(--error);
 		color: white;
 		border: none;
 		padding: 0.5rem 1rem;
 		border-radius: 4px;
 		cursor: pointer;
 	}
-
 	.delete-button:hover {
-		background-color: #cc0000;
+		background-color: #c42126;
 	}
 </style>
