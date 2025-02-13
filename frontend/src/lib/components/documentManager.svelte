@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { documentStore } from '$lib/stores';
 	import type { Document } from '$lib/types';
+	import UploadFile from './uploadFile.svelte';
+	import { onMount } from 'svelte';
 
 	interface DisplayDocument extends Document {
 		displayIndex: number;
@@ -18,14 +20,12 @@
 	});
 
 	let fileInput: HTMLInputElement;
-	let uploadProgress = $state(0);
 	let isUploading = $state(false);
 	let uploadError = $state('');
-
-	// Add sorting and filtering state
 	let sortField = $state('upload_timestamp');
 	let sortDirection = $state('desc');
 	let searchQuery = $state('');
+	let uploadedFiles: File[] = $state([]);
 
 	let displayDocuments: DisplayDocument[] = $derived(
 		documentStore.value
@@ -58,52 +58,52 @@
 		}
 	}
 
-	async function handleFileUpload(event: Event) {
-		const input = event.target as HTMLInputElement;
-		if (!input.files?.length) return;
+	async function handleFileUpload(files: File[]) {
+		uploadedFiles = files; // Update the state with new files
+		console.log('Files uploaded:', files);
 
-		const file = input.files[0];
-		isUploading = true;
-		uploadError = '';
+		// Iterate over each uploaded file and upload it
+		for (const file of files) {
+			isUploading = true;
+			uploadError = '';
 
-		try {
-			const formData = new FormData();
-			formData.append('file', file);
+			try {
+				const formData = new FormData();
+				formData.append('file', file);
 
-			const response = await fetch('http://localhost:8000/upload-doc', {
-				method: 'POST',
-				body: formData
-			});
+				const response = await fetch('http://localhost:8000/upload-doc', {
+					method: 'POST',
+					body: formData
+				});
 
-			if (!response.ok) {
-				const errorData = await response.json();
-				if (errorData.detail?.includes('File already exists with ID:')) {
-					uploadError = 'This document has already been uploaded.';
-				} else {
-					uploadError = errorData.detail || 'Upload failed';
+				if (!response.ok) {
+					const errorData = await response.json();
+					if (errorData.detail?.includes('File already exists with ID:')) {
+						uploadError = 'This document has already been uploaded.';
+					} else {
+						uploadError = errorData.detail || 'Upload failed';
+					}
+					continue; // Skip to the next file
 				}
-				return;
-			}
 
-			if (response.ok) {
-				const newDoc = await response.json();
-				// Ensure we have a complete document object
-				const completeDoc = {
-					file_id: newDoc.file_id,
-					filename: file.name, // Use the original file name if not provided in response
-					upload_timestamp: new Date().toISOString(),
-					...newDoc // This will override any default values if they exist in the response
-				};
-				documentStore.value = [...documentStore.value, completeDoc];
-			}
+				if (response.ok) {
+					const newDoc = await response.json();
+					const completeDoc = {
+						file_id: newDoc.file_id,
+						filename: file.name,
+						upload_timestamp: new Date().toISOString(),
+						...newDoc
+					};
+					documentStore.value = [...documentStore.value, completeDoc];
+				}
 
-			// Reset file input
-			if (fileInput) fileInput.value = '';
-		} catch (error) {
-			console.error('Upload error:', error);
-			uploadError = error instanceof Error ? error.message : 'Upload failed';
-		} finally {
-			isUploading = false;
+				// Reset file input  (Not needed here, as it's handled separately)
+			} catch (error) {
+				console.error('Upload error:', error);
+				uploadError = error instanceof Error ? error.message : 'Upload failed';
+			} finally {
+				isUploading = false; // Reset isUploading after each file
+			}
 		}
 	}
 
@@ -130,7 +130,21 @@
 			alert(error instanceof Error ? error.message : 'Delete failed');
 		}
 	}
+	onMount(() => {
+		console.log('listDocuments: ', listDocuments);
+	});
 </script>
+
+<UploadFile onUpload={handleFileUpload} />
+
+{#if uploadedFiles.length > 0}
+	<h2>Uploaded Files:</h2>
+	<ul>
+		{#each uploadedFiles as file}
+			<li>{file.name} ({file.type}, {file.size} bytes)</li>
+		{/each}
+	</ul>
+{/if}
 
 <div class="document-manager">
 	<div class="documents-section">
@@ -146,14 +160,6 @@
 				bind:this={fileInput}
 				disabled={isUploading}
 			/>
-			{#if isUploading}
-				<div class="upload-progress">
-					<div class="progress-bar">
-						<div class="progress-fill" style="width: {uploadProgress}%"></div>
-					</div>
-					<div class="progress-text">{uploadProgress}%</div>
-				</div>
-			{/if}
 			{#if uploadError}
 				<div class="error-message" role="alert">
 					{uploadError}
@@ -260,31 +266,6 @@
 	.sort-indicator {
 		display: inline-block;
 		margin-left: 0.5rem;
-	}
-	.upload-progress {
-		margin-top: 0.5rem;
-	}
-	.progress-bar {
-		width: 100%;
-		height: 4px;
-		background: var(--surface-2);
-		border-radius: 2px;
-		overflow: hidden;
-	}
-	.progress-fill {
-		height: 100%;
-		background: var(--accent-1);
-		transition: width 0.2s ease;
-	}
-	.progress-text {
-		font-size: 0.875rem;
-		color: var(--text-2);
-		margin-top: 0.25rem;
-	}
-	.progress-fill {
-		height: 100%;
-		background: var(--accent-1);
-		transition: width 0.3s ease-out;
 	}
 
 	.documents-grid {
