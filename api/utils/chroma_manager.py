@@ -38,19 +38,18 @@ class ChromaManager:
             )
         return self._db
 
-    def reset_db(self, chroma_path: str):
+    def reset_db(self, chroma_path: str, embedding_function: Any):
         """Reset the database by removing and recreating it"""
         try:
             if os.path.exists(chroma_path):
                 print("No documents remain in database, resetting...")
                 shutil.rmtree(chroma_path)
-                self.initialize(chroma_path, self._db._embedding_function)
+                self.initialize(chroma_path, embedding_function)
         except Exception as e:
             raise HTTPException(
                 status_code=500,
                 detail=f"Failed to reset database: {str(e)}"
             )
-
     def add_documents(self, texts: List[str], ids: List[str], metadatas: List[Dict]):
         """Add documents to the database"""
         self.db.add_texts(texts=texts, ids=ids, metadatas=metadatas)

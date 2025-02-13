@@ -135,7 +135,9 @@ async def process_document(file: UploadFile):
 
             try:
                 data = process_pdf(temp_file_path, file_id, file_hash, original_filename=file.filename)
-                doc_processor = DocumentProcessor(settings.CHROMA_PATH, process_embeddings())
+                # Explicitly initialize ChromaManager with the embedding function
+                embedding_function = process_embeddings()
+                doc_processor = DocumentProcessor(settings.CHROMA_PATH, embedding_function)
                 doc_processor.populate_vectordb(data, file_id)
 
                 return {

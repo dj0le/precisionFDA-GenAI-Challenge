@@ -64,46 +64,38 @@
 
 		const file = input.files[0];
 		isUploading = true;
-		uploadProgress = 0;
 		uploadError = '';
 
 		try {
-			// Create promise to handle XHR upload
-			const uploadFile = new Promise<any>((resolve, reject) => {
-				const xhr = new XMLHttpRequest();
-				const formData = new FormData();
-				formData.append('file', file);
+			const formData = new FormData();
+			formData.append('file', file);
 
-				xhr.upload.addEventListener('progress', (event) => {
-					if (event.lengthComputable) {
-						uploadProgress = Math.round((event.loaded / event.total) * 100);
-					}
-				});
-
-				xhr.addEventListener('load', () => {
-					if (xhr.status >= 200 && xhr.status < 300) {
-						resolve(JSON.parse(xhr.response));
-					} else {
-						reject(new Error('Upload failed'));
-					}
-				});
-
-				xhr.addEventListener('error', () => reject(new Error('Upload failed')));
-
-				xhr.open('POST', 'http://localhost:8000/upload-doc');
-				xhr.send(formData);
+			const response = await fetch('http://localhost:8000/upload-doc', {
+				method: 'POST',
+				body: formData
 			});
 
-			const response = await uploadFile;
+			if (!response.ok) {
+				const errorData = await response.json();
+				if (errorData.detail?.includes('File already exists with ID:')) {
+					uploadError = 'This document has already been uploaded.';
+				} else {
+					uploadError = errorData.detail || 'Upload failed';
+				}
+				return;
+			}
 
-			// Handle successful upload
-			const completeDoc = {
-				file_id: response.file_id,
-				filename: file.name,
-				upload_timestamp: new Date().toISOString(),
-				...response
-			};
-			documentStore.value = [...documentStore.value, completeDoc];
+			if (response.ok) {
+				const newDoc = await response.json();
+				// Ensure we have a complete document object
+				const completeDoc = {
+					file_id: newDoc.file_id,
+					filename: file.name, // Use the original file name if not provided in response
+					upload_timestamp: new Date().toISOString(),
+					...newDoc // This will override any default values if they exist in the response
+				};
+				documentStore.value = [...documentStore.value, completeDoc];
+			}
 
 			// Reset file input
 			if (fileInput) fileInput.value = '';
@@ -339,10 +331,6 @@
 
 	.upload-section {
 		justify-self: end;
-	}
-	.upload-status {
-		color: var(--text-2);
-		margin-top: 0.5rem;
 	}
 	.error-message {
 		color: var(--error);
