@@ -3,3 +3,5 @@ export interface Document {
 	filename: string;
 	upload_timestamp: string;
 }
+
+export type ToastType = 'info' | 'success' | 'error' | 'warning';

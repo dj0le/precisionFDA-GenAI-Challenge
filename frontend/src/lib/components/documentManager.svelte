@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { documentStore } from '$lib/stores';
 	import type { Document } from '$lib/types';
+	import type { ToastType } from '$lib/types';
 	import UploadFile from './uploadFile.svelte';
+	import Toast from './toast.svelte';
 	import { onMount } from 'svelte';
 
 	interface DisplayDocument extends Document {
@@ -19,13 +21,12 @@
 		}
 	});
 
-	let fileInput: HTMLInputElement;
-	let isUploading = $state(false);
 	let uploadError = $state('');
 	let sortField = $state('upload_timestamp');
 	let sortDirection = $state('desc');
 	let searchQuery = $state('');
-	let uploadedFiles: File[] = $state([]);
+	let toastMessage = $state('');
+	let toastType = $state<ToastType>('info');
 
 	let displayDocuments: DisplayDocument[] = $derived(
 		documentStore.value
@@ -59,12 +60,11 @@
 	}
 
 	async function handleFileUpload(files: File[]) {
-		uploadedFiles = files;
 		console.log('Files uploaded:', files);
 
-		// Iterate over each uploaded file and upload it
+		const uploadedFileNames = files.map((file) => file.name).join(', ');
+
 		for (const file of files) {
-			isUploading = true;
 			uploadError = '';
 
 			try {
@@ -78,11 +78,17 @@
 
 				if (!response.ok) {
 					const errorData = await response.json();
+					let errorMessage = errorData.detail || 'Upload failed';
+
 					if (errorData.detail?.includes('File already exists with ID:')) {
-						uploadError = 'This document has already been uploaded.';
-					} else {
-						uploadError = errorData.detail || 'Upload failed';
+						errorMessage = 'This document has already been uploaded.';
 					}
+
+					toastMessage = `Error uploading ${file.name}: ${errorMessage}`;
+					toastType = 'error';
+					setTimeout(() => {
+						toastMessage = '';
+					}, 5000); // 5 seconds
 					continue;
 				}
 
@@ -98,11 +104,19 @@
 				}
 			} catch (error) {
 				console.error('Upload error:', error);
-				uploadError = error instanceof Error ? error.message : 'Upload failed';
-			} finally {
-				isUploading = false;
+				toastMessage = `Error uploading ${file.name}: ${error instanceof Error ? error.message : 'Upload failed'}`;
+				toastType = 'error';
+				setTimeout(() => {
+					toastMessage = '';
+				}, 5000);
 			}
 		}
+
+		toastMessage = `Uploaded: ${uploadedFileNames}`;
+		toastType = 'success';
+		setTimeout(() => {
+			toastMessage = '';
+		}, 3000); // 3 seconds
 	}
 
 	async function handleDelete(fileId: string) {
@@ -143,6 +157,8 @@
 	}
 </script>
 
+<Toast message={toastMessage} type={toastType} />
+
 <div class="document-manager">
 	<div class="documents-section">
 		<div class="column-left">
@@ -160,23 +176,15 @@
 		</div>
 		<div class="upload-section">
 			<UploadFile onUpload={handleFileUpload} />
-			{#if uploadedFiles.length > 0}
-				<h2>Uploaded Files:</h2>
-				<ul>
-					{#each uploadedFiles as file}
-						<li>{file.name} ({file.type}, {file.size} bytes)</li>
-					{/each}
-				</ul>
-			{/if}
 		</div>
 	</div>
-	<div>
-		{#if uploadError}
-			<div class="error-message" role="alert">
-				{uploadError}
-			</div>
-		{/if}
-	</div>
+
+	{#if uploadError}
+		<div class="error-message" role="alert">
+			{uploadError}
+		</div>
+	{/if}
+
 	{#if documentStore.value.length > 0}
 		<div class="documents-grid">
 			<div class="documents-header">

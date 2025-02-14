@@ -92,10 +92,6 @@
 		border-color: var(--border-1);
 		background-color: var(--surface-2);
 	}
-	/* .file-list {
-		margin-top: 10px;
-	} */
-
 	.file-name {
 		display: inline-block;
 		margin: 8px;

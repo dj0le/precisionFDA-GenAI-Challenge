@@ -51,5 +51,10 @@ class DocumentProcessor:
                 detail=f"Failed to populate vector database: {str(e)}"
             )
 
-    def delete_doc_from_chroma(self, file_id: str) -> bool:
-        return self._db_manager.delete_documents(file_id, self._chroma_path)
+    def delete_doc_from_chroma(self, file_id: str, embedding_function: Any) -> bool:
+        """Delete a document from ChromaDB by file ID."""
+        try:
+            return self._db_manager.delete_documents(file_id, self._chroma_path, embedding_function)
+        except Exception as e:
+            print(f"Error deleting document from Chroma: {e}")
+            return False

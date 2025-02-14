@@ -54,7 +54,7 @@ class ChromaManager:
         """Add documents to the database"""
         self.db.add_texts(texts=texts, ids=ids, metadatas=metadatas)
 
-    def delete_documents(self, file_id: str, chroma_path: str) -> bool:
+    def delete_documents(self, file_id: str, chroma_path: str, embedding_function: Any) -> bool:
         """Delete documents by file_id"""
         try:
             matching_docs = self.db._collection.get(where={"file_id": file_id})
@@ -69,7 +69,7 @@ class ChromaManager:
             # Check if database is empty
             all_docs = self.db.get(include=[])
             if not all_docs["ids"]:
-                self.reset_db(chroma_path)
+                self.reset_db(chroma_path, embedding_function)
 
             return True
         except Exception as e:

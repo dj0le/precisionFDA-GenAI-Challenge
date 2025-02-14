@@ -209,8 +209,9 @@ async def list_documents():
 @app.post("/delete-doc")
 def delete_document(request: DeleteFileRequest):
     # delete from the llm vector db
-    doc_processor = DocumentProcessor(settings.CHROMA_PATH, process_embeddings())
-    chroma_delete_success = doc_processor.delete_doc_from_chroma(request.file_id)
+    embedding_function = process_embeddings()  # Get the embedding function
+    doc_processor = DocumentProcessor(settings.CHROMA_PATH, embedding_function)
+    chroma_delete_success = doc_processor.delete_doc_from_chroma(request.file_id, embedding_function=embedding_function)
 
     # Delete Metadata from database
     if chroma_delete_success:
