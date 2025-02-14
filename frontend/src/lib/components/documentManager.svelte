@@ -59,7 +59,7 @@
 	}
 
 	async function handleFileUpload(files: File[]) {
-		uploadedFiles = files; // Update the state with new files
+		uploadedFiles = files;
 		console.log('Files uploaded:', files);
 
 		// Iterate over each uploaded file and upload it
@@ -83,7 +83,7 @@
 					} else {
 						uploadError = errorData.detail || 'Upload failed';
 					}
-					continue; // Skip to the next file
+					continue;
 				}
 
 				if (response.ok) {
@@ -96,13 +96,11 @@
 					};
 					documentStore.value = [...documentStore.value, completeDoc];
 				}
-
-				// Reset file input  (Not needed here, as it's handled separately)
 			} catch (error) {
 				console.error('Upload error:', error);
 				uploadError = error instanceof Error ? error.message : 'Upload failed';
 			} finally {
-				isUploading = false; // Reset isUploading after each file
+				isUploading = false;
 			}
 		}
 	}
@@ -131,51 +129,54 @@
 		}
 	}
 	onMount(() => {
-		console.log('listDocuments: ', listDocuments);
+		console.log('listDocuments: ', $inspect(listDocuments));
 	});
+
+	function formatFilename(filename: string): string {
+		const nameWithoutExtension = filename.endsWith('.pdf') ? filename.slice(0, -4) : filename;
+
+		if (nameWithoutExtension.length > 25) {
+			return nameWithoutExtension.slice(0, 25) + '...';
+		}
+
+		return nameWithoutExtension;
+	}
 </script>
-
-<UploadFile onUpload={handleFileUpload} />
-
-{#if uploadedFiles.length > 0}
-	<h2>Uploaded Files:</h2>
-	<ul>
-		{#each uploadedFiles as file}
-			<li>{file.name} ({file.type}, {file.size} bytes)</li>
-		{/each}
-	</ul>
-{/if}
 
 <div class="document-manager">
 	<div class="documents-section">
-		<div>
-			<h2 class="title">Available Documents</h2>
+		<div class="column-left">
+			<div>
+				<h2 class="title">Available Documents</h2>
+			</div>
+			<div class="controls">
+				<input
+					type="search"
+					placeholder="Search documents..."
+					bind:value={searchQuery}
+					class="search-input"
+				/>
+			</div>
 		</div>
-
 		<div class="upload-section">
-			<input
-				type="file"
-				accept=".pdf"
-				onchange={(e) => handleFileUpload(e)}
-				bind:this={fileInput}
-				disabled={isUploading}
-			/>
-			{#if uploadError}
-				<div class="error-message" role="alert">
-					{uploadError}
-				</div>
+			<UploadFile onUpload={handleFileUpload} />
+			{#if uploadedFiles.length > 0}
+				<h2>Uploaded Files:</h2>
+				<ul>
+					{#each uploadedFiles as file}
+						<li>{file.name} ({file.type}, {file.size} bytes)</li>
+					{/each}
+				</ul>
 			{/if}
 		</div>
-		<div class="controls">
-			<input
-				type="search"
-				placeholder="Search documents..."
-				bind:value={searchQuery}
-				class="search-input"
-			/>
-		</div>
 	</div>
-
+	<div>
+		{#if uploadError}
+			<div class="error-message" role="alert">
+				{uploadError}
+			</div>
+		{/if}
+	</div>
 	{#if documentStore.value.length > 0}
 		<div class="documents-grid">
 			<div class="documents-header">
@@ -215,7 +216,7 @@
 			{#each displayDocuments as doc}
 				<div class="documents-row">
 					<div class="documents-cell">{doc.displayIndex}</div>
-					<div class="documents-cell">{doc.filename}</div>
+					<div class="documents-cell">{formatFilename(doc.filename)}</div>
 					<div class="documents-cell">{new Date(doc.upload_timestamp).toLocaleString()}</div>
 					<div class="documents-cell">
 						<button class="delete button" onclick={() => handleDelete(doc.file_id)}>
@@ -303,8 +304,14 @@
 	.documents-section {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
+
 		align-items: center;
-		margin-bottom: 1rem;
+	}
+	.column-left {
+		display: grid;
+		grid-template-rows: 1fr 1fr;
+		align-items: start;
+		gap: 16px;
 	}
 	.document-manager {
 		margin-bottom: 1rem;

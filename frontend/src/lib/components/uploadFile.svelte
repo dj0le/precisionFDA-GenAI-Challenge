@@ -69,7 +69,8 @@
 	{:else if dragging}
 		<p>Drop files here...</p>
 	{:else}
-		<p>Drag & drop files here or click to select</p>
+		<p>Drag & drop files here or</p>
+		<div class="upload-button">UPLOAD FILE</div>
 	{/if}
 
 	<input type="file" id="file-input" multiple onchange={handleFileSelect} style="display:none;" />
@@ -77,38 +78,46 @@
 
 <style>
 	.upload-area {
-		border: 2px dashed #ccc;
-		padding: 20px;
+		background: var(--surface-2);
+		border: 1px solid var(--border-1);
+		border-radius: 6px;
+		padding: 24px;
 		text-align: center;
 		cursor: pointer;
 		width: 300px;
 		margin: 20px auto;
-		transition: border-color 0.2s ease;
+		transition: background-color 0.1s ease-in-out;
 	}
-
 	.upload-area.dragging {
-		border-color: #007bff;
-		background-color: #f0f8ff;
+		border-color: var(--border-1);
+		background-color: var(--surface-2);
 	}
-
-	.file-list {
+	/* .file-list {
 		margin-top: 10px;
-	}
+	} */
 
 	.file-name {
 		display: inline-block;
-		margin: 5px;
-		padding: 5px 10px;
+		margin: 8px;
+		padding: 8px 16px;
 		border: 1px solid #ddd;
-		border-radius: 4px;
-		background-color: #f9f9f9;
+		border-radius: 6px;
+		background-color: var(--surface-2);
 	}
-
 	.upload-area:hover {
-		border-color: #007bff;
+		background-color: var(--surface-1);
 	}
-
-	p {
-		margin: 0;
+	.upload-button {
+		margin-block: 16px;
+		padding: 8px 16px;
+		border-radius: 6px;
+		background-color: var(--surface-6);
+	}
+	.upload-button:hover {
+		outline: 2px solid var(--border-1);
+		outline-offset: 6px;
+		border-radius: 6px;
+		background-color: var(--surface-6);
+		transition: 0.2s all ease;
 	}
 </style>
