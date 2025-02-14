@@ -35,7 +35,6 @@ cd precisionFDA-GenAI-Challenge
 
 2. Install backend dependencies
 ```bash
-cd api
 pip install -r requirements.txt
 cd ..
 ```
