@@ -21,7 +21,6 @@
 		}
 	});
 
-	let uploadError = $state('');
 	let sortField = $state('upload_timestamp');
 	let sortDirection = $state('desc');
 	let searchQuery = $state('');
@@ -60,13 +59,10 @@
 	}
 
 	async function handleFileUpload(files: File[]) {
-		console.log('Files uploaded:', files);
-
 		const uploadedFileNames = files.map((file) => file.name).join(', ');
+		let allUploadsSuccessful = true;
 
 		for (const file of files) {
-			uploadError = '';
-
 			try {
 				const formData = new FormData();
 				formData.append('file', file);
@@ -82,13 +78,16 @@
 
 					if (errorData.detail?.includes('File already exists with ID:')) {
 						errorMessage = 'This document has already been uploaded.';
+						toastMessage = `${file.name}: ${errorMessage}`;
+						toastType = 'info';
+						allUploadsSuccessful = false;
+					} else {
+						toastMessage = `Error uploading ${file.name}: ${errorMessage}`;
+						toastType = 'error';
+						allUploadsSuccessful = false;
 					}
-
-					toastMessage = `Error uploading ${file.name}: ${errorMessage}`;
-					toastType = 'error';
-					setTimeout(() => {
-						toastMessage = '';
-					}, 5000); // 5 seconds
+					await new Promise((resolve) => setTimeout(resolve, 3000));
+					toastMessage = '';
 					continue;
 				}
 
@@ -106,17 +105,17 @@
 				console.error('Upload error:', error);
 				toastMessage = `Error uploading ${file.name}: ${error instanceof Error ? error.message : 'Upload failed'}`;
 				toastType = 'error';
-				setTimeout(() => {
-					toastMessage = '';
-				}, 5000);
+				allUploadsSuccessful = false;
+				await new Promise((resolve) => setTimeout(resolve, 3000));
+				toastMessage = '';
 			}
 		}
-
-		toastMessage = `Uploaded: ${uploadedFileNames}`;
-		toastType = 'success';
-		setTimeout(() => {
+		if (allUploadsSuccessful) {
+			toastMessage = `Uploaded: ${uploadedFileNames}`;
+			toastType = 'success';
+			await new Promise((resolve) => setTimeout(resolve, 3000));
 			toastMessage = '';
-		}, 3000); // 3 seconds
+		}
 	}
 
 	async function handleDelete(fileId: string) {
@@ -131,17 +130,29 @@
 
 			if (!response.ok) {
 				const errorData = await response.json();
-				throw new Error(errorData.detail || 'Delete failed');
+				toastMessage = errorData.detail || 'Delete failed';
+				toastType = 'error';
+				await new Promise((resolve) => setTimeout(resolve, 3000));
+				toastMessage = '';
+				return;
 			}
 
 			if (response.ok) {
 				documentStore.value = documentStore.value.filter((doc) => doc.file_id !== fileId);
+				toastMessage = 'Document deleted successfully.';
+				toastType = 'success';
+				await new Promise((resolve) => setTimeout(resolve, 3000));
+				toastMessage = '';
 			}
 		} catch (error) {
 			console.error('Delete error:', error);
-			alert(error instanceof Error ? error.message : 'Delete failed');
+			toastMessage = error instanceof Error ? error.message : 'The document could not be deleted.';
+			toastType = 'warning';
+			await new Promise((resolve) => setTimeout(resolve, 3000));
+			toastMessage = '';
 		}
 	}
+
 	onMount(() => {
 		console.log('listDocuments: ', $inspect(listDocuments));
 	});
@@ -157,7 +168,9 @@
 	}
 </script>
 
-<Toast message={toastMessage} type={toastType} />
+{#if toastMessage}
+	<Toast message={toastMessage} type={toastType} />
+{/if}
 
 <div class="document-manager">
 	<div class="documents-section">
@@ -178,12 +191,6 @@
 			<UploadFile onUpload={handleFileUpload} />
 		</div>
 	</div>
-
-	{#if uploadError}
-		<div class="error-message" role="alert">
-			{uploadError}
-		</div>
-	{/if}
 
 	{#if documentStore.value.length > 0}
 		<div class="documents-grid">
@@ -328,14 +335,7 @@
 	.upload-section {
 		justify-self: end;
 	}
-	.error-message {
-		color: var(--error);
-		background-color: var(#f7d4d7);
-		border: 1px solid var(#ed9ba4);
-		border-radius: 6px;
-		padding: 0.75rem 1.25rem;
-		margin-top: 0.5rem;
-	}
+
 	.delete {
 		background-color: var(--error);
 		border: none;

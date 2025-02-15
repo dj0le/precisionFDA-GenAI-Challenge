@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { ToastType } from '$lib/types';
+	import { fade } from 'svelte/transition';
 
 	const {
 		message = '',
@@ -30,7 +31,7 @@
 </script>
 
 {#if showToast}
-	<div class="toast {type}">
+	<div class="toast {type}" transition:fade={{ duration: 300 }}>
 		{message}
 	</div>
 {/if}
@@ -44,9 +45,6 @@
 		color: var(--text-2);
 		padding: 12px 24px;
 		border-radius: 6px;
-		z-index: 1000;
-		opacity: 0.95;
-		transition: opacity 0.3s ease-in-out;
 	}
 
 	.toast.success {
@@ -58,7 +56,6 @@
 	.toast.info {
 		background-color: var(--info);
 	}
-
 	.toast.warning {
 		background-color: var(--warning);
 	}
