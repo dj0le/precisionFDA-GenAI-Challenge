@@ -1,24 +1,27 @@
 <script lang="ts">
-	let { onUpload } = $props<{ onUpload: (files: File[]) => void }>();
+	let { onUpload } = $props<{ onUpload: (files: File[]) => Promise<void> }>();
 	let files: File[] = $state([]);
 	let fileNames: string[] = $derived(files.map((file) => file.name));
 	let dragging = $state(false);
 
-	function handleFileSelect(event: Event) {
+	async function handleFileSelect(event: Event) {
 		const target = event.target as HTMLInputElement;
 		if (target.files) {
-			files = Array.from(target.files);
-			onUpload(files);
+			const selectedFiles = Array.from(target.files);
+			await onUpload(selectedFiles);
+			files = [];
+			target.value = '';
 		}
 	}
 
-	function handleDrop(event: DragEvent) {
+	async function handleDrop(event: DragEvent) {
 		event.preventDefault();
 		dragging = false;
 		const dataTransfer = event.dataTransfer;
 		if (dataTransfer && dataTransfer.files) {
-			files = Array.from(dataTransfer.files);
-			onUpload(files);
+			const droppedFiles = Array.from(dataTransfer.files);
+			await onUpload(droppedFiles);
+			files = [];
 		}
 	}
 
