@@ -1,13 +1,12 @@
 <script lang="ts">
-	import type { DisplayDocument } from './documentManager.svelte'; // Adjust path
-	import { createEventDispatcher } from 'svelte';
+	import type { DisplayDocument } from './documentManager.svelte';
 
-	const dispatch = createEventDispatcher();
-
-	let { displayDocuments, sortField, sortDirection } = $props<{
+	let { displayDocuments, sortField, sortDirection, onSort, onDelete } = $props<{
 		displayDocuments: DisplayDocument[];
 		sortField: string;
 		sortDirection: 'asc' | 'desc';
+		onSort: (field: string) => void;
+		onDelete: (fileId: string) => void;
 	}>();
 
 	function formatFilename(filename: string): string {
@@ -21,11 +20,11 @@
 	}
 
 	function handleSort(field: string) {
-		dispatch('sort', field);
+		onSort(field);
 	}
 
 	function handleDelete(fileId: string) {
-		dispatch('delete', fileId);
+		onDelete(fileId);
 	}
 </script>
 
@@ -36,8 +35,8 @@
 			<button
 				type="button"
 				class="sort-button"
-				on:click={() => handleSort('filename')}
-				on:keydown={(e) => e.key === 'Enter' && handleSort('filename')}
+				onclick={() => handleSort('filename')}
+				onkeydown={(e) => e.key === 'Enter' && handleSort('filename')}
 			>
 				Filename
 				{#if sortField === 'filename'}
@@ -51,8 +50,8 @@
 			<button
 				type="button"
 				class="sort-button"
-				on:click={() => handleSort('upload_timestamp')}
-				on:keydown={(e) => e.key === 'Enter' && handleSort('upload_timestamp')}
+				onclick={() => handleSort('upload_timestamp')}
+				onkeydown={(e) => e.key === 'Enter' && handleSort('upload_timestamp')}
 			>
 				Uploaded
 				{#if sortField === 'upload_timestamp'}
@@ -70,7 +69,7 @@
 			<div class="documents-cell">{formatFilename(doc.filename)}</div>
 			<div class="documents-cell">{new Date(doc.upload_timestamp).toLocaleString()}</div>
 			<div class="documents-cell">
-				<button class="delete button" on:click={() => handleDelete(doc.file_id)}> Delete </button>
+				<button class="delete button" onclick={() => handleDelete(doc.file_id)}> Delete </button>
 			</div>
 		</div>
 	{/each}
@@ -135,5 +134,12 @@
 	}
 	.documents-cell {
 		padding: var(--padding);
+	}
+	.delete {
+		background-color: var(--error);
+		border: none;
+	}
+	.delete:hover {
+		background-color: #c42126;
 	}
 </style>
