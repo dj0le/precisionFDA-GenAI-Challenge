@@ -84,11 +84,10 @@
 		background: var(--surface-2);
 		border: 1px solid var(--border-1);
 		border-radius: 6px;
-		padding: 24px;
+		padding: 32px;
 		text-align: center;
 		cursor: pointer;
-		width: 300px;
-		margin: 20px auto;
+		margin-block: 24px;
 		transition: background-color 0.1s ease-in-out;
 	}
 	.upload-area.dragging {
@@ -99,7 +98,7 @@
 		display: inline-block;
 		margin: 8px;
 		padding: 8px 16px;
-		border: 1px solid #ddd;
+		border: 1px solid var(--border-1);
 		border-radius: 6px;
 		background-color: var(--surface-2);
 	}
@@ -107,7 +106,7 @@
 		background-color: var(--surface-1);
 	}
 	.upload-button {
-		margin-block: 16px;
+		margin-top: 28px;
 		padding: 8px 16px;
 		border-radius: 6px;
 		background-color: var(--surface-6);

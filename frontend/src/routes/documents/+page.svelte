@@ -15,9 +15,3 @@
 <div class="documents-section">
 	<DocumentManager listDocuments={documentStore.value} />
 </div>
-
-<style>
-	.documents-section {
-		margin-block: 3rem;
-	}
-</style>

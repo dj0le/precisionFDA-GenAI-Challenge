@@ -1,7 +1,9 @@
-toast - style toast popus
+move model select to header
+implement chat ui design
+style info page
+add quick start guide for new users
 
-
-add model to chat output to make sure it's correct
+add model to chat output details
 
 add ability to see original page from the source results for a question
 
@@ -9,22 +11,10 @@ add ability to see original page from the source results for a question
 
 add an image capture to show front page of uploaded documents, and maybe to serve results when clicking on source
 
-
-
-put model on nav as a button, that opens up a grid of mini cards for each available model
-
-redesign home screen layout
-
-fix the broke ass nav layout
-
-
-
 investigate utility of converting remaining docs to md for better splitting and embedding if adding non pdf files back
 
 pull nvidia-smi type data for memory usage and process length to add to details
 
 setup test suite to determine model accuracy and rank them / their answers
-
-front end design and svelte implementation
 
 add option to invoke Kokoro voice reply to questions

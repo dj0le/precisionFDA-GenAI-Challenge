@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Header from './header.svelte';
-	import Footer from './footer.svelte';
 
 	let { children } = $props();
 
@@ -15,7 +14,7 @@
 
 <div class="layout">
 	<Header />
-	<main>
+	<main class="main">
 		{@render children()}
 	</main>
 </div>
@@ -30,8 +29,10 @@
 		align-items: center;
 		justify-content: center;
 		align-content: space-between;
-		margin-inline: auto;
 		padding-inline: 2rem;
-		border: 2px solid var(--border-1);
+	}
+	main {
+		margin-top: 8rem;
+		align-self: start;
 	}
 </style>

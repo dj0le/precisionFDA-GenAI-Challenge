@@ -205,13 +205,10 @@
 		border: 1px solid var(--border-1);
 		border-radius: 4px;
 		width: 100%;
-		max-width: 300px;
 	}
-
 	.documents-section {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-
 		align-items: center;
 	}
 	.column-left {
@@ -223,7 +220,6 @@
 	.document-manager {
 		margin-bottom: 1rem;
 	}
-
 	.upload-section {
 		justify-self: end;
 	}
