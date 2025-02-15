@@ -78,14 +78,8 @@
 <style>
 	.sort-button {
 		background: none;
-		border: none;
-		padding: 0;
-		font: inherit;
-		color: inherit;
 		cursor: pointer;
-		width: 100%;
 		text-align: left;
-		font-weight: 600;
 		display: flex;
 		align-items: center;
 	}
@@ -93,16 +87,10 @@
 	.sort-button:hover {
 		color: var(--accent-1);
 	}
-
-	.sort-button:focus {
-		outline: 2px solid var(--accent-1);
-		outline-offset: 2px;
-	}
 	.sort-indicator {
 		display: inline-block;
 		margin-left: 0.5rem;
 	}
-
 	.documents-grid {
 		display: grid;
 		grid-template-columns: 1fr;
@@ -123,6 +111,7 @@
 	.documents-row {
 		display: grid;
 		grid-template-columns: 15% 1fr 1fr 15%;
+		align-items: center;
 		gap: 2px;
 		color: var(--text-3);
 		background-color: var(--surface-1);

@@ -1,3 +1,5 @@
+<!-- currently not implemented -->
+
 <footer>
 	<a href="https://www.space-shift.com/">&#169 2024 // SPACEshift</a>
 </footer>

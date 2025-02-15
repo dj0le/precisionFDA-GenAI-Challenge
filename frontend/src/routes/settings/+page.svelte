@@ -1,17 +1,12 @@
 <script lang="ts">
 	import { storedModel, availableModels } from '$lib/stores';
-	import { invalidateAll } from '$app/navigation';
-	import DocumentManager from '$lib/components/documentManager.svelte';
 
 	let { data } = $props();
-	const { health, listDocuments } = data;
+	const { health } = data;
 
 	// Update availableModels
 	if (health?.models_loaded) {
 		availableModels.value = health.models_loaded;
-	}
-	async function refreshDocuments() {
-		await invalidateAll();
 	}
 </script>
 
@@ -29,15 +24,3 @@
 		</ul>
 	</div>
 {/if}
-
-<div class="documents-section">
-	{#if listDocuments}
-		<DocumentManager {listDocuments} {refreshDocuments} />
-	{/if}
-</div>
-
-<style>
-	.documents-section {
-		margin-block: 2rem;
-	}
-</style>
