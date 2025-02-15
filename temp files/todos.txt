@@ -1,7 +1,5 @@
 toast - style toast popus
-toast - clear toast completely when timeout is done
 
-fileupload - reset dropbox to default after upload finished
 
 add model to chat output to make sure it's correct
 
