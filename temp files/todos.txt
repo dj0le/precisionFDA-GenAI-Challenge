@@ -1,4 +1,4 @@
-bmove model select to header
+move model select to header
 implement chat ui design
 style info page
 add quick start guide for new users

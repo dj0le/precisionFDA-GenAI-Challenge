@@ -1,11 +1,34 @@
 <script lang="ts">
 	import Header from './header.svelte';
-
-	let { children } = $props();
-
 	import 'open-props/style';
 	import 'open-props/normalize';
 	import '../app.css';
+
+	let { children } = $props();
+
+	import { availableModels } from '$lib/stores';
+
+	export const load = async () => {
+		try {
+			const healthResponse = await fetch('http://localhost:8000/health');
+
+			if (!healthResponse.ok) {
+				throw new Error('Health API call failed');
+			}
+
+			const healthData = await healthResponse.json();
+
+			if (healthData?.models_loaded) {
+				availableModels.value = healthData.models_loaded;
+			}
+
+			return {};
+		} catch (error) {
+			console.error('Error loading health data:', error);
+			availableModels.value = [];
+			return {};
+		}
+	};
 </script>
 
 <svelte:head>

@@ -1,23 +1,8 @@
 <script lang="ts">
-	import { availableModels } from '$lib/stores';
-	import ModelSelect from '$lib/components/modelSelect.svelte';
 	import Chat from '$lib/components/chat.svelte';
-
-	let { data } = $props();
-	const { health } = data;
-
-	if (health?.models_loaded) {
-		availableModels.value = health.models_loaded;
-	}
 </script>
 
 <div class="container">
-	{#if health}
-		<div class="model-section">
-			<ModelSelect />
-		</div>
-	{/if}
-
 	<div class="chat-section">
 		<Chat />
 	</div>
