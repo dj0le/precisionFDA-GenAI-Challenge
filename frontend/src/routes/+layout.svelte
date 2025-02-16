@@ -27,12 +27,13 @@
 		display: grid;
 		grid-template-rows: auto 1fr;
 		align-items: center;
-		justify-content: center;
 		align-content: space-between;
 		padding-inline: 2rem;
 	}
 	main {
 		margin-top: 8rem;
+		padding-inline: 2rem;
 		align-self: start;
+		width: 100%;
 	}
 </style>
