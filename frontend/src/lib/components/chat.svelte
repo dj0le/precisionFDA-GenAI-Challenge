@@ -48,7 +48,6 @@
 			}
 
 			const result = await response.json();
-			// console.log('Full response:', result);
 
 			answer = result.answer;
 			sources = result.sources;
@@ -66,29 +65,43 @@
 </script>
 
 <div class="chat-container">
-	<div class="llm-section">
-		{#if isLoading}
-			<div>Loading...</div>
-		{:else}
-			<div class="chat-answer"><Markdown content={answer} /></div>
-			<div class="chat-additional">
-				Sources:
-				<ul>
-					{#each sources as source}
-						<li>{source}</li>
-					{/each}
-				</ul>
+	{#if isLoading}
+		<div>thinking...</div>
+	{:else}
+		<div class="question">
+			<h3 class="question-label title">Question:</h3>
+			<div class="question-text">{question}</div>
+		</div>
+		<div class="separator"></div>
+		<div class="answer">
+			<h3 class="answer-label title">Feddi:</h3>
+			<div class="answer-text"><Markdown content={answer} /></div>
+		</div>
+		<div class="separator"></div>
+		<div class="sources">
+			<h3 class="sources-label title">Sources:</h3>
+			<div class="sources-container">
+				<div class="sources-list">
+					<ul>
+						{#each sources as source}
+							<li>{source}</li>
+						{/each}
+					</ul>
+				</div>
+				<div class="sources-details">
+					<div>
+						Processing Time: {formatDuration(response_metadata.total_duration)}
+					</div>
+					<div>
+						Tokens Used: {usage_metadata.total_tokens}
+					</div>
+				</div>
+				<button class="sources-button button">clear chat</button>
 			</div>
-			<div class="chat-additional">
-				Processing Time: {response_metadata?.total_duration
-					? formatDuration(response_metadata.total_duration)
-					: 'N/A'}
-			</div>
-			<div class="chat-additional">
-				Tokens Used: {usage_metadata.total_tokens}
-			</div>
-		{/if}
-	</div>
+		</div>
+	{/if}
+</div>
+<div class="question-container">
 	<div>
 		<form on:submit|preventDefault={handleSubmit}>
 			<label class="field auto-fit">
@@ -99,19 +112,70 @@
 					placeholder="Ask a question..."
 					disabled={isLoading}
 				/>
-				<button type="submit" disabled={isLoading}>
-					{isLoading ? 'Sending...' : 'Send'}
-				</button>
 			</label>
 		</form>
 	</div>
 </div>
 
 <style>
-	.chat-answer {
-		max-width: 75ch;
+	.chat-container {
+		border: 1px solid var(--border-1);
+		background-color: var(--surface-2);
+		border-radius: 6px;
+		padding: var(--padding);
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto auto;
+		max-width: 1600px;
+		width: 100%;
+		align-items: start;
 	}
-	.chat-additional {
+	.question,
+	.answer,
+	.sources {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		grid-gap: 8px;
 		padding-block: 16px;
+	}
+	.answer-label,
+	.sources-label,
+	.question-label {
+		align-self: start;
+	}
+	.answer-text {
+		justify-self: start;
+	}
+	.separator {
+		border: 1px solid var(--border-1);
+	}
+	.sources-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 8px;
+		padding-top: 32px;
+	}
+	.sources-button {
+		background-color: var(--surface-1);
+	}
+	.sources-details {
+		place-self: center;
+	}
+	.question-container {
+		width: 100%;
+		padding: 16px;
+		margin-top: 32px;
+	}
+	.question-container form label {
+		color: var(--accent-1);
+		margin-bottom: 8px;
+		padding-left: 18px;
+	}
+	.question-container form input[type='text'] {
+		padding: 16px;
+		background-color: var(--surface-2);
+		border: 1px solid var(--border-1);
+		border-radius: 6px;
+		width: 100%;
 	}
 </style>

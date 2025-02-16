@@ -9,11 +9,6 @@
 </div>
 
 <style>
-	.container {
-		border: 1px solid var(--border-1);
-		border-radius: 6px;
-		padding: var(--padding);
-	}
 	.chat-section {
 		margin-block: 2rem;
 		border-radius: 6px;
