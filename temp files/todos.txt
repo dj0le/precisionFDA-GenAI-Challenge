@@ -1,4 +1,4 @@
-move model select to header
+
 implement chat ui design
 style info page
 add quick start guide for new users
@@ -7,6 +7,7 @@ custom search component so styling can be applied
 add model to chat output details
 
 add ability to see original page from the source results for a question
+take photo of first page of uploaded docs and add to document details db
 
 
 

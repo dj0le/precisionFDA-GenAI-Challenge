@@ -66,7 +66,7 @@
 		align-items: center;
 	}
 	.model-container {
-		color: var(--text-2);
+		color: var(--text-4);
 		border-radius: 6px;
 		padding: 1rem;
 		grid-column: 2 / 3;

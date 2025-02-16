@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { storedModel } from '$lib/stores';
+	import Markdown from './markdown.svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
 	let question = '';
@@ -69,7 +70,7 @@
 		{#if isLoading}
 			<div>Loading...</div>
 		{:else}
-			<div class="chat-answer">{answer}</div>
+			<div class="chat-answer"><Markdown content={answer} /></div>
 			<div class="chat-additional">
 				Sources:
 				<ul>
@@ -104,19 +105,6 @@
 			</label>
 		</form>
 	</div>
-	<!-- <div class="user-input">
-		<form on:submit|preventDefault={handleSubmit}>
-			<input
-				type="text"
-				bind:value={question}
-				placeholder="Ask a question..."
-				disabled={isLoading}
-			/>
-			<button type="submit" disabled={isLoading}>
-				{isLoading ? 'Sending...' : 'Send'}
-			</button>
-		</form>
-	</div> -->
 </div>
 
 <style>
