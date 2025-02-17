@@ -15,7 +15,6 @@
 	let isLoading = $state(false);
 	let sessionId = $state(uuidv4());
 	let currentContent = $state('');
-	let showFullAnswer = $state(false);
 	let chatContainerHeight = $state('58vh');
 
 	function formatDuration(nanoseconds: number): string {
@@ -62,7 +61,6 @@
 			displayedQuestion = question;
 			question = '';
 			currentContent = 'answer';
-			chatContainerHeight = 'auto';
 		} catch (error) {
 			console.error('Error:', error);
 			answer = 'Error: Failed to get response';
@@ -83,12 +81,11 @@
 		isLoading = false;
 		sessionId = uuidv4();
 		currentContent = '';
-		showFullAnswer = false;
 		chatContainerHeight = '58vh';
 	}
 </script>
 
-<div class="chat-container" style="height: {chatContainerHeight}">
+<div class="chat-container" style="min-height: {chatContainerHeight}">
 	{#if !hasAskedQuestion && currentContent === ''}
 		<div class="fade-in">
 			<Placeholder />
@@ -103,7 +100,7 @@
 		<div class="fade-in separator"></div>
 		<div class="fade-in answer">
 			<h3 class="answer-label title">Feddi:</h3>
-			<div class="answer-text" class:truncated={!showFullAnswer}>
+			<div class="answer-text">
 				<Markdown content={answer} />
 			</div>
 		</div>
@@ -154,66 +151,93 @@
 		background-color: var(--surface-2);
 		border-radius: 6px;
 		padding: var(--padding);
-		display: grid;
-		grid-template-columns: 1fr;
+		display: flex;
+		flex-direction: column;
 		max-width: 1200px;
 		width: 100%;
 		overflow-y: auto;
-		align-items: start;
+		align-items: stretch; /* Changed from start to stretch*/
 		margin-inline: auto;
 		position: relative;
 		overflow: visible;
+		min-height: 58vh;
 	}
+
 	.fade-in {
-		animation: fadeIn 0.35s ease-in-out;
+		animation: fadeIn 0.3s ease-in-out;
 	}
 
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
 		}
+
 		to {
 			opacity: 1;
 		}
 	}
+
 	.question,
-	.answer,
 	.sources {
 		display: grid;
 		grid-template-columns: 15% 1fr;
 		grid-gap: 8px;
 		padding-block: 16px;
-		justify-items: center;
+		justify-items: start;
+		flex: 0 0 auto;
+		align-items: start;
 	}
+
+	.answer {
+		display: grid;
+		grid-template-columns: 15% 1fr;
+		grid-gap: 8px;
+		padding-block: 16px;
+		justify-items: start;
+		flex: 1;
+		align-items: start;
+	}
+
 	.answer-label,
 	.sources-label,
 	.question-label {
 		align-self: start;
 	}
+
 	.question-text,
 	.answer-text,
 	.sources-container {
 		margin-left: 16px;
 		justify-self: start;
 	}
+
+	.answer-text {
+		height: 100%;
+	}
+
 	.separator {
 		border: 1px solid var(--border-1);
 	}
+
 	.sources-container {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
 		gap: 8px;
 		padding-top: 32px;
 	}
+
 	.sources-button {
 		background-color: var(--surface-1);
 	}
+
 	.sources-details {
 		place-self: center;
 	}
+
 	.clear-container {
 		place-self: end;
 	}
+
 	.question-container {
 		width: 100%;
 		max-width: 1200px;
@@ -221,11 +245,13 @@
 		margin-top: 32px;
 		margin-inline: auto;
 	}
+
 	.question-container form label {
 		color: var(--accent-1);
 		margin-bottom: 8px;
 		padding-left: 18px;
 	}
+
 	.question-container form input[type='text'] {
 		padding: 16px;
 		background-color: var(--surface-2);
