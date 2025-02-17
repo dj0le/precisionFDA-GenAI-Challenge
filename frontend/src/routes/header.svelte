@@ -18,7 +18,7 @@
 				class="model-select"
 				id="model-select"
 				bind:value={storedModel.value}
-				on:change={handleModelChange}
+				onchange={handleModelChange}
 			>
 				{#each availableModels.value as model}
 					<option value={model}>{model}</option>
