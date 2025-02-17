@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Header from './header.svelte';
+	import Footer from './footer.svelte';
 	import 'open-props/style';
 	import 'open-props/normalize';
 	import '../app.css';
@@ -40,6 +41,7 @@
 	<main class="main">
 		{@render children()}
 	</main>
+	<Footer />
 </div>
 
 <style>
@@ -48,14 +50,14 @@
 		height: 100%;
 		min-height: 100vh;
 		display: grid;
-		grid-template-rows: auto 1fr;
+		grid-template-rows: auto 1fr auto;
 		align-items: center;
 		margin-inline: auto;
 		padding-inline: 2rem;
 		max-width: 1600px;
 	}
 	main {
-		margin-top: 8rem;
+		margin-top: 3rem;
 		padding-inline: 2rem;
 		align-self: start;
 		width: 100%;

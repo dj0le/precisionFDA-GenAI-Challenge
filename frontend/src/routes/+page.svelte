@@ -3,6 +3,7 @@
 	import Markdown from '$lib/components/markdown.svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
+	let hasAskedQuestion = false;
 	let question = '';
 	let displayedQuestion = '';
 	let answer = '';
@@ -23,6 +24,7 @@
 
 	async function handleSubmit() {
 		isLoading = true;
+		hasAskedQuestion = true;
 		try {
 			console.log('Submitting with:', {
 				question,
@@ -67,7 +69,49 @@
 </script>
 
 <div class="chat-container">
-	{#if isLoading}
+	{#if !hasAskedQuestion}
+		<div class="placeholder-message">
+			<h3 class="title">Hello, I'm Feddi</h3>
+			<p>
+				I'm your guide to FDA related questions. If this is your first time using the app, here's a
+				few tips:
+			</p>
+			<p>
+				On the top right, select the chat model you w to use. I'm a fan ofllama 3.2, but any chat
+				model will work, and you can change it anytime.
+			</p>
+			<p>
+				There are 3 sections to this app, this one is for chatting. If you would like to add
+				documents to my database, choose the documents section. You can also see all the documents
+				currentlyin the database, or delete any that are no longer needed.
+			</p>
+			<p>
+				The info section will give more details about the project and participants. You can also
+				verify that the app is up and running (look for th healthy green heart). And, you can see a
+				list of all the local models on your system that the app can see to ensure the ones you want
+				are available.
+			</p>
+			<p>
+				When ready, simply come back to this chat page, and at the bottom input whatever questions
+				you have
+			</p>
+			<p>Example questions:</p>
+			<ul>
+				<li>
+					How does the FDA define "insanitary conditions" in the preparation, packing, and holding
+					of tattoo inks?
+				</li>
+				<li>What is the numeric code for eye liner?</li>
+				<li>What are common mistakes with non compliance when starting a cosmetic business??</li>
+			</ul>
+			<p>
+				I will always attempt to use the local documents to answer your questions, to ensure as much
+				accuracy as possible
+			</p>
+			<p>I look forward to interacting with you!</p>
+			<h3 class="title">-Feddi</h3>
+		</div>
+	{:else if isLoading}
 		<div>thinking...</div>
 	{:else}
 		<div class="question">
@@ -129,10 +173,10 @@
 		padding: var(--padding);
 		display: grid;
 		grid-template-columns: 1fr;
-		grid-template-rows: auto auto auto;
-		max-width: 1600px;
+		max-width: 1200px;
 		width: 100%;
 		align-items: start;
+		margin-inline: auto;
 	}
 	.question,
 	.answer,
@@ -141,7 +185,7 @@
 		grid-template-columns: 15% 1fr;
 		grid-gap: 8px;
 		padding-block: 16px;
-		justify-items: start;
+		justify-items: center;
 	}
 	.answer-label,
 	.sources-label,
@@ -174,8 +218,10 @@
 	}
 	.question-container {
 		width: 100%;
-		padding: 16px;
+		max-width: 1200px;
+		padding-block: 16px;
 		margin-top: 32px;
+		margin-inline: auto;
 	}
 	.question-container form label {
 		color: var(--accent-1);

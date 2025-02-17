@@ -73,7 +73,6 @@
 	.model-container {
 		color: var(--text-4);
 		border-radius: 6px;
-		padding-inline: 2rem;
 		grid-column: 2 / 3;
 		grid-row: 1 / 2;
 		justify-self: end;

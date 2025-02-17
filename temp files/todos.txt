@@ -1,3 +1,7 @@
+chat-container fixed size as a % of the screen, with a 'more' button for long answers
+
+move question-container to the bottom of the page
+
 
 implement chat ui design
 style info page
