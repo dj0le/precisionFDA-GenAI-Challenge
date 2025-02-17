@@ -45,7 +45,7 @@
 <style>
 	.toast {
 		position: fixed;
-		top: 32px;
+		bottom: 16px;
 		right: 32px;
 		display: grid;
 		grid-template-columns: auto 1fr;
