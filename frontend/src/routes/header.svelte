@@ -14,7 +14,12 @@
 	<div class="model-container">
 		<div class="setting-item">
 			<label for="model-select">model:</label>
-			<select id="model-select" bind:value={storedModel.value} on:change={handleModelChange}>
+			<select
+				class="model-select"
+				id="model-select"
+				bind:value={storedModel.value}
+				on:change={handleModelChange}
+			>
 				{#each availableModels.value as model}
 					<option value={model}>{model}</option>
 				{/each}
@@ -68,10 +73,13 @@
 	.model-container {
 		color: var(--text-4);
 		border-radius: 6px;
-		padding: 1rem;
+		padding-inline: 2rem;
 		grid-column: 2 / 3;
 		grid-row: 1 / 2;
 		justify-self: end;
+	}
+	.model-select {
+		width: 175px;
 	}
 	nav {
 		grid-column: 1 / -1;

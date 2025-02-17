@@ -50,8 +50,9 @@
 		display: grid;
 		grid-template-rows: auto 1fr;
 		align-items: center;
-		align-content: space-between;
+		margin-inline: auto;
 		padding-inline: 2rem;
+		max-width: 1600px;
 	}
 	main {
 		margin-top: 8rem;
