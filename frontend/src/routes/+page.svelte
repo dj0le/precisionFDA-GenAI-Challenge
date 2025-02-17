@@ -4,15 +4,19 @@
 	import { v4 as uuidv4 } from 'uuid';
 	import Placeholder from '$lib/components/welcomeMessage.svelte';
 
-	let hasAskedQuestion = false;
-	let question = '';
-	let displayedQuestion = '';
-	let answer = '';
-	let sources = {};
-	let response_metadata = {};
-	let usage_metadata = {};
-	let isLoading = false;
-	let sessionId = uuidv4();
+	// Runes-based state management
+	let hasAskedQuestion = $state(false);
+	let question = $state('');
+	let displayedQuestion = $state('');
+	let answer = $state('');
+	let sources = $state({});
+	let response_metadata = $state({});
+	let usage_metadata = $state({});
+	let isLoading = $state(false);
+	let sessionId = $state(uuidv4());
+	let currentContent = $state('');
+	let showFullAnswer = $state(false);
+	let chatContainerHeight = $state('58vh');
 
 	function formatDuration(nanoseconds: number): string {
 		const seconds = nanoseconds / 1_000_000_000;
@@ -27,20 +31,16 @@
 		event.preventDefault();
 		isLoading = true;
 		hasAskedQuestion = true;
-		try {
-			console.log('Submitting with:', {
-				question,
-				model: storedModel.value,
-				session_id: sessionId
-			});
+		currentContent = 'thinking...';
 
+		try {
 			const response = await fetch('http://localhost:8000/chat', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({
-					question,
+					question: question,
 					model: storedModel.value,
 					session_id: sessionId
 				})
@@ -61,13 +61,17 @@
 
 			displayedQuestion = question;
 			question = '';
+			currentContent = 'answer';
+			chatContainerHeight = 'auto';
 		} catch (error) {
 			console.error('Error:', error);
 			answer = 'Error: Failed to get response';
+			currentContent = 'error';
 		} finally {
 			isLoading = false;
 		}
 	}
+
 	function clearChat() {
 		hasAskedQuestion = false;
 		question = '';
@@ -78,50 +82,56 @@
 		usage_metadata = {};
 		isLoading = false;
 		sessionId = uuidv4();
+		currentContent = '';
+		showFullAnswer = false;
+		chatContainerHeight = '58vh';
 	}
 </script>
 
-<div class="chat-container">
-	{#if !hasAskedQuestion}
-		<Placeholder />
-	{:else if isLoading}
-		<div>thinking...</div>
-	{:else}
-		<div class="question">
+<div class="chat-container" style="height: {chatContainerHeight}">
+	{#if !hasAskedQuestion && currentContent === ''}
+		<div class="fade-in">
+			<Placeholder />
+		</div>
+	{:else if isLoading && currentContent === 'thinking...'}
+		<div class="fade-in">thinking...</div>
+	{:else if currentContent === 'answer'}
+		<div class="fade-in question">
 			<h3 class="question-label title">Question:</h3>
 			<div class="question-text">{displayedQuestion}</div>
 		</div>
-		<div class="separator"></div>
-		<div class="answer">
+		<div class="fade-in separator"></div>
+		<div class="fade-in answer">
 			<h3 class="answer-label title">Feddi:</h3>
-			<div class="answer-text"><Markdown content={answer} /></div>
+			<div class="answer-text" class:truncated={!showFullAnswer}>
+				<Markdown content={answer} />
+			</div>
 		</div>
-		<div class="separator"></div>
-		<div class="sources">
+		<div class="fade-in separator"></div>
+		<div class="fade-in sources">
 			<h3 class="sources-label title">Sources:</h3>
 			<div class="sources-container">
 				<div class="sources-list">
 					<ul>
-						{#each sources as source}
-							<li>{source}</li>
+						{#each Object.entries(sources) as [key, source]}
+							<li {key}>{source}</li>
 						{/each}
 					</ul>
 				</div>
 				<div class="sources-details">
-					<div>
-						Processing Time: {formatDuration(response_metadata.total_duration)}
-					</div>
-					<div>
-						Tokens Used: {usage_metadata.total_tokens}
-					</div>
+					<div>Processing Time: {formatDuration(response_metadata.total_duration)}</div>
+					<div>Tokens Used: {usage_metadata.total_tokens}</div>
 				</div>
 				<div class="clear-container">
 					<button class="sources-button button" onclick={clearChat}>clear chat</button>
 				</div>
 			</div>
 		</div>
+	{:else if currentContent === 'error'}
+		<div class="fade-in">Error: Failed to get Response</div>
 	{/if}
 </div>
+
 <div class="question-container">
 	<div>
 		<form onsubmit={handleSubmit}>
@@ -148,8 +158,23 @@
 		grid-template-columns: 1fr;
 		max-width: 1200px;
 		width: 100%;
+		overflow-y: auto;
 		align-items: start;
 		margin-inline: auto;
+		position: relative;
+		overflow: visible;
+	}
+	.fade-in {
+		animation: fadeIn 0.35s ease-in-out;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
 	}
 	.question,
 	.answer,
