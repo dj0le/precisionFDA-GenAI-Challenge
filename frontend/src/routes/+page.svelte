@@ -110,12 +110,17 @@
 			<div class="sources-container">
 				<div class="sources-list">
 					<ul>
-						{#each Object.entries(sources) as [key, source]}
-							<li {key}>{source}</li>
+						{#each Object.entries(sources) as [key, source], index}
+							<li>
+								<span class="source-number">{index + 1}</span>
+								<span class="source-separator">|</span>
+								<span class="source-text">{source}</span>
+							</li>
 						{/each}
 					</ul>
 				</div>
 				<div class="sources-details">
+					<div>Model: {storedModel.value}</div>
 					<div>Processing Time: {formatDuration(response_metadata.total_duration)}</div>
 					<div>Tokens Used: {usage_metadata.total_tokens}</div>
 				</div>
@@ -146,6 +151,30 @@
 </div>
 
 <style>
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	li {
+		margin-bottom: 6px;
+		white-space: nowrap;
+	}
+	.source-number {
+		display: inline-block;
+		width: 20px;
+		text-align: right;
+		margin-right: 4px;
+	}
+
+	.source-separator {
+		display: inline-block;
+		margin-right: 12px;
+	}
+
+	.source-text {
+		display: inline-block;
+	}
 	.chat-container {
 		border: 1px solid var(--border-1);
 		background-color: var(--surface-2);
@@ -205,8 +234,7 @@
 	}
 
 	.question-text,
-	.answer-text,
-	.sources-container {
+	.answer-text {
 		margin-left: 16px;
 		justify-self: start;
 	}
@@ -223,7 +251,8 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
 		gap: 8px;
-		padding-top: 32px;
+		justify-self: start;
+		padding-top: 10px;
 	}
 
 	.sources-button {
@@ -231,7 +260,8 @@
 	}
 
 	.sources-details {
-		place-self: center;
+		align-self: start;
+		justify-self: end;
 	}
 
 	.clear-container {

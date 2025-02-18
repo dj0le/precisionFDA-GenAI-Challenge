@@ -1,9 +1,6 @@
-chat-container fixed size as a % of the screen, with a 'more' button for long answers
 
-move question-container to the bottom of the page
-
-
-implement chat ui design
+use open props fade instead of css native *maybe
+style the sources section of the chat container, better layout, and include real numbers instead of ul dots for each source
 style info page
 add quick start guide for new users
 custom search component so styling can be applied
