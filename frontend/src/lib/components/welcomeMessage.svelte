@@ -63,6 +63,9 @@
 		<h3 class="title gap sig">-Feddi</h3>
 	</div>
 </div>
+<div>
+	<p class="note">*note: some users may need to manually start ollama</p>
+</div>
 
 <style>
 	.gap {
@@ -80,5 +83,10 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 32px;
+	}
+	.note {
+		padding: 16px;
+		color: var(--warning);
+		font-style: italic;
 	}
 </style>

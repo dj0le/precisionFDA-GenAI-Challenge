@@ -1,8 +1,8 @@
 
 use open props fade instead of css native *maybe
-style the sources section of the chat container, better layout, and include real numbers instead of ul dots for each source
+
 style info page
-add quick start guide for new users
+
 custom search component so styling can be applied
 
 add model to chat output details
