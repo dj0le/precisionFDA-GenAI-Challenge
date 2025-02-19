@@ -4,11 +4,21 @@
 
 <footer>
 	<div class="footer-content">
-		<a href="https://github.com/dj0le/precisionFDA-GenAI-Challenge" class="github-link">
+		<a
+			href="https://github.com/dj0le/precisionFDA-GenAI-Challenge"
+			class="github-link"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
 			<MdiGithub style="font-size: 2em; color: var(--accent-1)" />
 			<span>Visit project page</span>
 		</a>
-		<a href="https://www.space-shift.com/" class="page-link">2025 // SPACEshift</a>
+		<a
+			href="https://www.space-shift.com/"
+			class="page-link"
+			target="_blank"
+			rel="noopener noreferrer">2025 // SPACEshift</a
+		>
 	</div>
 </footer>
 

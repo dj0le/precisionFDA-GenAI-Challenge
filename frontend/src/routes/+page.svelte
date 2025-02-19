@@ -1,17 +1,25 @@
 <script lang="ts">
+	import type { ResponseMetadata, UsageMetadata } from '$lib/types.ts';
+
+	interface ApiResponse {
+		answer: string;
+		sources: { [key: string]: string };
+		response_metadata: ResponseMetadata;
+		usage_metadata: UsageMetadata;
+	}
+
 	import { storedModel } from '$lib/stores';
 	import Markdown from '$lib/components/markdown.svelte';
 	import { v4 as uuidv4 } from 'uuid';
 	import Placeholder from '$lib/components/welcomeMessage.svelte';
 
-	// Runes-based state management
 	let hasAskedQuestion = $state(false);
 	let question = $state('');
 	let displayedQuestion = $state('');
 	let answer = $state('');
 	let sources = $state({});
-	let response_metadata = $state({});
-	let usage_metadata = $state({});
+	let response_metadata: ResponseMetadata = $state({});
+	let usage_metadata: UsageMetadata = $state({});
 	let isLoading = $state(false);
 	let sessionId = $state(uuidv4());
 	let currentContent = $state('');
@@ -51,7 +59,7 @@
 				throw new Error(JSON.stringify(errorData.detail));
 			}
 
-			const result = await response.json();
+			const result: ApiResponse = await response.json();
 
 			answer = result.answer;
 			sources = result.sources;
@@ -110,7 +118,7 @@
 			<div class="sources-container">
 				<div class="sources-list">
 					<ul>
-						{#each Object.entries(sources) as [key, source], index}
+						{#each Object.entries(sources) as [, source], index}
 							<li>
 								<span class="source-number">{index + 1}</span>
 								<span class="source-separator">|</span>
@@ -121,7 +129,7 @@
 				</div>
 				<div class="sources-details">
 					<div>Model: {storedModel.value}</div>
-					<div>Processing Time: {formatDuration(response_metadata.total_duration)}</div>
+					<div>Processing Time: {formatDuration(response_metadata.total_duration ?? 0)}</div>
 					<div>Tokens Used: {usage_metadata.total_tokens}</div>
 				</div>
 				<div class="clear-container">
@@ -158,22 +166,41 @@
 	}
 	li {
 		margin-bottom: 6px;
-		white-space: nowrap;
+		display: flex;
+		align-items: baseline;
+	}
+	.sources-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 8px;
+		justify-self: start;
+		padding-top: 10px;
+	}
+	.sources-button {
+		background-color: var(--surface-1);
+	}
+	.sources-details {
+		align-self: start;
+		justify-self: end;
 	}
 	.source-number {
-		display: inline-block;
 		width: 20px;
 		text-align: right;
 		margin-right: 4px;
+		flex-shrink: 0;
 	}
-
 	.source-separator {
-		display: inline-block;
 		margin-right: 12px;
+		flex-shrink: 0;
 	}
-
 	.source-text {
-		display: inline-block;
+		flex-grow: 1;
+		max-width: 100%;
+		overflow-wrap: break-word;
+		word-break: break-word;
+	}
+	.sources-list {
+		width: auto;
 	}
 	.chat-container {
 		border: 1px solid var(--border-1);
@@ -185,17 +212,15 @@
 		max-width: 1200px;
 		width: 100%;
 		overflow-y: auto;
-		align-items: stretch; /* Changed from start to stretch*/
+		align-items: stretch;
 		margin-inline: auto;
 		position: relative;
 		overflow: visible;
 		min-height: 58vh;
 	}
-
 	.fade-in {
 		animation: fadeIn 0.3s ease-in-out;
 	}
-
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
@@ -205,7 +230,6 @@
 			opacity: 1;
 		}
 	}
-
 	.question,
 	.sources {
 		display: grid;
@@ -216,7 +240,6 @@
 		flex: 0 0 auto;
 		align-items: start;
 	}
-
 	.answer {
 		display: grid;
 		grid-template-columns: 15% 1fr;
@@ -226,48 +249,26 @@
 		flex: 1;
 		align-items: start;
 	}
-
 	.answer-label,
 	.sources-label,
 	.question-label {
 		align-self: start;
 	}
-
 	.question-text,
 	.answer-text {
 		margin-left: 16px;
 		justify-self: start;
 	}
-
 	.answer-text {
 		height: 100%;
 	}
-
 	.separator {
 		border: 1px solid var(--border-1);
-	}
-
-	.sources-container {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		gap: 8px;
-		justify-self: start;
-		padding-top: 10px;
-	}
-
-	.sources-button {
-		background-color: var(--surface-1);
-	}
-
-	.sources-details {
-		align-self: start;
-		justify-self: end;
 	}
 
 	.clear-container {
 		place-self: end;
 	}
-
 	.question-container {
 		width: 100%;
 		max-width: 1200px;
@@ -275,18 +276,22 @@
 		margin-top: 32px;
 		margin-inline: auto;
 	}
-
 	.question-container form label {
 		color: var(--accent-1);
 		margin-bottom: 8px;
 		padding-left: 18px;
 	}
-
 	.question-container form input[type='text'] {
 		padding: 16px;
 		background-color: var(--surface-2);
 		border: 1px solid var(--border-1);
 		border-radius: 6px;
 		width: 100%;
+	}
+	.question-container form input[type='text']:focus {
+		outline: none;
+		color: var(--text-2);
+		border: 1px solid var(--accent-1);
+		background-color: var(--surface-6);
 	}
 </style>
